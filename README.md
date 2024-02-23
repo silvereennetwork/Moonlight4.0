@@ -1,3 +1,7 @@
-![4.0](https://archive.org/download/sdfdsfsdfsdf_202402/sdfdsfsdfsdf.png){style="margin: auto 0;"}
+<p align="center">
+<kbd>
+<img style="border-radius:50%" height="150px" src="https://archive.org/download/sdfdsfsdfsdf_202402/sdfdsfsdfsdf.png">
+</kbd>
+</p>
 <h1 align="center">Moonlight 4.0</h1>
 <p align="center">The best open-source gaming website project that is taking the world by storm.</p>
