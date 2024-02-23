@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+<body>
+    <form id="uv-form">
+        <input id="uv-search-engine" value="https://www.google.com/search?q=%s" type="hidden" />
+        <input id="uv-address" type="text" placeholder="Search the web freely" />
+    </form>
+    <div>
+        <p id="uv-error"></p>
+        <pre id="uv-error-code"></pre>
+    </div>
+
+    <script src="uv/uv.bundle.js" defer></script>
+    <script src="uv/uv.config.js" defer></script>
+    <script src="uv/register-sw.js" defer></script>
+    <script src="uv/search.js" defer></script>
+    <script src="uv/index.js" defer></script>
+</body>
