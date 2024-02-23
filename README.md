@@ -1,6 +1,6 @@
 <p align="center">
 <kbd>
-<img style="border-radius:50%" height="150px" src="https://archive.org/download/sdfdsfsdfsdf_202402/sdfdsfsdfsdf.png">
+<img height="150px" src="https://archive.org/download/sdfdsfsdfsdf_202402/sdfdsfsdfsdf.png">
 </kbd>
 </p>
 <h1 align="center">Moonlight 4.0</h1>
