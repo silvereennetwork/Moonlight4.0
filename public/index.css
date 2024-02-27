@@ -46,8 +46,13 @@ html::after {
 }
 
 .nav-logo img {
-  width: 50px;
+  width: 00px;
+  margin: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
   height: auto;
+  transform: scaleX(-1);
 }
 
 .nav-links {

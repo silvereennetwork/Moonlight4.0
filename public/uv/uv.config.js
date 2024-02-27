@@ -105,8 +105,17 @@ const blocked = [
   ];
   
   const blockedsites = [
-    
+    "pornhub.com",
+    "xvideos.com",
+    "xnxx.com",
+    "pornmate.com",
+    "bestpornsites.net"
   ]
+
+  const blockedqueries = [
+    "porn",
+    "silvereen"
+  ];
 
   self.__uv$config = {
     /**
@@ -245,4 +254,68 @@ const blocked = [
          return new Response(null, {});
       return request;
     },
+     /**
+     * Function to inject scripts into the doc Head
+     * @type {function}
+     * @param {URL} url - The URL for the rewrite function.
+     * @returns {string} - The script to inject.
+     */
+     inject: async (url) => {
+      if (url.host === 'discord.com') {
+          return `
+              <script src="https://raw.githubusercontent.com/Vencord/builds/main/browser.js"></script>
+              <link rel="stylesheet" href="https://raw.githubusercontent.com/Vencord/builds/main/browser.css">
+            `;
+      }
+
+      return ``;
+  },
+  /**
+     * Middleware function for handling requests.
+     * @type {function}
+     * @param {Request} request - The request object.
+     * @returns {Request|Response} The modified request or a response.
+     */
+  middleware: (request) => {
+    const url = new URL(request.url);
+
+    console.log(url.host);
+    if (blockedsites.includes(url.host)) {
+         return new Response(window.location.replace("/"));
+     }
+     if (
+       url.pathname.includes("ads.js") ||
+       url.pathname.includes("pagead.js") ||
+       url.pathname.includes("partner.ads.js ")
+     )
+       return new Response(null, {});
+    return request;
+  },
+  middleware: (request) => {
+    const url = new URL(request.url);
+  
+    console.log(url.host);
+  
+    // Check if the URL's host is in the blocked array
+    if (blocked.includes(url.host)) {
+      return new Response(null, {});
+    }
+  
+    // Check if the URL's host is in the blockedsites array
+    if (blockedsites.includes(url.host)) {
+      // Redirect to blocked.html
+      return Response.redirect('../blocked.html', 307);
+    }
+  
+    // Existing checks for specific ad-related paths
+    if (
+      url.pathname.includes("ads.js") ||
+      url.pathname.includes("pagead.js") ||
+      url.pathname.includes("partner.ads.js ")
+    ) {
+      return new Response(null, {});
+    }
+  
+    return request;
+  },
   };
