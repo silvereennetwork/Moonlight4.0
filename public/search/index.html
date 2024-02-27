@@ -9,12 +9,14 @@
   </head>
   <body>
     <div class="nav">
+      <div class="nav-logo">
+        <img src="../logo.png">
+      </div>
       <div class="nav-links">
         <li><a>Apps</a></li>
         <li><a>Games</a></li>
         <li><a>Search</a></li>
       </div>
-      <div class="time" id="time-clock"></div>
     </div>
     <div class="container">
       <h1>ML Search</h1>
@@ -22,6 +24,7 @@
         <input id="uv-search-engine" value="https://www.google.com/search?q=%s" type="hidden" />
         <input id="uv-address" type="text" placeholder="Search the web freely" />
       </form>
+      <div class="time" id="time-clock">Time</div>
     </div>
     <div>
       <p id="uv-error"></p>
@@ -33,5 +36,6 @@
     <script src="../uv/register-sw.js" defer></script>
     <script src="../uv/search.js" defer></script>
     <script src="../uv/index.js" defer></script>
+    <script src="../main.js" defer></script>
   </body>
 </html>

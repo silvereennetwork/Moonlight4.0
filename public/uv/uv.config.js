@@ -104,6 +104,10 @@ const blocked = [
     "ads-api.twitter.com",
   ];
   
+  const blockedsites = [
+    
+  ]
+
   self.__uv$config = {
     /**
      * The prefix for UV (Ultraviolet) resources.

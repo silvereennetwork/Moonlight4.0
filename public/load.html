@@ -39,7 +39,7 @@
         }
         
         .info {
-            color: #46c846;
+            color: rgb(95, 95, 255);
             max-width: 600px;
             text-align: center;
             margin: 35px 0 0;
@@ -58,8 +58,8 @@
             height: 128px;
             margin: 16px;
             border-radius: 50%;
-            border: 12px solid #46c846;
-            border-color: #46c846 transparent #46c846 transparent;
+            border: 12px solid rgb(95, 95, 255);
+            border-color: rgb(95, 95, 255) transparent rgb(95, 95, 255) transparent;
             animation: ring 1s linear infinite;
         }
         
@@ -80,7 +80,7 @@
             Please wait while our servers handle your request. <br> Our site may be experiencing heavy load affecting load times. 
         </p>
     </div>
-    <iframe id="site-iframe" src="" style="z-index: 9999;"></iframe>
+    <iframe id="proxy-screen" src="" style="z-index: 9999;"></iframe>
     <script>
         if (localStorage.getItem("proxy-load") == null && localStorage.getItem("proxy-load") == "") {
             window.location.replace("/");
