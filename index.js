@@ -1,4 +1,4 @@
-const { createBareServer } =  require("@tomphttp/bare-server-node");
+const { createBareServer } = require("@tomphttp/bare-server-node");
 const express = require("express");
 const { createServer } = require("node:http");
 const { uvPath } = require("@titaniumnetwork-dev/ultraviolet");
@@ -11,8 +11,8 @@ app.use(express.static("./public"));
 app.use("/uv/", express.static(uvPath));
 
 // Error for everything else
-app.get('*', function(req, res) {
-  res.send('404');
+app.get("*", function (req, res) {
+  res.send("404");
 });
 
 const server = createServer();
@@ -45,11 +45,7 @@ server.on("listening", () => {
   console.log("Listening on:");
   console.log(`\thttp://localhost:${address.port}`);
   console.log(`\thttp://${hostname()}:${address.port}`);
-  console.log(
-    `\thttp://${
-      address.family === "IPv6" ? `[${address.address}]` : address.address
-    }:${address.port}`
-  );
+  console.log(`\thttp://${address.family === "IPv6" ? `[${address.address}]` : address.address}:${address.port}`);
 });
 
 // https://expressjs.com/en/advanced/healthcheck-graceful-shutdown.html
