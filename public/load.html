@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loader</title>
+</head>
+<body>
+    <iframe style="width: 100vw; height: 100%; border:none;" id="proxy-screen">Loading...</iframe>
+    <script>
+        if (localStorage.getItem("proxy-load") == null && localStorage.getItem("proxy-load") == "") {
+            window.location.replace("/");
+        }
+
+        document.getElementById("proxy-screen").src = localStorage.getItem("proxy-load");
+    </script>
+
+</body>
+</html>
