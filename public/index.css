@@ -1,5 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
 
+:root {
+  --primary-color: #064180;
+  --secondary-color: #003366;
+  --third-color: #336699;
+  --text-color:#fff;
+}
+
 html {
   position: relative;
   height: 100vh;
@@ -8,13 +15,13 @@ html {
 body {
   margin: 0;
   padding: 0;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--third-color));
   font-family: "Poppins", sans-serif;
 }
 
 html::after {
   content: "";
   background-image: url("/assets/imgs/background.png");
-  background-color: #1a1a1a;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -30,19 +37,24 @@ html::after {
 .nav {
   padding: 10px 20px;
   display: flex;
-  margin-top: 10px;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+}
+
+.nav-logo {
+  margin-right: auto;
+}
+
+.nav-logo img {
+  width: 50px;
+  height: auto;
 }
 
 .nav-links {
   list-style: none;
   padding: 5px;
-  flex-grow: 1;
-  position: absolute;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-end;
   font-family: "Poppins", sans-serif;
 }
 
@@ -53,28 +65,27 @@ html::after {
 .nav-links li a {
   text-decoration: none;
   cursor: pointer;
-  color: black;
+  color: var(--text-color);
   font-size: 18px;
+  position: relative;
 }
 
 .nav-links li a::after {
-  content: "";
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  width: 0px;
+  content: '';
+  display: block;
+  width: 0;
   height: 2px;
-  background-color: transparent;
-  transition: all 0.3s ease;
+  background:var(--third-color);
+  transition: width 0.3s;
 }
 
 .nav-links li a:hover::after {
-  background-color: #555;
   width: 100%;
 }
 
+
 .time {
-  color: black;
+  color: var(--text-color);
   font-family: "Poppins", sans-serif;
   text-align: center;
   margin: 10px auto;
@@ -93,7 +104,7 @@ html::after {
 }
 
 .container h1 {
-  background: linear-gradient(90deg, #001f3f, #003366, #001f3f);
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--third-color));
   -webkit-background-clip: text;
   background-clip: text;
   margin: 0;
