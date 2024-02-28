@@ -1,112 +1,113 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title></title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Roboto&display=swap');
-        
-        body {
-            background: #000;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-        }
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Roboto&display=swap");
 
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            position: fixed;
-            top:0;
-            display: flex;
+      body {
+        background: #000;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+      }
+
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        position: fixed;
+        top: 0;
+        display: flex;
+      }
+
+      .loading-screen {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: -2%;
+        height: 100%;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      p {
+        font-family: Roboto;
+      }
+
+      .info {
+        color: rgb(95, 95, 255);
+        max-width: 600px;
+        text-align: center;
+        margin: 35px 0 0;
+      }
+
+      .ring {
+        display: inline-block;
+        width: 160px;
+        height: 160px;
+      }
+
+      .ring:after {
+        content: " ";
+        display: block;
+        width: 128px;
+        height: 128px;
+        margin: 16px;
+        border-radius: 50%;
+        border: 12px solid rgb(95, 95, 255);
+        border-color: rgb(95, 95, 255) transparent rgb(95, 95, 255) transparent;
+        animation: ring 1s linear infinite;
+      }
+
+      @keyframes ring {
+        0% {
+          transform: rotate(0deg);
         }
-        
-        .loading-screen {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            margin-top: -2%;
-            height: 100%;
-            align-items: center;
-            flex-direction: column;
+        100% {
+          transform: rotate(360deg);
         }
-        
-        p {
-            font-family: Roboto;
-        }
-        
-        .info {
-            color: rgb(95, 95, 255);
-            max-width: 600px;
-            text-align: center;
-            margin: 35px 0 0;
-        }
-        
-        .ring {
-            display: inline-block;
-            width: 160px;
-            height: 160px;
-        }
-        
-        .ring:after {
-            content: " ";
-            display: block;
-            width: 128px;
-            height: 128px;
-            margin: 16px;
-            border-radius: 50%;
-            border: 12px solid rgb(95, 95, 255);
-            border-color: rgb(95, 95, 255) transparent rgb(95, 95, 255) transparent;
-            animation: ring 1s linear infinite;
-        }
-        
-        @keyframes ring {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
+      }
     </style>
-</head> 
-<body>
+  </head>
+  <body>
     <div class="loading-screen">
-        <div class="ring"></div>
-        <p class="info">
-            Please wait while our servers handle your request. <br> Our site may be experiencing heavy load affecting load times. 
-        </p>
+      <div class="ring"></div>
+      <p class="info">
+        Please wait while our servers handle your request. <br />
+        Our site may be experiencing heavy load affecting load times.
+      </p>
     </div>
     <iframe id="proxy-screen" src="" style="z-index: 9999;"></iframe>
     <script>
-        if (localStorage.getItem("proxy-load") == null && localStorage.getItem("proxy-load") == "") {
-            window.location.replace("/");
-        }
+      if (localStorage.getItem("proxy-load") == null && localStorage.getItem("proxy-load") == "") {
+        window.location.replace("/");
+      }
 
-        var iframe = document.getElementById("proxy-screen");
-        iframe.src = localStorage.getItem("proxy-load");
-        
-        iframe.onload = function() {
-            iframe.style.display = "block";
-            document.querySelector(".loading-screen").style.display = "none";
-        };
+      var iframe = document.getElementById("proxy-screen");
+      iframe.src = localStorage.getItem("proxy-load");
+
+      iframe.onload = function () {
+        iframe.style.display = "block";
+        document.querySelector(".loading-screen").style.display = "none";
+      };
     </script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script>
-      var panickey = localStorage.getItem('panicKey')
+      var panickey = localStorage.getItem("panicKey");
       console.log(panickey);
-      var panicwebsite = localStorage.getItem('panicWebsite')
+      var panicwebsite = localStorage.getItem("panicWebsite");
       $(function () {
         $(document).keydown(function (e) {
           console.log(e.key);
           if (e.key == panickey) {
-            window.open(panicwebsite, '_self')
+            window.open(panicwebsite, "_self");
           }
         });
       });
     </script>
-</body>
+  </body>
 </html>
