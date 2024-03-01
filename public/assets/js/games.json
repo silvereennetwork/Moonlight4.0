@@ -1,0 +1,13 @@
+[
+    {
+        "name": "HexGL",
+        "gameName": "HexGL",
+        "icon": "hexgl.png",
+        "id": "1",
+        "tags": [
+            "tag1",
+            "tag2"
+        ]
+
+    }
+]
