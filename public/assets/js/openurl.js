@@ -26,3 +26,20 @@ function setGameInfo(gameName, appName) {
     localStorage.setItem('app-name', appName);
     localStorage.setItem('app-image', appImage);
 }
+
+function getCdnInfo(gameName) {
+
+    function constructURL(foldername) {
+        var url = `https://3kh0-assets.silvereen.net/3kh0-assets/${foldername}`;
+        return url;
+    }
+
+    //console.log(constructURL(gameName))
+
+    var gameURL = __uv$config.prefix + __uv$config.encodeUrl(constructURL(gameName));
+    var mainURL = "https://" + location.host + gameURL;
+    console.log(mainURL);
+
+    //localStorage.setItem('shownameandimg', showNameAndImg ? 'true' : 'false');
+    return gameName;
+}
