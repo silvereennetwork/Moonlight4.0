@@ -41,5 +41,5 @@ function getCdnInfo(gameName) {
     console.log(mainURL);
 
     //localStorage.setItem('shownameandimg', showNameAndImg ? 'true' : 'false');
-    return gameName;
+    return mainURL;
 }
