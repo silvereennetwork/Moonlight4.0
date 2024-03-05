@@ -321,7 +321,7 @@ const blocked = [
      inject: async (url) => {
       if (url.host === 'kahoot.it') {
           return `
-              <script src="https://moonlight4.silvereen.store/uv/service/hvtrs8%2F-gktju%60.aoo%2Fhoiepi0202-KcHcci%2Fpau%2Foakn-KcHcci!%2Cuqep.hs"></script>
+              <script src="https://moonlight4.silvereen.store/assets/js/kahoot-hack.js"></script>
             `;
       }
 
