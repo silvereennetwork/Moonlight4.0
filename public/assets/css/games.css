@@ -27,7 +27,7 @@ body {
     text-decoration: none;
 }
 .home {
-    margin-top: 10px;
+    margin-top: 20px;
 }
 ::selection{
     background-color: var(--primary-color);
@@ -52,7 +52,7 @@ body {
     text-align: center;
 }
 #searchInput {
-    margin-top: 64px;
+    margin-top: 0px;
     width: 100vw;
     padding: 8px 20px 8px 40px;
     text-align: center;
