@@ -7,7 +7,7 @@ fetch('assets/js/games.json')
             card.className = `card p`;
             var gameIcon = getCdnInfo(game.root+"/"+game.img)
             console.log(gameIcon);
-            card.backgroundImage = `url(${gameIcon})`;
+            card.style = "background-image: url(" + gameIcon + ");";
             //card.style= "background-image: url(" + gameIcon + "); background-size: cover; background-position: center;";
             console.log("/assets/imgs/thumbnails/"+game.img);
             card.onclick = function() {
