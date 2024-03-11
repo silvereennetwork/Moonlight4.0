@@ -270,4 +270,21 @@ const blocked = [
 
       return ``;
   },
+       middleware: (request) => {
+    const url = new URL(request.url);
+
+    console.log(url.host);
+
+    // Check if the URL's host is in the blocked array
+    if (blocked.includes(url.host)) {
+      return new Response(null, {});
+    }
+
+    // Check if the URL's host is in the blockedsites array
+    if (blockedsites.includes(url.host)) {
+      // Redirect to blocked.html
+      return Response.redirect('../blocked.html', 307);
+    }
+
+    return request;
   };
