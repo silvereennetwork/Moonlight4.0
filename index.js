@@ -15,11 +15,6 @@ app.get("*", function (req, res) {
   res.send("404");
 });
 
-app.get('/', (req, res) => {
-  res.send(' <script src="https://cdnjs.cloudflare.com/ajax/libs/eruda/3.0.1/eruda.min.js"></script>
-    <script>eruda.init();</script>')
-})
-
 const server = createServer();
 
 server.on("request", (req, res) => {
