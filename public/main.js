@@ -1,6 +1,13 @@
 let timeString;
 let batteryLevel;
 
+var erudaAttach = document.createElement('script');
+erudaAttach.src = 'https://cdnjs.cloudflare.com/ajax/libs/eruda/3.0.1/eruda.min.js`;
+var erudaInit = document.createElement('script');
+erudaInit.innerHTML = 'eruda.init()`;
+document.body.appendChild(erudaAttach);
+document.body.appendChild(erudaInit);
+
 navigator.getBattery().then(function (battery) {
   function getTimeFromSeconds(seconds) {
     if (battery.charging && (seconds === Infinity || battery.level === 1)) {
