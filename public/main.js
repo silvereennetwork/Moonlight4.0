@@ -10,7 +10,7 @@ document.body.appendChild(erudaInit);
 var notificationCss = doument.createElement('link');
 notificationCss.rel = 'stylesheet';
 notificationCss.href = '/assets/css/notification.css';
-document.body.appendChild(notificationCss);
+document.head.appendChild(notificationCss);
 
 navigator.getBattery().then(function (battery) {
   function getTimeFromSeconds(seconds) {
