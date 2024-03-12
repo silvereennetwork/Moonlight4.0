@@ -270,10 +270,12 @@ const blocked = [
 
       return ``;
   },
-      inject: async (url) => {
-          `<script src="https://cdnjs.cloudflare.com/ajax/libs/eruda/3.0.1/eruda.min.js"></script>
-            <script>eruda.init();</script>`;
-      }
-      return '';
+    inject: async (url) => {
+          return `
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/eruda/3.0.1/eruda.min.js"></script>
+              <script>eruda.init();</script>
+            `;
 
+      return ``;
+  },
   };
