@@ -10,7 +10,8 @@
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 
-<body>
+<!-- register uv service worker on load for games -->
+<body onload="registerSW()">
   <div class="nav">
     <div class="nav-logo">
       <img src="logo.png">
@@ -31,6 +32,10 @@
     <div class="time" id="time-clock">Time</div>
   </div>
   <script src="./main.js"></script>
+  <!-- serviceworker js -->
+  <script src="./uv/register-sw.js"></script>
+  <script src="./uv/uv.config.js"></script>
+  <!-- serviceworker js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/eruda/3.0.1/eruda.min.js"></script>
   <script>eruda.init();</script>
   <script>
