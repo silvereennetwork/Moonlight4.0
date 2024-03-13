@@ -36,8 +36,10 @@ function getCdnInfo(gameName) {
 
     //console.log(constructURL(gameName))
 
-    var gameURL = __uv$config.prefix + __uv$config.encodeUrl(constructURL(gameName));
-    var mainURL = "https://" + location.host + gameURL;
+    //use express-http-proxy package in index.js
+    var gameURL = "/cdn/" + gameName
+    console.log(gameURL)
+    var mainURL = "http://" + location.host + gameURL;
     console.log(mainURL);
 
     //localStorage.setItem('shownameandimg', showNameAndImg ? 'true' : 'false');

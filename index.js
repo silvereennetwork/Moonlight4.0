@@ -1,5 +1,6 @@
 const { createBareServer } = require("@tomphttp/bare-server-node");
 const express = require("express");
+const proxy = require('express-http-proxy');
 const { createServer } = require("node:http");
 const { uvPath } = require("@titaniumnetwork-dev/ultraviolet");
 const { hostname } = require("node:os");
@@ -9,6 +10,12 @@ const app = express();
 
 app.use(express.static("./public"));
 app.use("/uv/", express.static(uvPath));
+app.use(
+	'/cdn',
+	proxy(`https://3kh0-assets.silvereen.net/3kh0-assets/`, {
+		proxyReqPathResolver: (req) => `/3kh0-assets/${req.url}`,
+	})
+);
 
 // Error for everything else
 app.get("*", function (req, res) {
