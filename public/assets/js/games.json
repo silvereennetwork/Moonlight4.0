@@ -138,6 +138,12 @@
       "img": "img/splash.jpg"
     },
     {
+      "name": "Ball Dodge",
+      "root": "ball-dodge",
+      "file": "index.html",
+      "img": "icon.png"
+    },
+    {
       "name": "Bad Ice Cream",
       "root": "bad-ice-cream",
       "file": "index.html",
@@ -1732,6 +1738,11 @@
       "root": "xx142-b2exe",
       "file": "index.html",
       "img": "splash.png"
+    },
+    {
+      "name": "Dead Shot",
+      "proxy": "https://deadshot.io/",
+      "img": "deadshot.png"
     }
   ]
   

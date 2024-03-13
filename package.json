@@ -1,7 +1,7 @@
 {
-  "name": "ml-v4",
-  "version": "1.0.0",
-  "description": "Web proxy based on Ultraviolet",
+  "name": "moonlight4.0",
+  "version": "0.5",
+  "description": "The cure to boredom at your fingertips",
   "repository": {
     "type": "git",
     "url": "https://github.com/silvereennetwork/Moonlight4.0.git"

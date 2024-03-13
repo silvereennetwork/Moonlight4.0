@@ -8,6 +8,8 @@ erudaInit.innerHTML = 'eruda.init()';
 document.body.appendChild(erudaAttach);
 document.body.appendChild(erudaInit);
 
+
+if (document.getElementById('time-clock')) { 
 navigator.getBattery().then(function (battery) {
   function getTimeFromSeconds(seconds) {
     if (battery.charging && (seconds === Infinity || battery.level === 1)) {
@@ -160,7 +162,9 @@ navigator.getBattery().then(function (battery) {
   battery.addEventListener("dischargingtimechange", updateBatteryStatus);
   battery.addEventListener("levelchange", updateBatteryStatus);
 });
+}
 
+/* NOTIFICATION CODE */
 function showNotifi(time, duration, color, title, message, url = null) {
     var notification = document.createElement('div');
     notification.className = 'notification';

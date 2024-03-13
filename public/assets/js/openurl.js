@@ -27,6 +27,15 @@ function setGameInfo(gameName, appName) {
     localStorage.setItem('app-image', appImage);
 }
 
+function setProxyInfo(gameName) {
+    var unencodedURL = search(gameName, 'https://www.google.com/search?q=%s');
+
+    var gameURL = __uv$config.prefix + __uv$config.encodeUrl(gameName);
+    var mainURL = "https://" + location.host + gameURL;
+    console.log(mainURL);
+    localStorage.setItem('storedURL', mainURL);
+}
+
 function getCdnInfo(gameName) {
 
     function constructURL(foldername) {
