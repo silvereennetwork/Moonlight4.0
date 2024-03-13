@@ -21,7 +21,7 @@ fetch('assets/js/games.json')
 
             var gameIcon = getCdnInfo(game.root+"/"+game.img)
             console.log(gameIcon);
-            card.style = "background-image: url(" + gameIcon + ");";
+            card.style = `background-image: url(${gameIcon});`;
             //card.style= "background-image: url(" + gameIcon + "); background-size: cover; background-position: center;";
             console.log("/assets/imgs/thumbnails/"+game.img);
 
