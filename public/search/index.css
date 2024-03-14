@@ -38,7 +38,9 @@ html::after {
   color: white;
 }
 
-
+#dynamic-address {
+  color: white;
+}
 
 .nav {
   padding: 10px 20px;
