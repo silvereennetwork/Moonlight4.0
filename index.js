@@ -3,6 +3,7 @@ const express = require("express");
 const proxy = require('express-http-proxy');
 const { createServer } = require("node:http");
 const { uvPath } = require("@titaniumnetwork-dev/ultraviolet");
+const { dynamicPath } = require("@nebula-services/dynamic");
 const { hostname } = require("node:os");
 
 const bare = createBareServer("/bare/");
@@ -10,6 +11,7 @@ const app = express();
 
 app.use(express.static("./public"));
 app.use("/uv/", express.static(uvPath));
+app.use("/dynamic/", express.static(dynamicPath));
 app.use(
 	'/cdn',
 	proxy(`https://3kh0-assets.silvereen.net/3kh0-assets/`, {

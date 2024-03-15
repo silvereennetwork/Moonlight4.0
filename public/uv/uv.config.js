@@ -122,7 +122,7 @@ const blocked = [
      * The prefix for UV (Ultraviolet) resources.
      * @type {string}
      */
-    prefix: "/uv/service/",
+    prefix: "/service/uv/",
   
     /**
      * The bare path.

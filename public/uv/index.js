@@ -3,11 +3,19 @@
 /**
  * @type {HTMLFormElement}
  */
-const form = document.getElementById("uv-form");
+const uvform = document.getElementById("uv-form");
 /**
  * @type {HTMLInputElement}
  */
-const address = document.getElementById("uv-address");
+const uvaddress = document.getElementById("uv-address");
+/**
+ * @type {HTMLFormElement}
+ */
+const dynamicform = document.getElementById("dynamic-form");
+/**
+ * @type {HTMLInputElement}
+ */
+const dynamicaddress = document.getElementById("dynamic-address");
 /**
  * @type {HTMLInputElement}
  */
@@ -21,11 +29,20 @@ const error = document.getElementById("uv-error");
  */
 const errorCode = document.getElementById("uv-error-code");
 
-form.addEventListener("submit", async (event) => {
+uvform.addEventListener("submit", async (event) => {
   event.preventDefault();
 
-  const url = search(address.value, searchEngine.value);
+  const url = search(uvaddress.value, searchEngine.value);
   localStorage.setItem("proxy-load", __uv$config.prefix + __uv$config.encodeUrl(url));
   console.log(__uv$config.prefix + __uv$config.encodeUrl(url))
+  location.href = "../load.html"
+});
+
+dynamicform.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const url = search(dynamicaddress.value, searchEngine.value);
+  localStorage.setItem("proxy-load", __dynamic$config.prefix + __uv$config.encodeUrl(url));
+  console.log(__dynamic$config.prefix + __uv$config.encodeUrl(url))
   location.href = "../load.html"
 });
