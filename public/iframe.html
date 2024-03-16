@@ -8,8 +8,29 @@
   <title>My Drive - Google Drive</title>
   <link rel="icon" type="image/x-icon" href="assets/imgs/favicons/google-drive.ico">
   <meta name="google" content="notranslate">
+  <style>
+    .loading-screen {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: -2%;
+        height: 100%;
+        align-items: center;
+        flex-direction: column;
+        z-index: 9999999999;
+      }
+    </style>
 </head>
 <body>
+  <div class="loading-screen">
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+
+  <dotlottie-player src="https://lottie.host/15007873-64f3-4f04-aae7-d2f4e59f8575/SVb9rmfpsV.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
+    <p class="info">
+      Please wait while our servers handle your request. <br />
+      Our site may be experiencing heavy load affecting load times.
+    </p>
+  </div>
   <div class="buttons">
     <a class="back-arrow" onclick="backtopage()">
       <i class="fa-regular fa-square-caret-left"></i>
@@ -55,5 +76,12 @@
     </div>
 </div>
 <script src="assets/js/modal.js" defer></script>
+<script>
+  var iframe = document.getElementById("iframe");
+   iframe.onload = function () {
+        iframe.style.display = "block";
+        document.querySelector(".loading-screen").style.display = "none";
+      };
+</script>
 </body>
 </html>

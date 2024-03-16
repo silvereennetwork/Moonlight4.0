@@ -1,11 +1,11 @@
 {
-  "name": "ml-v4",
-  "version": "1.0.0",
-  "description": "Web proxy based on Ultraviolet",
+  "name": "moonlight4.0",
+  "version": "0.5",
+  "description": "The cure to boredom at your fingertips",
   "repository": {
-		"type": "git",
-		"url": "https://github.com/alive-hamster/Supernova.git"
-	},
+    "type": "git",
+    "url": "https://github.com/silvereennetwork/Moonlight4.0.git"
+  },
   "engines": {
     "npm": ">=9.0.0",
     "node": ">=18.0.0"
@@ -14,8 +14,10 @@
     "start": "node index.js"
   },
   "dependencies": {
+    "@nebula-services/dynamic": "^0.7.2-patch.2",
     "@titaniumnetwork-dev/ultraviolet": "^2.0.0",
     "@tomphttp/bare-server-node": "^2.0.0",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "express-http-proxy": "^2.0.0"
   }
 }

@@ -1,6 +1,15 @@
 let timeString;
 let batteryLevel;
 
+var erudaAttach = document.createElement('script');
+erudaAttach.src = 'https://cdnjs.cloudflare.com/ajax/libs/eruda/3.0.1/eruda.min.js';
+var erudaInit = document.createElement('script');
+erudaInit.innerHTML = 'eruda.init()';
+document.body.appendChild(erudaAttach);
+document.body.appendChild(erudaInit);
+
+
+if (document.getElementById('time-clock')) { 
 navigator.getBattery().then(function (battery) {
   function getTimeFromSeconds(seconds) {
     if (battery.charging && (seconds === Infinity || battery.level === 1)) {
@@ -153,14 +162,62 @@ navigator.getBattery().then(function (battery) {
   battery.addEventListener("dischargingtimechange", updateBatteryStatus);
   battery.addEventListener("levelchange", updateBatteryStatus);
 });
+}
+
+/* NOTIFICATION CODE */
+function showNotifi(time, duration, color, title, message, url = null) {
+    var notification = document.createElement('div');
+    notification.className = 'notification';
+    notification.style.cssText = `
+        background-color: ${color};
+        font-size: 0.75em; 
+        animation-duration: ${duration * 0.1}s;
+    `;
+
+    var notificationTitle = document.createElement('h2');
+    notificationTitle.innerHTML = title;
+    notification.appendChild(notificationTitle);
+
+    var notificationMessage = document.createElement('p');
+    notificationMessage.innerHTML = message;
+    notification.appendChild(notificationMessage);
+
+    if (url) {
+        notification.style.cursor = 'pointer'; // Make the notification clickable
+        notification.addEventListener('click', function() {
+            window.location.href = url; // Navigate to the URL when clicked
+        });
+    }
+
+    var durationBar = document.createElement('div');
+    durationBar.className = 'duration-bar';
+    durationBar.style.animationDuration = `${duration}s`;
+    durationBar.classList.add('decrease');
+    notification.appendChild(durationBar);
+
+    document.body.appendChild(notification);
+
+    notification.classList.add('show');
+
+    setTimeout(function() {
+        notification.classList.add('hide');
+        notification.style.animationName = 'slide-down';
+        notification.style.animationDuration = '0.5s';
+        notification.style.animationFillMode = 'forwards';
+        setTimeout(function() {
+            document.body.removeChild(notification);
+        }, 500);
+    }, duration * 1000);
+
+    setTimeout(function() {
+        notification.style.animationName = 'fadeOut';
+        setTimeout(function() {
+            document.body.removeChild(notification);
+        }, (time - duration) * 1000);
+    }, (time + 0.6) * 1000);
+}
 
 var asciiv5 = `
-██████╗ ██╗  ██╗██╗  ██╗ ██████╗ ██╗   ██╗███████╗
-╚════██╗██║ ██╔╝██║  ██║██╔═████╗██║   ██║██╔════╝
- █████╔╝█████╔╝ ███████║██║██╔██║██║   ██║███████╗
- ╚═══██╗██╔═██╗ ██╔══██║████╔╝██║╚██╗ ██╔╝╚════██║
-██████╔╝██║  ██╗██║  ██║╚██████╔╝ ╚████╔╝ ███████║
-╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝   ╚═══╝  ╚══════╝
-                                                  
+Moonlight 4.0                              
 `;
 console.log(asciiv5);

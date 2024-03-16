@@ -1,32 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Moonlight 4.0</title>
-    <link rel="stylesheet" href="index.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  </head>
-  <body>
-    <div class="nav">
-      <div class="nav-logo">
-        <img src="logo.png">
-      </div>
-      <div class="nav-links">
-        <li><a>Apps</a></li>
-        <li><a href="games.html">Games</a></li>
-        <li><a href="./search">Search</a></li>
-      </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moonlight 4.0</title>
+  <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+
+<!-- register uv service worker on load for games -->
+<body onload="registerSW()">
+  <div class="nav">
+    <div class="nav-logo">
+      <img src="logo.png">
     </div>
-    <div class="container">
-      <h1>Moonlight 4.0</h1>
-      <div class="btns">
-        <a href="games.html">Games</a>
-        <a href="./search">Search</a>
-        <a>Settings</a>
-      </div>
-      <div class="time" id="time-clock">Time</div>
+    <div class="nav-links">
+      <li><a>Apps</a></li>
+      <li><a href="games.html">Games</a></li>
+      <li><a href="./search">Search</a></li>
     </div>
-    <script src="./main.js"></script>
-  </body>
+  </div>
+  <div class="container">
+    <h1>Moonlight 4.0</h1>
+    <div class="btns">
+      <a href="games.html">Games</a>
+      <a href="./search">Search</a>
+      <a>Settings</a>
+    </div>
+    <div class="time" id="time-clock">Time</div>
+  </div>
+  <script src="./main.js"></script>
+  <!-- serviceworker js -->
+  <script src="/dynamic/dynamic.config.js" defer></script>
+  <script src="./uv/uv.bundle.js"></script>
+  <script src="./uv/uv.config.js"></script>
+  <script src="/register-sw.js"></script>
+  <!-- serviceworker js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/eruda/3.0.1/eruda.min.js"></script>
+  <script>eruda.init();</script>
+  <script>
+    document.addEventListener('keydown', function (event) {
+      if (event.ctrlKey && event.shiftKey && event.code === 'KeyI') {
+        event.preventDefault();  // Prevent the default action (opening dev tools)
+        eruda.show();    // Call your custom function
+      }
+    });
+  </script>
+</body>
+
 </html>

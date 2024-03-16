@@ -75,7 +75,9 @@
   </head>
   <body>
     <div class="loading-screen">
-      <div class="ring"></div>
+      <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+
+    <dotlottie-player src="https://lottie.host/15007873-64f3-4f04-aae7-d2f4e59f8575/SVb9rmfpsV.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
       <p class="info">
         Please wait while our servers handle your request. <br />
         Our site may be experiencing heavy load affecting load times.
@@ -109,5 +111,7 @@
         });
       });
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/eruda/3.0.1/eruda.min.js"></script>
+    <script>eruda.init();</script>
   </body>
 </html>

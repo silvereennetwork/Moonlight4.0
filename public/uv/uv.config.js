@@ -122,7 +122,7 @@ const blocked = [
      * The prefix for UV (Ultraviolet) resources.
      * @type {string}
      */
-    prefix: "/uv/service/",
+    prefix: "/service/uv/",
   
     /**
      * The bare path.
@@ -265,63 +265,6 @@ const blocked = [
           return `
               <script src="https://raw.githubusercontent.com/Vencord/builds/main/browser.js"></script>
               <link rel="stylesheet" href="https://raw.githubusercontent.com/Vencord/builds/main/browser.css">
-            `;
-      }
-
-      return ``;
-  },
-  /**
-     * Middleware function for handling requests.
-     * @type {function}
-     * @param {Request} request - The request object.
-     * @returns {Request|Response} The modified request or a response.
-     */
-  middleware: (request) => {
-    const url = new URL(request.url);
-
-    console.log(url.host);
-    if (blockedsites.includes(url.host)) {
-         return new Response(window.location.replace("/"));
-     }
-     if (
-       url.pathname.includes("ads.js") ||
-       url.pathname.includes("pagead.js") ||
-       url.pathname.includes("partner.ads.js ")
-     )
-       return new Response(null, {});
-    return request;
-  },
-  middleware: (request) => {
-    const url = new URL(request.url);
-  
-    console.log(url.host);
-  
-    // Check if the URL's host is in the blocked array
-    if (blocked.includes(url.host)) {
-      return new Response(null, {});
-    }
-  
-    // Check if the URL's host is in the blockedsites array
-    if (blockedsites.includes(url.host)) {
-      // Redirect to blocked.html
-      return Response.redirect('../blocked.html', 307);
-    }
-  
-    // Existing checks for specific ad-related paths
-    if (
-      url.pathname.includes("ads.js") ||
-      url.pathname.includes("pagead.js") ||
-      url.pathname.includes("partner.ads.js ")
-    ) {
-      return new Response(null, {});
-    }
-  
-    return request;
-  },
-     inject: async (url) => {
-      if (url.host === 'kahoot.it') {
-          return `
-              <script src="https://moonlight4.silvereen.store/uv/service/hvtrs8%2F-gktju%60.aoo%2Fhoiepi0202-KcHcci%2Fpau%2Foakn-KcHcci!%2Cuqep.hs"></script>
             `;
       }
 
