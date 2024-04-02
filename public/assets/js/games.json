@@ -1743,6 +1743,11 @@
       "name": "Dead Shot",
       "proxy": "https://deadshot.io/",
       "img": "deadshot.png"
+    },
+    {
+      "name": "Google",
+      "proxy": "https://google.com",
+      "img": "deadshot.png"
     }
   ]
   
