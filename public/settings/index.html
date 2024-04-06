@@ -5,17 +5,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Moonlight 4.0</title>
+  <link rel="icon" id="icon" href="">
   <link rel="stylesheet" href="../index.css" />
   <link rel="stylesheet" href="settings.css"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
-<body>
-    <h1 class="center" style="color: white;">Settings</h1>
-    <div style="width: 1px; height: 7vh"></div>
 
+<body>
+  <h1 class="center" style="color: white;">Settings</h1>
+  <div style="width: 1px; height: 7vh"></div>
+  <div class="center-container">
     <div class="settings-container">
       <h2 class="center">Tab cloak</h2>
-      <p class="center">Coming soon...</p>
+      <p class="center">Title</p>
+      <p class="center"><input type="text" onchange="setTitle(this.value)" id="titlecloak" placeholder="Title"></p>
+      <p class="center">Icon</p>
+      <p class="center"><input type="text" onchange="setIcon(this.value)" id="iconcloak" placeholder="Icon URL"></p>
     </div>
 
     <div class="settings-container">
@@ -54,4 +59,15 @@
         <a href="../tos.html" class="link">TOS</a>
       </p>
     </div>
+  </div>
+  <script src="../cloak.js"></script>
+  <script>
+    if (document.getElementById('titlecloak').value) {
+      document.getElementById('titlecloak').value = localStorage.getItem('title');
+    }
+    if (document.getElementById('iconcloak').value) {
+      document.getElementById('iconcloak').value = localStorage.getItem('icon');
+    }
+    
+  </script>
 </body>

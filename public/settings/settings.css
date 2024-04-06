@@ -19,3 +19,28 @@
     margin: 2px;
     color: white;
 }
+
+.center-container {
+    width: 95%;
+    margin: auto;
+}
+
+.settings-container input {
+    width: 75%;
+    text-align: center;
+    height: 30px;
+    border-radius: 30px;
+    background: none;
+    color: white;
+    border: #064180 2px solid;
+    transition: 0.5s;
+}
+
+.settings-container input:hover{
+    border-radius: 5px;
+}
+
+
+::placeholder {
+    color: rgb(196, 196, 196);
+}
