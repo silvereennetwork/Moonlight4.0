@@ -1,6 +1,8 @@
-function goBack() {
-    history.back();
-  }
+const url = new URL(location.href);
+const params = new URLSearchParams(url.search);
+const game = params.get('game');
+
+
 function toggleFullscreen() {
   const iframe = document.getElementById('iframe');
   if (iframe.requestFullscreen) {
@@ -29,28 +31,14 @@ function toggleFullscreen() {
     }
   }
 }
-// Retrieve the app name and image from local storage
-const appName = localStorage.getItem('app-name');
-const appImage = localStorage.getItem('app-image');
-const showNameAndImg = localStorage.getItem('shownameandimg');
-
-// Set the content and src attribute
-document.getElementById('app-name').textContent = appName;
-document.getElementById('app-image').src = appImage;
-
-function backtopage() {
-  const type = localStorage.getItem('iframe-type');
-  console.log("iframe-type value:", type);
-  if (type === 'games') {
-      window.location.href = 'games.html';
-  } else {
-      // Default or error handling, if needed.
-      console.error('Unexpected iframe type:', type);
-  }
-}
 
 var iframeUrl = localStorage.getItem('storedURL');
 var iframeElement = document.getElementById('iframe');
+
+if (game) {
+  iframeElement.src = setGameInfo(game);
+}
+
 if (iframeUrl) {
     iframeElement.src = iframeUrl;
 } else {
@@ -62,13 +50,7 @@ function reload() {
   iframe.src = localStorage.getItem('current-url');
 }
 
-if (showNameAndImg === 'true') {
-  // Set the content and src attribute
-  document.getElementById('app-name').textContent = appName;
-  document.getElementById('app-image').src = appImage;
-  document.getElementById('app-name').style.display = 'inline';
-  document.getElementById('app-image').style.display = 'inline';
-} else {
-  document.getElementById('app-name').style.display = 'none';
-  document.getElementById('app-image').style.display = 'none';
+
+function openNew() {
+  window.open(iframeElement.src, '_blank');
 }

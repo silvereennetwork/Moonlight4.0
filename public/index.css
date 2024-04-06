@@ -195,10 +195,6 @@ html::after {
     animation: decrease-width linear;
     animation-fill-mode: forwards;
   }
-  
-  .fadeout {
-
-  }
 
   @keyframes fadeout {
     to {
@@ -230,4 +226,8 @@ html::after {
     100% {
         opacity: 0;
     }
+}
+
+.center {
+  text-align: center;
 }
