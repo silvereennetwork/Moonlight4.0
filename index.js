@@ -5,9 +5,25 @@ const { createServer } = require("node:http");
 const { uvPath } = require("@titaniumnetwork-dev/ultraviolet");
 const { dynamicPath } = require("@nebula-services/dynamic");
 const { hostname } = require("node:os");
+const http = require("http");
+const { Server } = require('socket.io');
 
 const bare = createBareServer("/bare/");
 const app = express();
+const httpserver = http.createServer(app); 
+const io = new Server(httpserver);
+
+io.on('connection', (socket) => {
+  socket.on('status', () => {
+  axios.get('https://bug-free-journey-gvqq59jwq7wfxr9-3000.app.github.dev/api')
+    .then(response => {
+      return(response.data)
+    })
+    .catch(error => {
+      return("Error")
+    });
+  });
+});
 
 app.use(express.static("./public"));
 app.use("/uv/", express.static(uvPath));

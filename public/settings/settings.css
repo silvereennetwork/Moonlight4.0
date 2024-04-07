@@ -1,46 +1,20 @@
-.settings-container {
-    display: inline-block;
-    /* From https://css.glass */
-    background: rgba(255, 255, 255, 0.28);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(3.9px);
-    -webkit-backdrop-filter: blur(3.9px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    width: 20%;
-    height: auto;
-    margin: 15px;
-    padding: 10px;
-    color: white;
-}
-
-.link {
-    display: inline;
-    margin: 2px;
-    color: white;
-}
+/* Most CSS has been moved to the index.css file because of themes */
 
 .center-container {
     width: 95%;
     margin: auto;
 }
 
-.settings-container input {
-    width: 75%;
-    text-align: center;
-    height: 30px;
-    border-radius: 30px;
-    background: none;
-    color: white;
-    border: #064180 2px solid;
-    transition: 0.5s;
-}
-
 .settings-container input:hover{
     border-radius: 5px;
 }
 
+.sticky {
+    position: sticky;
+    top: 0;
+}
 
-::placeholder {
-    color: rgb(196, 196, 196);
+button {
+    color: gray;
+    margin: 5px;
 }

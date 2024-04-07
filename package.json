@@ -17,7 +17,9 @@
     "@nebula-services/dynamic": "^0.7.2-patch.2",
     "@titaniumnetwork-dev/ultraviolet": "^2.0.0",
     "@tomphttp/bare-server-node": "^2.0.0",
+    "axios": "^1.6.8",
     "express": "^4.18.2",
-    "express-http-proxy": "^2.0.0"
+    "express-http-proxy": "^2.0.0",
+    "socket.io": "^4.7.5"
   }
 }

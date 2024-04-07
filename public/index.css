@@ -6,6 +6,14 @@
   --third-color: #336699;
   --text-color:#fff;
   --background: url("/assets/imgs/backgrounds/1.png");
+  --container: rgba(255, 255, 255, 0.28);
+  --selected: lime;
+  --buttonbg: #1a1a1a;
+}
+
+* {
+  transition: 0.2s;
+  color: var(--text-color)
 }
 
 html {
@@ -230,4 +238,79 @@ body::after {
 
 .center {
   text-align: center;
+}
+
+/* Settings page */
+
+.settings-container {
+  display: inline-block;
+  /* From https://css.glass */
+  background: var(--container);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3.9px);
+  -webkit-backdrop-filter: blur(3.9px);
+  width: 20%;
+  height: auto;
+  margin: 15px;
+  padding: 10px;
+  color: var(--text-color);
+}
+
+.link {
+  display: inline;
+  margin: 2px;
+  color: var(--text-color);
+}
+
+.proxy-button:hover {
+  background-color: var(--selected);
+}
+
+button {
+  width: 30%;
+  height: 35px;
+  border-radius: 10px;
+  color: var(--text-color);
+  background-color: var(--buttonbg);
+  border: none;
+  transition: 0.5s;
+}
+
+::placeholder {
+  color: var(--text-color);
+}
+
+a {
+  color: var(--text-color);
+}
+
+.settings-container input {
+  width: 75%;
+  text-align: center;
+  height: 30px;
+  border-radius: 30px;
+  background: none;
+  color: var(--text-color);
+  border: var(--text-color) 2px solid;
+  transition: 0.5s;
+}
+
+/* Search Page */
+
+.search-input[type="text"]:focus{
+  border: 3px solid var(--text-color);
+  outline:none;
+}
+
+.search-input[type="text"] {
+  padding: 1rem 3rem;
+  width: 50vw;
+  background: transparent;
+  border: 3px solid var(--primary-color);
+  border-radius: 50px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+   text-align: center;
 }

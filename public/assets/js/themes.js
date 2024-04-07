@@ -20,5 +20,15 @@ function customThemeJSON(json) {
 	}
 }
 function removeTheme() {
-	localStorage.removeItem("moonlight.customTheme")
+	localStorage.removeItem("moonlight.customTheme");
+	customThemeJSON(`{
+		"--primary-color": "#064180",
+		"--secondary-color": "#003366",
+		"--third-color": "#336699",
+		"--text-color": "#fff",
+		"--background": "url(/assets/imgs/backgrounds/1.png)",
+		"--container": "rgba(255, 255, 255, 0.28)",
+  		"--selected": "lime",
+  		"--buttonbg": "#1a1a1a"
+		}`);
 }
