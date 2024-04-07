@@ -4,7 +4,7 @@
   --primary-color: #064180;
   --secondary-color: #003366;
   --third-color: #336699;
-  --text-color:#fff;
+  --text-color: #fff;
   --background: url("/assets/imgs/backgrounds/1.png");
   --container: rgba(255, 255, 255, 0.28);
   --selected: lime;
@@ -13,7 +13,7 @@
 
 * {
   transition: 0.2s;
-  color: var(--text-color)
+  color: var(--text-color);
 }
 
 html {
@@ -84,18 +84,17 @@ body::after {
 }
 
 .nav-links li a::after {
-  content: '';
+  content: "";
   display: block;
   width: 0;
   height: 2px;
-  background:var(--third-color);
+  background: var(--third-color);
   transition: width 0.3s;
 }
 
 .nav-links li a:hover::after {
   width: 100%;
 }
-
 
 .time {
   color: var(--text-color);
@@ -117,7 +116,12 @@ body::after {
 }
 
 .container h1 {
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--third-color));
+  background: linear-gradient(
+    90deg,
+    var(--primary-color),
+    var(--secondary-color),
+    var(--third-color)
+  );
   -webkit-background-clip: text;
   background-clip: text;
   margin: 0;
@@ -153,87 +157,87 @@ body::after {
 /* Notifications */
 
 .notification {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #444;
-    color: white;
-    padding: 15px;
-    border-radius: 5px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #444;
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  opacity: 1;
+  display: none;
+  animation: slide-up 0.5s ease-out;
+}
+
+.notification.show {
+  display: block;
+}
+
+.notification.hide {
+  animation: slide-down 0.5s ease-out forwards;
+  transition: opacity 0.5s;
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-down {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(110%);
+  }
+}
+
+.duration-bar {
+  height: 5px;
+  background-color: #fff;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.duration-bar.decrease {
+  animation: decrease-width linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeout {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes decrease-width {
+  to {
+    width: 0;
+  }
+}
+
+@keyframes fadeOutSlide {
+  0% {
     opacity: 1;
-    display: none;
-    animation: slide-up 0.5s ease-out;
+    transform: translateY(0);
   }
-  
-  .notification.show {
-    display: block;
+  100% {
+    opacity: 0;
+    transform: translateY(-100%);
   }
-  
-  .notification.hide {
-    animation: slide-down 0.5s ease-out forwards;
-    transition: opacity 0.5s;
-  }
-  
-  @keyframes slide-up {
-    from {
-      transform: translateY(100%);
-    }
-    to {
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes slide-down {
-    from {
-      transform: translateY(0);
-    }
-    to {
-      transform: translateY(110%);
-    }
-  }
-  
-  .duration-bar {
-    height: 5px;
-    background-color: #fff;
-    width: 100%;
-    border-radius: 5px;
-  }
-  
-  .duration-bar.decrease {
-    animation: decrease-width linear;
-    animation-fill-mode: forwards;
-  }
-
-  @keyframes fadeout {
-    to {
-        opacity: 0;
-    }
-  }
-
-  @keyframes decrease-width {
-    to {
-      width: 0;
-    }
-  }
-
-  @keyframes fadeOutSlide {
-    0% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(-100%);
-    }
 }
 
 @keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 .center {
@@ -243,18 +247,20 @@ body::after {
 /* Settings page */
 
 .settings-container {
-  display: inline-block;
-  /* From https://css.glass */
+  display: flex;
+  flex-direction: column; /* Make items stack vertically */
   background: var(--container);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(3.9px);
   -webkit-backdrop-filter: blur(3.9px);
-  width: 20%;
-  height: auto;
-  margin: 15px;
+  height: auto; /* Change this value as needed */
+  margin: 20px;
+  width: 400px;
   padding: 10px;
   color: var(--text-color);
+  overflow: hidden;
+  min-height: 300px; /* Add this line to enable scrollbars when content overflows */
 }
 
 .link {
@@ -298,9 +304,9 @@ a {
 
 /* Search Page */
 
-.search-input[type="text"]:focus{
+.search-input[type="text"]:focus {
   border: 3px solid var(--text-color);
-  outline:none;
+  outline: none;
 }
 
 .search-input[type="text"] {
@@ -312,5 +318,5 @@ a {
   font-family: "Poppins", sans-serif;
   font-size: 1rem;
   transition: all 0.3s ease;
-   text-align: center;
+  text-align: center;
 }
