@@ -5,6 +5,7 @@
   --secondary-color: #003366;
   --third-color: #336699;
   --text-color:#fff;
+  --background: url("/assets/imgs/backgrounds/1.png");
 }
 
 html {
@@ -15,13 +16,12 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--third-color));
   font-family: "Poppins", sans-serif;
+  background: var(--background);
 }
 
-html::after {
+body::after {
   content: "";
-  background-image: url("/assets/imgs/backgrounds/1.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
