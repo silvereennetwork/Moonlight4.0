@@ -30,7 +30,9 @@
 
     <div class="settings-container">
       <h2 class="center">Proxy settings</h2>
-      <p class="center">Coming soon...</p>
+      <p class="center">Select a proxy</p>
+      <button id="uv" onclick="change('uv')">Ultraviolet</button>
+      <button id="dynamic" onclick="change('dynamic')">Dynamic</button>
     </div>
 
     <div class="settings-container">
@@ -61,6 +63,7 @@
     </div>
   </div>
   <script src="../cloak.js"></script>
+  <script src="iwishthiswasvue.js"></script>
   <script>
     if (document.getElementById('titlecloak').value) {
       document.getElementById('titlecloak').value = localStorage.getItem('title');

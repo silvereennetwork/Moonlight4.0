@@ -34,11 +34,7 @@ html::after {
   bottom: 0;
 }
 
-#uv-address {
-  color: white;
-}
-
-#dynamic-address {
+#proxy-address {
   color: white;
 }
 
