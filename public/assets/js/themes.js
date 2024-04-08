@@ -28,6 +28,7 @@ function removeTheme() {
 		"--text-color": "#fff",
 		"--background": "url(/assets/imgs/backgrounds/1.png)",
 		"--container": "rgba(255, 255, 255, 0.28)",
+		"--containerborder": "rgba(0,0,0,0)",
   		"--selected": "lime",
   		"--buttonbg": "#1a1a1a"
 		}`);

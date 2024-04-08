@@ -7,12 +7,13 @@
   --text-color: #fff;
   --background: url("/assets/imgs/backgrounds/1.png");
   --container: rgba(255, 255, 255, 0.28);
+  --containerborder: rgb(0,0,0,0);
   --selected: lime;
   --buttonbg: #1a1a1a;
 }
 
 * {
-  transition: 0.2s;
+  transition: 0.4s;
   color: var(--text-color);
 }
 
@@ -251,6 +252,7 @@ body::after {
   display: flex;
   flex-direction: column; /* Make items stack vertically */
   background: var(--container);
+  border: 2.5px solid var(--containerborder);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(3.9px);

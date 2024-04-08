@@ -53,17 +53,35 @@
           "--secondary-color": "#575757",
           "--third-color": "#1a1a1a",
           "--text-color": "#fff",
-          "--background": "#1a1a1a"
-          }`)'>Dark Mode</button><br>
+          "--background": "#1a1a1a",
+          "--container": "rgba(255, 255, 255, 0.28)",
+		      "--containerborder": "rgba(0,0,0,0)",
+  		    "--selected": "lime",
+  		    "--buttonbg": "#1a1a1a"
+          }`)'>Dark Mode</button>
 
         <button style="background-color: #cdcdcd; color: black;" onclick='customThemeJSON(`{
           "--primary-color": "#cdcdcd",
           "--secondary-color": "#cccccc",
           "--third-color": "#e3e3e3",
           "--text-color": "#000000",
-          "--background": "#b3b3b3"
+          "--background": "#b3b3b3",
+          "--container": "rgba(255, 255, 255, 0.28)",
+		      "--containerborder": "rgba(0,0,0,0)",
+  		    "--selected": "lime",
+  		    "--buttonbg": "#1a1a1a"
         }`)'>Light Mode</button><br>
-        <br>
+
+        <button style="background-color: black; color: yellow;" onclick='customThemeJSON(`{
+          "--primary-color": "#deff00",
+          "--secondary-color": "#f33bee",
+          "--third-color": "#f33bee",
+          "--text-color": "#bbbbbb",
+          "--background": "#000000",
+          "--container": "#000000",
+          "--containerborder": "#f33bee"
+        }`)'>High Contrast</button>
+        <br><br>
         <input placeholder="Custom theme code" onchange="customTheme(this.value)">
       </p>
     </div>
@@ -178,4 +196,15 @@
 
     
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/eruda/3.0.1/eruda.min.js"></script>
+  <script>eruda.init();</script>
+  <script>
+    document.addEventListener('keydown', function (event) {
+      if (event.ctrlKey && event.shiftKey && event.code === 'KeyI') {
+        event.preventDefault();  // Prevent the default action (opening dev tools)
+        eruda.show();    // Call your custom function
+      }
+    });
+  </script>
+</body>
 </body>
