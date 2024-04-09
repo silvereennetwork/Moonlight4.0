@@ -4,10 +4,10 @@
   --primary-color: #064180;
   --secondary-color: #003366;
   --third-color: #336699;
-  --text-color: #fff;
+  --text-color: #ffffff;
   --background: url("/assets/imgs/backgrounds/1.png");
   --container: rgba(255, 255, 255, 0.28);
-  --containerborder: rgb(0,0,0,0);
+  --containerborder: rgba(0,0,0,0);
   --selected: lime;
   --buttonbg: #1a1a1a;
 }
@@ -296,6 +296,17 @@ a {
 
 .settings-container input {
   width: 75%;
+  text-align: center;
+  height: 30px;
+  border-radius: 30px;
+  background: none;
+  color: var(--text-color);
+  border: var(--text-color) 2px solid;
+  transition: 0.5s;
+}
+
+input {
+  width: 300px;
   text-align: center;
   height: 30px;
   border-radius: 30px;
