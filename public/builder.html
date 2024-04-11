@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -31,7 +31,7 @@
   <h1 class="center" style="color: white;">Theme Builder</h1>
   <div style="width: 1px; height: 5vh"></div>
 
-  <form id="change-color">
+  <form id="change-color" method="get">
     <p class="center"><input type="text" id="primary" placeholder="Primary Color"><input type="color" class="color" onchange="updateValue('primary', this.value)"></p>
     <p class="center"><input type="text" id="second" placeholder="Secondary Color"><input type="color" class="color" onchange="updateValue('second', this.value)"></p>
     <p class="center"><input type="text" id="third" placeholder="Third Color"><input type="color" class="color" onchange="updateValue('third', this.value)"></p>
@@ -45,22 +45,15 @@
   </form>
   <br>
   <p class="center"><textarea style="width: 450px; height: 200px" id="textarea" disabled></textarea></p>
+  <p class="center"><input type="button" onclick="navigator.clipboard.writeText(document.getElementById('textarea').value); alert('Copied')" value="Copy"></p>
+  <div style="width: 1px; height: 5vh"></div>
   <div class="settings-background"></div>
   <script src="../cloak.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/eruda/3.0.1/eruda.min.js"></script>
+  <script src="/assets/js/cloak.js"></script>
   <script>eruda.init();</script>
   <script>
-    const colorform = document.getElementById('change-color');
-
-    const primary = "#064180";
-    const second = "#003366";
-    const third = "#336699";
-    const text = "#ffffff";
-    const background = "url(/assets/imgs/backgrounds/1.png)";
-    const container = "rgba(255, 255, 255, 0.28)";
-    const containerborder = "rgba(0,0,0,0)";
-    const selected = "lime";
-    const buttonbg = "#1a1a1a";
+    let colorform = document.getElementById('change-color');
 
 
 
@@ -72,34 +65,58 @@
     });
     
     colorform.addEventListener('submit', (event) => {
-        if (!document.getElementById('primary').value == null) {
-            primary.value = document.getElementById('primary').value;
+        event.preventDefault();
+
+        let primary = "#064180";
+        let second = "#003366";
+        let third = "#336699";
+        let text = "#ffffff";
+        let background = "url(/assets/imgs/backgrounds/1.png)";
+        let container = "rgba(255, 255, 255, 0.28)";
+        let containerborder = "rgba(0,0,0,0)";
+        let selected = "lime";
+        let buttonbg = "#1a1a1a";
+
+        if (document.getElementById('primary').value) {
+            primary = document.getElementById('primary').value;
         };
-        if (!document.getElementById('second').value == null) {
-            primary.value = document.getElementById('second').value;
+        if (document.getElementById('second').value) {
+            second = document.getElementById('second').value;
         };
-        if (!document.getElementById('third').value == null) {
-            primary.value = document.getElementById('third').value;
+        if (document.getElementById('third').value) {
+            third = document.getElementById('third').value;
         };
-        if (!document.getElementById('text').value == null) {
-            primary.value = document.getElementById('text').value;
+        if (document.getElementById('text').value) {
+            text = document.getElementById('text').value;
         };
-        if (!document.getElementById('background').value == null) {
-            primary.value = document.getElementById('background').value;
+        if (document.getElementById('background').value) {
+            background = document.getElementById('background').value;
         };
-        if (!document.getElementById('container').value == null) {
-            primary.value = document.getElementById('container').value;
+        if (document.getElementById('container').value) {
+            container = document.getElementById('container').value;
         };
-        if (!document.getElementById('containerborder').value == null) {
-            primary.value = document.getElementById('containerborder').value;
+        if (document.getElementById('containerborder').value) {
+            containerborder = document.getElementById('containerborder').value;
         };
-        if (!document.getElementById('selected').value == null) {
-            primary.value = document.getElementById('selected').value;
+        if (document.getElementById('selected').value) {
+            selected = document.getElementById('selected').value;
         };
-        if (!document.getElementById('buttonbg').value == null) {
-            primary.value = document.getElementById('buttonbg').value;
+        if (document.getElementById('buttonbg').value) {
+            buttonbg = document.getElementById('buttonbg').value;
         };
-    })
+
+        document.getElementById('textarea').value = `{
+          "--primary-color": "${primary}",
+          "--secondary-color": "${second}",
+          "--third-color": "${third}",
+          "--text-color": "${text}",
+          "--background": "${background}",
+          "--container": "${container}",
+		      "--containerborder": "${containerborder}",
+  		    "--selected": "${selected}",
+  		    "--buttonbg": "${buttonbg}"
+          }`;
+    });
 
     function updateValue(id, itemvalue) {
             document.getElementById(id).value = itemvalue;

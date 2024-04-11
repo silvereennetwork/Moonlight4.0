@@ -19,8 +19,8 @@
     <div class="nav-links">
       <li><a href="/">Home</a></li>
       <li><a href="games.html">Games</a></li>
-      <li><a href="./search">Search</a></li>
-      <li><a href="./settings">Settings</a></li>
+      <li><a href="/search">Search</a></li>
+      <li><a href="/settings">Settings</a></li>
     </div>
   </div>
   <h1 class="center" style="color: white;">Settings</h1>
@@ -31,20 +31,23 @@
       <h2 class="center">Tab cloak</h2>
        
       <p class="center">Title</p>
-      <p class="center"><input type="text" onchange="setTitle(this.value)" id="titlecloak" placeholder="Title"></p>
+      <p class="center"><input type="text" onchange="setTitle(this.value)" id="titlecloak" placeholder="Moonlight"></p>
       <p class="center">Icon</p>
-      <p class="center"><input type="text" onchange="setIcon(this.value)" id="iconcloak" placeholder="Icon URL"></p>
+      <p class="center"><input type="text" onchange="setIcon(this.value)" id="iconcloak" placeholder="icon.png"></p>
     </div>
 
     <div class="settings-container">
       <h2 class="center">Panic key</h2>
-      <p class="center">Coming soon...</p>
+      <p class="center">Panic Key</p>
+      <p class="center"><input type="text" placeholder="~" onchange="changeKey(this.value); showNotifi('3','3','#00FF00','Saved!','You\'re changes have been saved!')"></p>
+      <p class="center">Panic website</p>
+      <p class="center"><input type="text" placeholder="classroom.google.com" onchange="changeSite(this.value); showNotifi('3','3','#00FF00','Saved!','You\'re changes have been saved!')"></p>
     </div>
 
     <div class="settings-container">
       <h2 class="center">Eruda (Inspect)</h2>
       <br>
-      
+      <p>Coming Soon</p>
     </div>
 
     <div class="settings-container">
@@ -113,12 +116,15 @@
     <div class="settings-container">
       <h2 class="center">Other info</h2>
       <p class="center">Version <b>0.4</b></p>
-      <p class="center">Servers: <strong><span id="status"></span></p>
+      <p class="center">Servers: <strong><span id="status" style="font-weight: bold; color: lime;">Online</span></p>
       <p class="center">Silvereen Games LLC</p>
       <p class="center">
         <a href="https://github.com/silvereennetwork/Moonlight4.0" class="link">Github</a>
         <a href="https://discord.gg/5PQxEygf5b" class="link">Discord</a>
         <a href="../tos.html" class="link">TOS</a>
+        <br>
+        <a href="https://report" class="link">Report an error</a>
+        <a href="https://suggest" class="link">Suggest</a>
       </p>
     </div>
 
@@ -162,6 +168,7 @@
         <div>
           <h3 class="sticky">4.0 BETA Testers</h3>
           <p>artem6354</p>
+          <p>storm4008</p>
           <p>haidar9684</p>
           <p>godxdh99</p>
           <p>evan1984</p>
@@ -188,10 +195,11 @@
 
   </div>
   <div class="settings-background"></div>
-  <script src="../cloak.js"></script>
+  <script src="/assets/js/cloak.js"></script>
   <script src="iwishthiswasvue.js"></script>
   <script src="../assets/js/themes.js"></script>
   <script src="../assets/js/aboutblank.js"></script>
+  <script src="../assets/js/notification.js"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script>
     const socket = io();
@@ -225,6 +233,9 @@
         eruda.show();    // Call your custom function
       }
     });
+
+    document.getElementById('titlecloak').value = localStorage.getItem('moonlight.title');
+    document.getElementById('iconcloak').value = localStorage.getItem('moonlight.icon');
   </script>
 </body>
 </body>
