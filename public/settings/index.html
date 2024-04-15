@@ -27,9 +27,9 @@
   <div style="width: 1px; height: 7vh"></div>
   <div class="center-container">
     <div class="settings-container">
-      
+
       <h2 class="center">Tab cloak</h2>
-       
+
       <p class="center">Title</p>
       <p class="center"><input type="text" onchange="setTitle(this.value)" id="titlecloak" placeholder="Moonlight"></p>
       <p class="center">Icon</p>
@@ -39,15 +39,24 @@
     <div class="settings-container">
       <h2 class="center">Panic key</h2>
       <p class="center">Panic Key</p>
-      <p class="center"><input type="text" placeholder="~" onchange="changeKey(this.value); showNotifi('3','3','#00FF00','Saved!','You\'re changes have been saved!')"></p>
+      <p class="center"><input type="text" placeholder="~"
+          onchange="changeKey(this.value); showNotifi('3','3','#00FF00','Saved!','You\'re changes have been saved!')">
+      </p>
       <p class="center">Panic website</p>
-      <p class="center"><input type="text" placeholder="classroom.google.com" onchange="changeSite(this.value); showNotifi('3','3','#00FF00','Saved!','You\'re changes have been saved!')"></p>
+      <p class="center"><input type="text" placeholder="classroom.google.com"
+          onchange="changeSite(this.value); showNotifi('3','3','#00FF00','Saved!','You\'re changes have been saved!')">
+      </p>
     </div>
 
     <div class="settings-container">
       <h2 class="center">Eruda (Inspect)</h2>
       <br>
-      <p>Coming Soon</p>
+      <p class="center">
+        <button onclick="localStorage.setItem('moonlight.eruda', 0); window.location.reload();"
+          class="proxy-button" id="eruda-off">Off</button>
+        <button onclick="localStorage.setItem('moonlight.eruda', 1); window.location.reload();"
+          class="proxy-button" id="eruda-on">On</button>
+      </p>
     </div>
 
     <div class="settings-container">
@@ -123,8 +132,8 @@
         <a href="https://discord.gg/5PQxEygf5b" class="link">Discord</a>
         <a href="../tos.html" class="link">TOS</a>
         <br>
-        <a href="https://report" class="link">Report an error</a>
-        <a href="https://suggest" class="link">Suggest</a>
+        <a href="javascript: error()" class="link">Report an error</a>
+        <a href="javascript: suggest()" class="link">Suggest a game</a>
       </p>
     </div>
 
@@ -200,10 +209,14 @@
   <script src="../assets/js/themes.js"></script>
   <script src="../assets/js/aboutblank.js"></script>
   <script src="../assets/js/notification.js"></script>
-  <script src="/socket.io/socket.io.js"></script>
+  <script src="../assets/js/openurl.js"></script>
+  <script src="/dynamic/dynamic.config.js" defer></script>
+  <script src="/uv/uv.bundle.js" defer></script>
+  <script src="/uv/uv.config.js" defer></script>
+  <script src="/uv/search.js" defer></script>
+  <script src="/uv/index.js" defer></script>
+  <script src="../main.js"></script>
   <script>
-    const socket = io();
-
     if (document.getElementById('titlecloak').value) {
       document.getElementById('titlecloak').value = localStorage.getItem('title');
     }
@@ -215,27 +228,40 @@
     function customTheme(code) {
       customThemeJSON(code);
     }
-
-    socket.emit('status');
-
-    socket.on('status-responce', (msg) => {
-      document.getElementById('status').innerHTML = msg;
-    });
-
-    
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/eruda/3.0.1/eruda.min.js"></script>
-  <script>eruda.init();</script>
   <script>
-    document.addEventListener('keydown', function (event) {
-      if (event.ctrlKey && event.shiftKey && event.code === 'KeyI') {
-        event.preventDefault();  // Prevent the default action (opening dev tools)
-        eruda.show();    // Call your custom function
-      }
-    });
-
     document.getElementById('titlecloak').value = localStorage.getItem('moonlight.title');
     document.getElementById('iconcloak').value = localStorage.getItem('moonlight.icon');
   </script>
+  <script>
+    if (localStorage.getItem('moonlight.eruda') == 1) {
+      eruda.init();
+    }
+
+    document.addEventListener('keydown', function (event) {
+        if (event.ctrlKey && event.shiftKey && event.code === 'KeyI' && localStorage.getItem('moonlight.eruda') == 1) {
+            event.preventDefault();
+            eruda.show();
+        }
+    });
+
+    if (localStorage.getItem('moonlight.eruda') == 1) {
+      document.getElementById('eruda-on').style.backgroundColor = 'lime';
+    } else if (localStorage.getItem('moonlight.eruda') == 0) {
+      document.getElementById('eruda-off').style.backgroundColor = 'lime';
+    };
+
+    function error() {
+      navigator.clipboard.writeText(getDeviceInfo()); 
+      setProxyInfo(`https://forms.gle/a3TxAiMr3MovKcCH7`); 
+      window.open('../iframe.html')
+    }
+
+    function suggest() {
+      setProxyInfo(`https://docs.google.com/forms/d/e/1FAIpQLSficSd27EijVQtL_tDu02gZLBglNHUcIYHUPg9-doxzIE_T_Q/viewform`); 
+      window.open('../iframe.html')
+    }
+  </script>
 </body>
-</body>
+</html>
