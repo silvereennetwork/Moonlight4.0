@@ -1742,12 +1742,13 @@
     {
       "name": "Dead Shot",
       "proxy": "https://deadshot.io/",
-      "img": "deadshot.png"
+      "img": "deadshot.jpeg"
     },
     {
       "name": "Google",
       "proxy": "https://google.com",
-      "img": "deadshot.png"
+      "img": "google.png",
+      "type": "app"
     }
   ]
   

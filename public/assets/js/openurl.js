@@ -55,3 +55,7 @@ function getCdnInfo(gameName) {
     //localStorage.setItem('shownameandimg', showNameAndImg ? 'true' : 'false');
     return mainURL;
 }
+
+function developUrl(url) {
+    return search(url);
+}

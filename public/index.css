@@ -344,3 +344,11 @@ input {
   transition: all 0.3s ease;
   text-align: center;
 }
+
+hr {
+  width: 90%;
+  border: 10px solid (--text-color);
+  background-color: (--text-color);
+  color: (--text-color);
+  border-radius: 10px;
+}

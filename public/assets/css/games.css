@@ -15,7 +15,6 @@
 }
 body {
     min-height: 100vh;
-    background-image: url(../imgs/backgrounds/1.png);
     background-attachment: fixed;
     display: flex;
     flex-direction: column;
@@ -29,35 +28,7 @@ body {
 .home {
     margin-top: 20px;
 }
-::selection{
-    background-color: var(--primary-color);
-    color: #fff;
-}
 
-::-webkit-scrollbar {
-    width: 10px;
-}
-::-webkit-scrollbar-track {
-    background: #1e2124;; 
-}
-::-webkit-scrollbar-thumb {
-    background: white; 
-    border-radius: 5px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: grey; 
-}
-
-#searchInput::placeholder {
-    text-align: center;
-}
-#searchInput {
-    margin-top: 0px;
-    width: 100vw;
-    padding: 8px 20px 8px 40px;
-    text-align: center;
-    border: 1px solid #ddd;
-}
 .cards {
     display: flex;
     flex-wrap: wrap;
