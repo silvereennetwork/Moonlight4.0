@@ -62,8 +62,14 @@
     <div class="settings-container">
       <h2 class="center">Proxy settings</h2>
       <p class="center">Select a proxy</p>
-      <p class="center"><button id="uv" onclick="change('uv')" class="proxy-button">Ultraviolet</button>
-        <button id="dynamic" onclick="change('dynamic')" class="proxy-button">Dynamic</button>
+      <p class="center">
+        <button id="uv" onclick="change('proxy-select', 'uv')" class="proxy-button">Ultraviolet</button>
+        <button id="dynamic" onclick="change('proxy-select', 'dynamic')" class="proxy-button">Dynamic</button>
+      </p>
+      <p class="center">Adblocker</p>
+      <p class="center">
+        <button id="adblock-off" onclick="change('adblock', 0)" class="proxy-button">Off</button>
+        <button id="adblock-on" onclick="change('adblock', 1)" class="proxy-button">On</button>
       </p>
     </div>
 
@@ -235,6 +241,9 @@
     document.getElementById('iconcloak').value = localStorage.getItem('moonlight.icon');
   </script>
   <script>
+    if (localStorage.getItem('moonlight.eruda') == null) {
+      localStorage.setItem("moonlight.eruda", "0");
+    }
     if (localStorage.getItem('moonlight.eruda') == 1) {
       eruda.init();
     }

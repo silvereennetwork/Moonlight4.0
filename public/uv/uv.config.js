@@ -117,6 +117,7 @@ const blockedqueries = [
     "silvereen"
 ];
 
+var adblock = 1
 self.__uv$config = {
     /**
      * The prefix for UV (Ultraviolet) resources.
@@ -241,17 +242,24 @@ self.__uv$config = {
      */
     middleware: (request) => {
         const url = new URL(request.url);
-
         console.log(url.host);
-        if (blocked.includes(url.host)) {
-            return new Response(null, {});
+        if(url.search.includes("defrgthyju") == true){
+          adblock = 0
         }
-        if (
+        if(url.search.includes("lokijuhygt") == true){
+          adblock = 1
+        }
+        if(adblock == 1){
+          if (blocked.includes(url.host)) {
+            return new Response(null, {});
+          }
+          if (
             url.pathname.includes("ads.js") ||
             url.pathname.includes("pagead.js") ||
             url.pathname.includes("partner.ads.js ")
-        )
-            return new Response(null, {});
+          )
+          return new Response(null, {});
+        }
         return request;
     },
     /**
