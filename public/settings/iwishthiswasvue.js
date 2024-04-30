@@ -12,11 +12,22 @@ else{
   console.log("error")
 }
 
-function change(select){
-  console.log(select)
-  localStorage.setItem("proxy-select", select);
+if(localStorage.getItem("adblock") == null){
+  localStorage.setItem("adblock", 1);
+}
+
+if(localStorage.getItem("adblock") == 1){
+  document.getElementById("adblock-on").style.background = "lime";
+}
+else if(localStorage.getItem("adblock") == 0){
+  document.getElementById("adblock-off").style.background = "lime";
+}
+else{
+  console.log("error")
+}
+
+function change(idk, select){
+  localStorage.setItem(idk, select);
   //refresh to update color cause I can't be bothered to switch it again
   location.reload()
 }
-
-console.log(localStorage.getItem("proxy-select"))

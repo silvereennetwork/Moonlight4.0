@@ -26,9 +26,16 @@ form.addEventListener("submit", async (event) => {
   if(localStorage.getItem("proxy-select") == null){
     localStorage.setItem("proxy-select", "uv");
   }
-  
-  const url = search(address.value, searchEngine.value);
-
+  var url = search(address.value, searchEngine.value)
+  if(localStorage.getItem("adblock") == null){
+    localStorage.setItem("adblock", 1);
+  }
+  if(localStorage.getItem("adblock") == 0){
+    url = search(address.value, searchEngine.value) + "?defrgthyju"
+  }
+  if(localStorage.getItem("adblock") == 1){
+    url = search(address.value, searchEngine.value) + "?lokijuhygt"
+  }
   if(localStorage.getItem("proxy-select") == "uv"){
     localStorage.setItem("proxy-load", __uv$config.prefix + __uv$config.encodeUrl(url));
   }
@@ -38,6 +45,7 @@ form.addEventListener("submit", async (event) => {
   else{
     console.log("error")
   }
+
   // console.log(__uv$config.prefix + __uv$config.encodeUrl(url))
   location.href = "../load.html"
 });
