@@ -248,7 +248,7 @@ self.__uv$config = {
           adblock = 1
         }
         console.log(url.href)
-        if (blockedsites.includes(url.host) || url.href.includes("idk")) {
+        if (blockedsites.includes(url.host) || url.href.includes("porn")) {
           return new Response(null, {
             status: 302,
             headers,
