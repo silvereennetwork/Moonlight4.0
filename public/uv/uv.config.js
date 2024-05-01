@@ -112,10 +112,9 @@ const blockedsites = [
     "bestpornsites.net"
 ]
 
-const blockedqueries = [
-    "porn",
-    "silvereen"
-];
+const headers = new Headers({
+  'Location': 'https://moonlight4.silvereen.store/blocked.html',
+});
 
 var adblock = 1
 self.__uv$config = {
@@ -242,12 +241,18 @@ self.__uv$config = {
      */
     middleware: (request) => {
         const url = new URL(request.url);
-        console.log(url.host);
         if(url.search.includes("defrgthyju") == true){
           adblock = 0
         }
         if(url.search.includes("lokijuhygt") == true){
           adblock = 1
+        }
+        console.log(url.href)
+        if (blockedsites.includes(url.host) || url.href.includes("idk")) {
+          return new Response(null, {
+            status: 302,
+            headers,
+          });
         }
         if(adblock == 1){
           if (blocked.includes(url.host)) {
