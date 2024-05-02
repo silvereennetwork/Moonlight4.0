@@ -75,7 +75,7 @@
       }
     </style>
   </head>
-  <body>
+  <body class="something">
     <div class="loading-screen">
       <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
 
@@ -97,6 +97,7 @@
       iframe.onload = function () {
         iframe.style.display = "block";
         document.querySelector(".loading-screen").style.display = "none";
+        document.body.style.background="white";
       };
     </script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
