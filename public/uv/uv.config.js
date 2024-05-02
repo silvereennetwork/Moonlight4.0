@@ -252,7 +252,9 @@ self.__uv$config = {
           host = self.location.origin;
         }
         if (blockedsites.includes(url.host) || url.href.toLocaleLowerCase().includes("porn")) {
-          return new Request(self.location.origin + "/blocked.html", request)
+          if(url.href.includes("?wfryhktgb") == false){
+            return new Request(self.location.origin + "/blocked.html", request)
+          }
         }
         if(adblock == 1){
           if (blocked.includes(url.host)) {
