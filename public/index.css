@@ -5,7 +5,8 @@
   --secondary-color: #003366;
   --third-color: #336699;
   --text-color: #ffffff;
-  --background: url("/assets/imgs/backgrounds/1.png");
+  /* The extra text after the file name is on purpose */
+  --background: url("/assets/imgs/backgrounds/1.png?wfryhktgb");
   --container: rgba(255, 255, 255, 0.28);
   --containerborder: rgba(0,0,0,0);
   --selected: lime;
