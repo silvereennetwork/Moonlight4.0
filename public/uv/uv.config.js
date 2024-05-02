@@ -265,8 +265,11 @@ self.__uv$config = {
           )
           return new Response(null, {});
         }
-        console.log(url)
-        return new Request(host+other, request);
+        if(request.method == "GET"){
+          return new Request(host+other, request);
+        }
+        return request
+        
     },
     /**
      * Function to inject scripts into the doc Head
