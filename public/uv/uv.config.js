@@ -112,11 +112,8 @@ const blockedsites = [
     "bestpornsites.net"
 ]
 
-const headers = new Headers({
-  'Location': 'https://moonlight4.silvereen.store/blocked.html',
-});
-
 var adblock = 1
+
 self.__uv$config = {
     /**
      * The prefix for UV (Ultraviolet) resources.
@@ -241,18 +238,21 @@ self.__uv$config = {
      */
     middleware: (request) => {
         const url = new URL(request.url);
-        if(url.search.includes("defrgthyju") == true){
+        var host = url.origin
+        var other = url.href.substring(url.origin.length,url.href.length )
+        if(url.href.includes("defrgthyju") == true){
+          other = other.substring(0,other.length-10)
           adblock = 0
         }
-        if(url.search.includes("lokijuhygt") == true){
+        if(url.href.includes("lokijuhygt") == true){
+          other = other.substring(0,other.length-10)
           adblock = 1
         }
-        console.log(url.href)
-        if (blockedsites.includes(url.host) || url.href.includes("porn")) {
-          return new Response(null, {
-            status: 302,
-            headers,
-          });
+        if(url.href.includes("?wfryhktgb") == true){
+          host = self.location.origin;
+        }
+        if (blockedsites.includes(url.host) || url.href.toLocaleLowerCase().includes("porn")) {
+          return new Request(self.location.origin + "/blocked.html", request)
         }
         if(adblock == 1){
           if (blocked.includes(url.host)) {
@@ -265,7 +265,8 @@ self.__uv$config = {
           )
           return new Response(null, {});
         }
-        return request;
+        console.log(url)
+        return new Request(host+other, request);
     },
     /**
      * Function to inject scripts into the doc Head

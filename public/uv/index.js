@@ -21,20 +21,21 @@ const error = document.getElementById("proxy-error");
  */
 const errorCode = document.getElementById("proxy-error-code");
 
+var url = search(address.value, searchEngine.value)
+
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
   if(localStorage.getItem("proxy-select") == null){
     localStorage.setItem("proxy-select", "uv");
   }
-  var url = search(address.value, searchEngine.value)
   if(localStorage.getItem("adblock") == null){
     localStorage.setItem("adblock", 1);
   }
   if(localStorage.getItem("adblock") == 0){
-    url = search(address.value, searchEngine.value) + "?defrgthyju"
+    url = search(address.value, searchEngine.value) + "defrgthyju"
   }
   if(localStorage.getItem("adblock") == 1){
-    url = search(address.value, searchEngine.value) + "?lokijuhygt"
+    url = search(address.value, searchEngine.value) + "lokijuhygt"
   }
   if(localStorage.getItem("proxy-select") == "uv"){
     localStorage.setItem("proxy-load", __uv$config.prefix + __uv$config.encodeUrl(url));
