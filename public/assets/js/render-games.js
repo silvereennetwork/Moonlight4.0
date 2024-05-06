@@ -1,4 +1,4 @@
-fetch('assets/js/games.json')
+fetch(`/api/api/games`)
     .then(response => response.json())
     .then(games => {
         const cardsContainer = document.getElementById('cards');

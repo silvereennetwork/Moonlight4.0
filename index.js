@@ -5,25 +5,10 @@ const { createServer } = require("node:http");
 const { uvPath } = require("@titaniumnetwork-dev/ultraviolet");
 const { dynamicPath } = require("@nebula-services/dynamic");
 const { hostname } = require("node:os");
-const http = require("http");
-const { Server } = require('socket.io');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const bare = createBareServer("/bare/");
 const app = express();
-const httpserver = http.createServer(app); 
-const io = new Server(httpserver);
-
-io.on('connection', (socket) => {
-  socket.on('status', () => {
-  axios.get('https://bug-free-journey-gvqq59jwq7wfxr9-3000.app.github.dev/api')
-    .then(response => {
-      return(response.data)
-    })
-    .catch(error => {
-      return("Error")
-    });
-  });
-});
 
 app.use(express.static("./public"));
 app.use("/uv/", express.static(uvPath));
@@ -33,6 +18,16 @@ app.use(
 	proxy(`https://3kh0-assets.silvereen.net/3kh0-assets/`, {
 		proxyReqPathResolver: (req) => `/3kh0-assets/${req.url}`,
 	})
+);
+
+app.use('/forum', createProxyMiddleware({
+  target: 'https://forum-core.silvereen.net',
+  changeOrigin: true,
+}));
+
+app.use(
+	'/api',
+	proxy(`https://chat.corruptedgaming.online`)
 );
 
 // Error for everything else
