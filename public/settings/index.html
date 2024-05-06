@@ -131,7 +131,7 @@
     <div class="settings-container">
       <h2 class="center">Other info</h2>
       <p class="center">Version <b>0.4</b></p>
-      <p class="center">Servers: <strong><span id="status" style="font-weight: bold; color: lime;">Online</span></p>
+      <p class="center">Servers: <span id="site-status"></span></p>
       <p class="center">Silvereen Games LLC</p>
       <p class="center">
         <a href="https://github.com/silvereennetwork/Moonlight4.0" class="link">Github</a>
@@ -234,6 +234,20 @@
     function customTheme(code) {
       customThemeJSON(code);
     }
+
+    async function getStatus() {
+    try {
+        const response = await fetch("https://chat.corruptedgaming.online/api/status");
+        if (!response.ok) { // Check if response is ok (i.e., 200 OK)
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        document.getElementById("site-status").innerHTML = await response.text(); // Assuming the server responds with JSON
+    } catch (error) {
+        console.error('Failed to fetch: ' + error.message);
+    }
+  }
+  getStatus();
+
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/eruda/3.0.1/eruda.min.js"></script>
   <script>
@@ -241,9 +255,6 @@
     document.getElementById('iconcloak').value = localStorage.getItem('moonlight.icon');
   </script>
   <script>
-    if (localStorage.getItem('moonlight.eruda') == null) {
-      localStorage.setItem("moonlight.eruda", "0");
-    }
     if (localStorage.getItem('moonlight.eruda') == 1) {
       eruda.init();
     }

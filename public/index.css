@@ -28,6 +28,8 @@ body {
   padding: 0;
   font-family: "Poppins", sans-serif;
   background: var(--background);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 body::after {

@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Moonlight V4</title>
-    <link rel="icon" id="icon" href="">
+    <title>Moonlight 4.0</title>
+  <link rel="icon" id="icon" href="">
     <link rel="stylesheet" href="../assets/css/notification.css">
     <link rel="stylesheet" href="index.css" />
     <link rel="stylesheet" href="../index.css" />
@@ -49,7 +49,6 @@
       showNotifi(5, 5, '#d49400', 'Warning', 'As of now, their are no security restrictions in place. <br /> Please use the proxy responsibly', null, true)
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/eruda/3.0.1/eruda.min.js"></script>
-    <script>eruda.init();</script>
     <script>
       if (localStorage.getItem("proxy-select") == "uv") {
         document.getElementById('proxy-address').placeholder = 'Search the web freely (Ultraviolet)';
@@ -57,5 +56,25 @@
         document.getElementById('proxy-address').placeholder = 'Search the web freely (Dynamic)';
       }
     </script>
+    <script>
+      if (document.getElementById('titlecloak').value) {
+        document.getElementById('titlecloak').value = localStorage.getItem('title');
+      }
+      if (document.getElementById('iconcloak').value) {
+        document.getElementById('iconcloak').value = localStorage.getItem('icon');
+      }
+    </script>
+  <script>
+    if (localStorage.getItem('moonlight.eruda')==1) {
+      eruda.init();
+    }
+
+    document.addEventListener('keydown', function (event) {
+      if (event.ctrlKey && event.shiftKey && event.code === 'KeyI' && localStorage.getItem('moonlight.eruda')==1) {
+        event.preventDefault();  // Prevent the default action (opening dev tools)
+        eruda.show();    // Call your custom function
+      }
+    });
+  </script>
   </body>
 </html>

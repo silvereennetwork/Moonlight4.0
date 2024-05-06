@@ -251,7 +251,11 @@ self.__uv$config = {
         if(url.href.includes("?wfryhktgb") == true){
           host = self.location.origin;
         }
-        if (blockedsites.includes(url.host) || url.href.toLocaleLowerCase().includes("porn")) {
+        if (blockedsites.includes(url.host) 
+        || url.href.toLocaleLowerCase().includes("porn")
+        || url.href.toLocaleLowerCase().includes("18+")
+        || url.href.toLocaleLowerCase().includes("xvideos")
+        || url.href.toLocaleLowerCase().includes("xxx")) {
           if(url.href.includes("?wfryhktgb") == false){
             return new Request(self.location.origin + "/blocked.html", request)
           }

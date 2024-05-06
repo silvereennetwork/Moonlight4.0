@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Moonlight 4.0</title>
+  <link rel="icon" id="icon" href="">
   <script src="assets/js/themes.js"></script>
   <link rel="stylesheet" href="index.css" />
   <link rel="icon" id="icon" href="">
@@ -23,6 +24,7 @@
       <li><a href="/games.html">Games</a></li>
       <li><a href="./search">Search</a></li>
       <li><a href="./settings">Settings</a></li>
+      <li><a href="javascript: window.open('forum'+window.location.hostname')">Forum</a></li>
     </div>
   </div>
   <div class="container">
@@ -30,7 +32,7 @@
     <div class="btns">
       <a href="games.html">Games</a>
       <a href="./search">Search</a>
-      <a href="./settings/">Settings</a>
+      <a href="javascript: window.open('https://forum.'+window.location.hostname)">Forum</a>
     </div>
     <div class="time" id="time-clock">Time</div>
   </div>
@@ -43,14 +45,25 @@
   <script src="/assets/js/cloak.js"></script>
   <!-- serviceworker js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/eruda/3.0.1/eruda.min.js"></script>
-  <script>eruda.init();</script>
   <script>
     document.addEventListener('keydown', function (event) {
-      if (event.ctrlKey && event.shiftKey && event.code === 'KeyI') {
+      if (event.ctrlKey && event.shiftKey && event.code === 'KeyI' && localStorage.getItem('moonlight.eruda')==1) {
         event.preventDefault();  // Prevent the default action (opening dev tools)
         eruda.show();    // Call your custom function
       }
     });
+
+    if (localStorage.getItem('moonlight.eruda')==1) {
+      eruda.init();
+    }
+  </script>
+  <script>
+    if (document.getElementById('titlecloak').value) {
+      document.getElementById('titlecloak').value = localStorage.getItem('title');
+    }
+    if (document.getElementById('iconcloak').value) {
+      document.getElementById('iconcloak').value = localStorage.getItem('icon');
+    }
   </script>
   <script async src="https://chat.silvereen.store/tracker.js" data-ackee-server="https://chat.silvereen.store" data-ackee-domain-id="c25bf1d7-95f4-4d11-9459-054ad0582029"></script>
 </body>
