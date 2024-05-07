@@ -131,6 +131,7 @@ body::after {
   margin: 0;
   color: transparent;
   font-size: 68px;
+  user-select: none;
 }
 
 .btns {

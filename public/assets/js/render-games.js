@@ -27,7 +27,6 @@ fetch(`/api/api/games`)
             card.style = `background-image: url(${gameIcon});`;
             //card.style= "background-image: url(" + gameIcon + "); background-size: cover; background-position: center;";
             console.log("/assets/imgs/thumbnails/"+game.img);
-
             cardsContainer.appendChild(a);
         } else if (game.proxy && game.type == null) {
             const card = document.createElement('div');
@@ -79,4 +78,4 @@ fetch(`/api/api/games`)
             cardsContainerApps.appendChild(a);
         }
     });
-    });
+});
