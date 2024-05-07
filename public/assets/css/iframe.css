@@ -30,21 +30,27 @@ body {
 
 #iframe {
   width: 100%;
-  height: 100%;
+  min-height: 70vh;
   border: none;
   bottom: 0; 
   margin: auto;
+  margin-top: 10vh;
   border-radius: 10px;
 }
 
 .iframe-container {
+  display: flexbox;
+  justify-content: center;
+  align-items: center;
   width: 75%;
   height: 75%;
   margin: auto;
-  margin-top: 5%
+  margin-top: 10vh;
 }
 
 .buttons-bar {
+  display: flex;
+  justify-content: space-evenly;
   height: 50px;
   background-color: #003366;
   border-radius: 10px;
