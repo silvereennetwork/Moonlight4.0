@@ -7,7 +7,7 @@ fetch(`/api/api/games`)
             if (game.proxy == null && game.type == null) {
             const card = document.createElement('div');
             card.className = `card p`;
-            card.title = game.name;
+            card.title = `${game.name} - ${game.id}`;
             card.onclick = function() {
                 setGameInfo(`${game.root}/${game.file}`, game.name);
             };
@@ -31,6 +31,7 @@ fetch(`/api/api/games`)
         } else if (game.proxy && game.type == null) {
             const card = document.createElement('div');
             card.className = `card p`;
+            card.title = `${game.name} - ${game.id}`;
             card.onclick = function() {
                 setProxyInfo(`${game.proxy}`, game.proxy);
             };
@@ -55,6 +56,7 @@ fetch(`/api/api/games`)
         } else if (game.type == "app") {
             const card = document.createElement('div');
             card.className = `card p`;
+            card.title = `${game.name} - ${game.id}`;
             card.onclick = function() {
                 setProxyInfo(`${game.proxy}`, game.proxy);
             };

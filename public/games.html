@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7001820938357122"
-     crossorigin="anonymous"></script>
-     <meta name="google-adsense-account" content="ca-pub-7001820938357122">
+    crossorigin="anonymous"></script>
+  <meta name="google-adsense-account" content="ca-pub-7001820938357122">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,6 +19,7 @@
   <link rel="stylesheet" href="assets/css/notification.css">
   <link rel="icon" id="icon" href="">
 </head>
+
 <body style="overflow-x: hidden;">
   <div class="nav">
     <div class="nav-logo">
@@ -30,19 +32,35 @@
       <li><a href="./settings">Settings</a></li>
     </div>
   </div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7001820938357122"
+    crossorigin="anonymous"></script>
+  <!-- In games ad 1 -->
+  <center><ins class="adsbygoogle" style="display:block;width:728px;height:90px;text-align: center;"
+      data-ad-client="ca-pub-7001820938357122" data-ad-slot="3507599545"></ins></center>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
   <div style="width: 1px; height: 5vh;"></div>
-    <input type="text" onkeyup="searchGames()" id="searchbar" placeholder="Search for Games.."> 
-    <div class="home">
+  <input type="text" onkeyup="searchGames()" id="searchbar" placeholder="Search for Games..">
+  <div class="home">
     <section class="home">
-        <div class="cards" id="cards">
-        </div>
-        <br>
-        <!--<h1 class="center">Apps</h1>-->
-        <hr style="border: 3px solid; border-radius: 10px; width: 30%">
-        <br>
-        <div class="cards" id="cards-apps">
-        </div>
+      <div class="cards" id="cards">
+      </div>
+      <br>
+      <!--<h1 class="center">Apps</h1>-->
+      <hr style="border: 3px solid; border-radius: 10px; width: 30%">
+      <br>
+      <div class="cards" id="cards-apps">
+      </div>
     </section>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7001820938357122"
+      crossorigin="anonymous"></script>
+    <!-- In games ad 1 -->
+    <center><ins class="adsbygoogle" style="display:block;width:728px;height:90px;text-align: center;"
+        data-ad-client="ca-pub-7001820938357122" data-ad-slot="3507599545"></ins></center>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
     <div class="settings-background"></div>
     <script src="assets/js/openurl.js"></script>
     <script src="assets/js/render-games.js"></script>
@@ -56,28 +74,28 @@
     <script src="assets/js/notification.js"></script>
     <script>
       if (localStorage.getItem('gamesvisited') == null) {
-        showNotifi(5,5,'#d49400','Loading...','If this is your first time on the site, images may take a little while to load. <br /> Once you come back everything should be blazing fast!');
+        showNotifi(5, 5, '#d49400', 'Loading...', 'If this is your first time on the site, images may take a little while to load. <br /> Once you come back everything should be blazing fast!');
         localStorage.setItem('gamesvisited', true)
       }
     </script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/eruda/3.0.1/eruda.min.js"></script>
-      <script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/eruda/3.0.1/eruda.min.js"></script>
+    <script>
 
       function searchGames() {
         let input = document.getElementById('searchbar').value
-        input=input.toLowerCase();
+        input = input.toLowerCase();
         let x = document.getElementsByClassName('card');
-      
-        for (i = 0; i < x.length; i++) { 
-            if (!x[i].title.toLowerCase().includes(input)) {
-            x[i].style.display="none";
-            }
-            else {
-                x[i].style.display="inline-block";
-              }
+
+        for (i = 0; i < x.length; i++) {
+          if (!x[i].title.toLowerCase().includes(input)) {
+            x[i].style.display = "none";
+          }
+          else {
+            x[i].style.display = "inline-block";
+          }
+        }
+        document.document.getElementsByClassName('card').style.display = "block";
       }
-       document.document.getElementsByClassName('card').style.display = "block";
-    }
     </script>
     <script>
       if (document.getElementById('titlecloak').value) {
@@ -89,15 +107,16 @@
     </script>
     <script>
       document.addEventListener('keydown', function (event) {
-        if (event.ctrlKey && event.shiftKey && event.code === 'KeyI' && localStorage.getItem('moonlight.eruda')==1) {
+        if (event.ctrlKey && event.shiftKey && event.code === 'KeyI' && localStorage.getItem('moonlight.eruda') == 1) {
           event.preventDefault();  // Prevent the default action (opening dev tools)
           eruda.show();    // Call your custom function
         }
       });
-  
-      if (localStorage.getItem('moonlight.eruda')==1) {
+
+      if (localStorage.getItem('moonlight.eruda') == 1) {
         eruda.init();
       }
     </script>
 </body>
+
 </html>

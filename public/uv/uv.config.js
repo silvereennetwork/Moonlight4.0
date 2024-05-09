@@ -302,7 +302,7 @@ self.__uv$config = {
     inject: async (url) => {
         if (url.host === '3kh0-assets.silvereen.net') {
             return `
-              <img src="https://moonlight4.silvereen.store/assets/imgs/logos/logo.png" style="position: absolute; z-index: 9999999; width: 50px; height: 50px; opacity: 50%; margin-right: 5px;" alt="moonlight">
+              <img src="https://moonlight4.silvereen.store/assets/imgs/logos/logo.png" style="position: absolute; z-index: 9999999; width: 50px; height: 50px; opacity: 50%; margin-right: 5px; top: 0; left: 0;" alt="moonlight">
             `;
         }
 
