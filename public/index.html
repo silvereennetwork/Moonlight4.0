@@ -19,6 +19,7 @@
 <!-- register uv service worker on load for games -->
 
 <body onload="registerSW()">
+  <div class="announcement-bar" id="announcement-bar"></div>
   <div class="nav">
     <div class="nav-logo">
       <img src="logo.png">
@@ -69,8 +70,25 @@
       document.getElementById('iconcloak').value = localStorage.getItem('icon');
     }
   </script>
-  <script async src="https://chat.silvereen.store/tracker.js" data-ackee-server="https://chat.silvereen.store"
-    data-ackee-domain-id="c25bf1d7-95f4-4d11-9459-054ad0582029"></script>
+  <script>
+    const bar = document.getElementById('announcement-bar')
+
+    fetch('/api/api/announcement-header')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (data.display == true) {
+          bar.innerHTML = data.text;
+          bar.style.backgroundColor = data.bgcolor;
+          bar.style.color = data.textcolor;
+          bar.style.display = 'block';
+        }
+      });
+  </script>
 </body>
 
 </html>
