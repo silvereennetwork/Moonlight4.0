@@ -3,8 +3,8 @@
 
 <head>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7001820938357122"
-     crossorigin="anonymous"></script>
-     <meta name="google-adsense-account" content="ca-pub-7001820938357122">
+    crossorigin="anonymous"></script>
+  <meta name="google-adsense-account" content="ca-pub-7001820938357122">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Moonlight 4.0</title>
@@ -55,10 +55,10 @@
       <h2 class="center">Eruda (Inspect)</h2>
       <br>
       <p class="center">
-        <button onclick="localStorage.setItem('moonlight.eruda', 0); window.location.reload();"
-          class="proxy-button" id="eruda-off">Off</button>
-        <button onclick="localStorage.setItem('moonlight.eruda', 1); window.location.reload();"
-          class="proxy-button" id="eruda-on">On</button>
+        <button onclick="localStorage.setItem('moonlight.eruda', 0); window.location.reload();" class="proxy-button"
+          id="eruda-off">Off</button>
+        <button onclick="localStorage.setItem('moonlight.eruda', 1); window.location.reload();" class="proxy-button"
+          id="eruda-on">On</button>
       </p>
     </div>
 
@@ -109,6 +109,18 @@
   		    "--selected": "lime",
   		    "--buttonbg": "#1a1a1a"
         }`)'>Light Mode</button><br>
+
+        <button style="background-color: #434343; color: white;" onclick='customThemeJSON(`{
+          "--primary-color": "#ffffff",
+          "--secondary-color": "#a3a3a3",
+          "--third-color": "#696969",
+          "--text-color": "#ffffff",
+          "--background": "url(/assets/imgs/backgrounds/astroslate.png)",
+          "--container": "rgba(150, 150, 150, 0.28)",
+		      "--containerborder": "#4a4a4a",
+  		    "--selected": "#919191",
+  		    "--buttonbg": "#ffffff"
+        }`)'>Astroslate</button>
 
         <button style="background-color: black; color: yellow;" onclick='customThemeJSON(`{
           "--primary-color": "#deff00",
@@ -239,17 +251,17 @@
     }
 
     async function getStatus() {
-    try {
+      try {
         const response = await fetch("/api/api/status");
         if (!response.ok) { // Check if response is ok (i.e., 200 OK)
-            throw new Error(`HTTP error! status: ${response.status}`);
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
         document.getElementById("site-status").innerHTML = await response.text(); // Assuming the server responds with JSON
-    } catch (error) {
+      } catch (error) {
         console.error('Failed to fetch: ' + error.message);
+      }
     }
-  }
-  getStatus();
+    getStatus();
 
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/eruda/3.0.1/eruda.min.js"></script>
@@ -263,10 +275,10 @@
     }
 
     document.addEventListener('keydown', function (event) {
-        if (event.ctrlKey && event.shiftKey && event.code === 'KeyI' && localStorage.getItem('moonlight.eruda') == 1) {
-            event.preventDefault();
-            eruda.show();
-        }
+      if (event.ctrlKey && event.shiftKey && event.code === 'KeyI' && localStorage.getItem('moonlight.eruda') == 1) {
+        event.preventDefault();
+        eruda.show();
+      }
     });
 
     if (localStorage.getItem('moonlight.eruda') == 1) {
@@ -276,15 +288,16 @@
     };
 
     function error() {
-      navigator.clipboard.writeText(getDeviceInfo()); 
-      setProxyInfo(`https://forms.gle/a3TxAiMr3MovKcCH7`); 
+      navigator.clipboard.writeText(getDeviceInfo());
+      setProxyInfo(`https://forms.gle/a3TxAiMr3MovKcCH7`);
       window.open('../iframe.html')
     }
 
     function suggest() {
-      setProxyInfo(`https://docs.google.com/forms/d/e/1FAIpQLSficSd27EijVQtL_tDu02gZLBglNHUcIYHUPg9-doxzIE_T_Q/viewform`); 
+      setProxyInfo(`https://docs.google.com/forms/d/e/1FAIpQLSficSd27EijVQtL_tDu02gZLBglNHUcIYHUPg9-doxzIE_T_Q/viewform`);
       window.open('../iframe.html')
     }
   </script>
 </body>
+
 </html>
