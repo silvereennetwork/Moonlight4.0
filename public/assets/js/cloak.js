@@ -29,7 +29,6 @@ function setTitle(title) {
         document.title = title;
         localStorage.setItem('moonlight.title', title);
     }
-    
 }
 
 function setIcon(icon) {
@@ -40,7 +39,6 @@ function setIcon(icon) {
         document.getElementById('icon').href = icon;
         localStorage.setItem('moonlight.icon', icon);
     }
-    
 }
 
 document.addEventListener("keydown", (e) => {
@@ -55,22 +53,23 @@ if (isLeavePopupEnabled === null) {
     isLeavePopupEnabled = false;
 }
 
-window.addEventListener('beforeunload', function (e) {
+function handleBeforeUnload(e) {
     if (isLeavePopupEnabled) {
         e.preventDefault();
         e.returnValue = '';
     }
-});
+}
 
-document.getElementById('toggleLeavePopup').addEventListener('change', function () {
-    isLeavePopupEnabled = !isLeavePopupEnabled;
+window.addEventListener('beforeunload', handleBeforeUnload);
+
+function enableLeavePopup() {
+    isLeavePopupEnabled = true;
     localStorage.setItem('leavePopupEnabled', JSON.stringify(isLeavePopupEnabled));
+    alert('Leave Site Popup Enabled');
+}
 
-    if (isLeavePopupEnabled) {
-        alert('Leave Site Popup Enabled');
-    } else {
-        alert('Leave Site Popup Disabled');
-    }
-});
-
-document.getElementById('toggleLeavePopup').checked = isLeavePopupEnabled;
+function disableLeavePopup() {
+    isLeavePopupEnabled = false;
+    localStorage.setItem('leavePopupEnabled', JSON.stringify(isLeavePopupEnabled));
+    alert('Leave Site Popup Disabled');
+}
