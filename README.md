@@ -14,6 +14,6 @@ pm2 start
 Or without pm2:
 ```
 npm install
-node index.js
+npm start
 ```
 Then open your browser and go to `http://localhost:8000`
