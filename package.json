@@ -18,6 +18,7 @@
     "@titaniumnetwork-dev/ultraviolet": "^2.0.0",
     "@tomphttp/bare-server-node": "^2.0.0",
     "axios": "^1.6.8",
+    "crontab": "^1.4.2",
     "express": "^4.18.2",
     "express-http-proxy": "^2.0.0",
     "http-proxy-middleware": "^3.0.0",
