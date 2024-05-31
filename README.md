@@ -7,7 +7,11 @@
 <p align="center">The best open-source gaming website project that is taking the world by storm.</p>
 
 ## Getting started
-Run the following commands:
+If you have pm2 installed, then all you have to do is run:
+```
+pm2 start
+```
+Or without pm2:
 ```
 npm install
 node index.js
