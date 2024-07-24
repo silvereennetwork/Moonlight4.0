@@ -81,7 +81,7 @@
         return response.json();
       })
       .then(data => {
-        if (data.display == true) {
+        if (data.display == "true") {
           bar.innerHTML = data.text;
           bar.style.backgroundColor = data.bgcolor;
           bar.style.color = data.textcolor;

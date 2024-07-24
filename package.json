@@ -11,7 +11,7 @@
     "node": ">=18.0.0"
   },
   "scripts": {
-    "start": "node index.js && node update.js"
+    "start": "concurrently \"node index.js\" \"node update.js\""
   },
   "dependencies": {
     "@nebula-services/dynamic": "^0.7.2-patch.2",
@@ -23,5 +23,8 @@
     "express-http-proxy": "^2.0.0",
     "http-proxy-middleware": "^3.0.0",
     "socket.io": "^4.7.5"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   }
 }

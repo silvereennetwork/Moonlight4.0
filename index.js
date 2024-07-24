@@ -28,7 +28,7 @@ app.use('/forum', createProxyMiddleware({
 
 app.use(
 	'/api',
-	proxy(`https://chat.corruptedgaming.online`)
+	proxy(`https://api.silvereen.net`)
 );
 
 app.use((req, res, next) => {
