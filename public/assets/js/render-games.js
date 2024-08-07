@@ -18,7 +18,7 @@ function createCard(game, container) {
 
     const h2 = document.createElement('h2');
     h2.className = 'black';
-    h2.innerHTML = `<i>${game.name}</i>`;
+    h2.innerHTML = `${game.name}`;
 
     card.appendChild(h2);
 
@@ -43,7 +43,7 @@ function createProxyCard(game, container) {
 
     const h2 = document.createElement('h2');
     h2.className = 'black';
-    h2.innerHTML = `<i>${game.name}</i>`;
+    h2.innerHTML = `${game.name}`;
 
     card.appendChild(h2);
 

@@ -77,15 +77,27 @@
     </div>
 
     <div class="settings-container">
-      <h2 class="center">Ads</h2>
-      <p class="center">Coming soon...</p>
+      <h2 class="center">Extension Disabler</h2>
+      <p class="center">Coming <sub>(very)</sub> soon...</p>
     </div>
 
     <div class="settings-container">
       <h2 class="center">Customization</h2>
       <p class="center">Themes</p>
       <p class="center">
-        <button style="background-color: #064180" onclick='removeTheme();'>Default</button><br>
+        <button style="background-color: #2f2f2f" onclick='removeTheme();'>Default</button><br>
+        <button style="background-color: #008cff; color: black;" onclick='customThemeJSON(`{
+          "--primary-color": "#064180",
+          "--secondary-color": "#003366",
+          "--third-color": "#336699",
+          "--text-color": "#ffffff",
+          "--background": "url(/assets/imgs/backgrounds/1.png?wfryhktgb)",
+          "--container": "rgba(255, 255, 255, 0.28)",
+          "--containerborder": "rgba(0,0,0,0)",
+          "--selected": "lime",
+          "--buttonbg": "#1a1a1a"
+        }
+        `)'>Legacy</button>
         <button style="background-color: #1a1a1a" onclick='customThemeJSON(`{
           "--primary-color": "#303030",
           "--secondary-color": "#575757",
@@ -110,7 +122,7 @@
   		    "--buttonbg": "#1a1a1a"
         }`)'>Light Mode</button><br>
 
-        <button style="background-color: #434343; color: white;" onclick='customThemeJSON(`{
+        <!--<button style="background-color: #434343; color: white;" onclick='customThemeJSON(`{
           "--primary-color": "#ffffff",
           "--secondary-color": "#a3a3a3",
           "--third-color": "#696969",
@@ -120,7 +132,7 @@
 		      "--containerborder": "#4a4a4a",
   		    "--selected": "#919191",
   		    "--buttonbg": "#ffffff"
-        }`)'>Astroslate</button>
+        }`)'>Astroslate</button>-->
 
         <button style="background-color: black; color: yellow;" onclick='customThemeJSON(`{
           "--primary-color": "#deff00",
@@ -131,7 +143,6 @@
           "--container": "#000000",
           "--containerborder": "#f33bee"
         }`)'>High Contrast</button>
-        <br>
 
         <button style="background-color: rgb(2, 40, 101); color: white;" onclick='customThemeJSON(`{
           "--primary-color": "#3300ff",
@@ -155,16 +166,25 @@
       </p>
 
       <h2 class="center">Anti-Closing</h2>
-        <p class="center">
-          <button onclick="disableLeavePopup()" class="proxy-button" id="leave-popup-off">Disable</button>
-          <button onclick="enableLeavePopup()" class="proxy-button" id="leave-popup-on">Enable</button>          
-        </p>
+      <p class="center">
+        <button onclick="disableLeavePopup()" class="proxy-button" id="leave-popup-off">Disable</button>
+        <button onclick="enableLeavePopup()" class="proxy-button" id="leave-popup-on">Enable</button>
+      </p>
     </div>
 
     <div class="settings-container">
       <h2 class="center">Other info</h2>
-      <p class="center">Version <b>0.4</b></p>
+      <p class="center">Version <b>4.0</b></p>
       <p class="center">Servers: <span id="site-status"></span></p>
+      <details style="margin: auto; width: auto;">
+        <summary class="center">
+          Categorization Info
+        </summary>
+        <p class="center">Website Category: <span id="lscat"></span></p>
+        <p class="center">Categorization Time: <span id="lstime"></span></p>
+        <p class="center">Reviewed By: <span id="lsreason"></span></p>
+        <sub class="center">Info by Lightspeed</sub>
+      </details>
       <p class="center">Silvereen Games LLC</p>
       <p class="center">
         <a href="https://github.com/silvereennetwork/Moonlight4.0" class="link">Github</a>
@@ -249,6 +269,7 @@
   <script src="../assets/js/themes.js"></script>
   <script src="../assets/js/aboutblank.js"></script>
   <script src="../assets/js/notification.js"></script>
+  <script src="../assets/js/getlscategory.js"></script>
   <script src="../assets/js/openurl.js"></script>
   <script src="/dynamic/dynamic.config.js" defer></script>
   <script src="/uv/uv.bundle.js" defer></script>
@@ -257,6 +278,35 @@
   <script src="/uv/index.js" defer></script>
   <script src="../main.js"></script>
   <script>
+    function getMainDomain() {
+      try {
+        const url = new URL(location.href);
+        const hostname = url.hostname;
+        const parts = hostname.split('.');
+        if (parts.length >= 2) {
+          return parts.slice(-2).join('.');
+        } else {
+          return hostname;
+        }
+      } catch (error) {
+        console.error('Invalid URL:', error);
+        return null;
+      }
+    }
+
+
+    getLightspeedCategory(getMainDomain()).then(result =>
+      document.getElementById('lscat').innerHTML = result.categoryName
+    );
+
+    getLightspeedCategory(getMainDomain()).then(result =>
+      document.getElementById('lstime').innerHTML = result.transTime
+    );
+
+    getLightspeedCategory(getMainDomain()).then(result =>
+      document.getElementById('lsreason').innerHTML = result.reason
+    );
+
     if (document.getElementById('titlecloak').value) {
       document.getElementById('titlecloak').value = localStorage.getItem('title');
     }

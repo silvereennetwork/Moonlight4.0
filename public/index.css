@@ -1,17 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
 
 :root {
-  --primary-color: #064180;
-  --secondary-color: #003366;
-  --third-color: #336699;
+  --primary-color: #ffffff;
+  --secondary-color: #a3a3a3;
+  --third-color: #696969;
   --text-color: #ffffff;
-  /* The extra text after the file name is on purpose */
-  --background: url("/assets/imgs/backgrounds/1.png?wfryhktgb");
-  --container: rgba(255, 255, 255, 0.28);
-  --containerborder: rgba(0,0,0,0);
-  --selected: lime;
-  --buttonbg: #1a1a1a;
+  --background: url("/assets/imgs/backgrounds/astroslate.png");
+  --container: rgba(150, 150, 150, 0.28);
+  --containerborder: #4a4a4a;
+  --selected: #919191;
+  --buttonbg: #ffffff;
 }
+
 
 * {
   transition: 0.4s;
@@ -363,5 +363,9 @@ hr {
   height: 30px;
   text-align: center;
   border-radius: 10px;
+  display: none;
+}
+
+.learning {
   display: none;
 }
