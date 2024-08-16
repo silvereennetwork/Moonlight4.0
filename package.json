@@ -17,12 +17,11 @@
     "@nebula-services/dynamic": "^0.7.2-patch.2",
     "@titaniumnetwork-dev/ultraviolet": "^2.0.0",
     "@tomphttp/bare-server-node": "^2.0.0",
-    "axios": "^1.6.8",
+    "axios": "^1.7.4",
     "crontab": "^1.4.2",
     "express": "^4.18.2",
     "express-http-proxy": "^2.0.0",
-    "http-proxy-middleware": "^3.0.0",
-    "socket.io": "^4.7.5"
+    "http-proxy-middleware": "^3.0.0"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
