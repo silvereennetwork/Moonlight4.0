@@ -1656,7 +1656,8 @@ const categoryMapping = [
       const responseData = await response.json();   
 
       const categoryNumber = responseData.data.a.archive_info.filter.category;
-      const categoryName = categoryMapping[categoryNumber] || "Unknown Category";
+			const category = categoryMapping.find(cat => cat.CategoryNumber === categoryNumber);
+			const categoryName = category ? category.CategoryName : "Unknown Category";
       const reason = responseData.data.a.archive_info.filter.reason;
       const transTime = responseData.data.a.archive_info.filter.transTime;
 
