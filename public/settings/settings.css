@@ -1,0 +1,23 @@
+/* Most CSS has been moved to the index.css file because of themes */
+
+.center-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 1% 20px 20px 20px;
+}
+
+.settings-container input:hover {
+  border-radius: 5px;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+}
+
+button {
+  color: gray;
+  margin: 5px;
+}

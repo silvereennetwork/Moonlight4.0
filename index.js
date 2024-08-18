@@ -1,10 +1,12 @@
 const { createBareServer } = require("@tomphttp/bare-server-node");
 const express = require("express");
 const proxy = require('express-http-proxy');
+const { join } = require('node:path');
 const { createServer } = require("node:http");
 const { uvPath } = require("@titaniumnetwork-dev/ultraviolet");
 const { dynamicPath } = require("@nebula-services/dynamic");
 const { hostname } = require("node:os");
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const bare = createBareServer("/bare/");
 const app = express();
@@ -19,9 +21,18 @@ app.use(
 	})
 );
 
-// Error for everything else
-app.get("*", function (req, res) {
-  res.send("404");
+app.use('/forum', createProxyMiddleware({
+  target: 'https://forum-core.silvereen.net',
+  changeOrigin: true,
+}));
+
+app.use(
+	'/api',
+	proxy(`https://api.silvereen.net`)
+);
+
+app.use((req, res, next) => {
+  res.status(404).sendFile(join(__dirname, '/public/404.html'));
 });
 
 const server = createServer();

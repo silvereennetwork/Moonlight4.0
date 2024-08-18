@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+}
+body, html {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background: #121111;
+  overflow-x: hidden;
+  background-image: url(assets/img/backgrounds/loading.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-size: 50%;
+  height: 100vh;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+}
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+iframe:fullscreen,
+iframe:-webkit-full-screen,
+iframe:-moz-full-screen,
+iframe:-ms-fullscreen {
+  width: 100%;
+  height: 100%;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+#iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  position: absolute;
+  bottom: 0; 
+}
+
+

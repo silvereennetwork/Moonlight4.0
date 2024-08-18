@@ -1,50 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
-
-:root {
-  --primary-color: #064180;
-  --secondary-color: #003366;
-  --third-color: #336699;
-  --text-color:#fff;
-}
-
-html {
-  position: relative;
-  height: 100vh;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--third-color));
-  font-family: "Poppins", sans-serif;
-}
-
-html::after {
-  content: "";
-  background-image: url("../assets/imgs/backgrounds/1.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.45;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: -1;
-  bottom: 0;
-}
-
-#uv-address {
-  color: white;
-}
-
-#dynamic-address {
+#proxy-address {
   color: white;
 }
 
 .nav {
   padding: 10px 20px;
-  display: flex;
   justify-content: space-between;
   align-items: center;
 }
@@ -113,22 +72,4 @@ html::after {
   margin: 0;
   color: transparent;
   font-size: 68px;
-}
-
-
-input[type="text"] {
-  padding: 1rem 3rem;
-  width: 50vw;
-  background: transparent;
-  border: 3px solid #001f3f;
-  border-radius: 50px;
-  font-family: "Poppins", sans-serif;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-   text-align: center;
-}
-
-input[type="text"]:focus{
-  border: 3px solid #003366;
-  outline:none;
 }

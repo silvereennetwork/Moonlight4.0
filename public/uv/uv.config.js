@@ -102,34 +102,31 @@ const blocked = [
     "an.facebook.com",
     "static.ads-twitter.com",
     "ads-api.twitter.com",
-  ];
-  
-  const blockedsites = [
+];
+
+const blockedsites = [
     "pornhub.com",
     "xvideos.com",
     "xnxx.com",
     "pornmate.com",
     "bestpornsites.net"
-  ]
+]
 
-  const blockedqueries = [
-    "porn",
-    "silvereen"
-  ];
+var adblock = 1
 
-  self.__uv$config = {
+self.__uv$config = {
     /**
      * The prefix for UV (Ultraviolet) resources.
      * @type {string}
      */
     prefix: "/service/uv/",
-  
+
     /**
      * The bare path.
      * @type {string}
      */
     bare: "/bare/",
-  
+
     /**
      * Function to encode URLs using Ultraviolet's XOR codec.
      * @type {function}
@@ -137,7 +134,7 @@ const blocked = [
      * @returns {string} The encoded URL.
      */
     encodeUrl: Ultraviolet.codec.xor.encode,
-  
+
     /**
      * Function to decode URLs using Ultraviolet's XOR codec.
      * @type {function}
@@ -145,37 +142,37 @@ const blocked = [
      * @returns {string} The decoded URL.
      */
     decodeUrl: Ultraviolet.codec.xor.decode,
-  
+
     /**
      * The handler path.
      * @type {string}
      */
     handler: "/uv/uv.handler.js",
-  
+
     /**
      * The client path.
      * @type {string}
      */
     client: "/uv/uv.client.js",
-  
+
     /**
      * The bundle path.
      * @type {string}
      */
     bundle: "/uv/uv.bundle.js",
-  
+
     /**
      * The config path.
      * @type {string}
      */
     config: "/uv/uv.config.js",
-  
+
     /**
      * The service worker path.
      * @type {string}
      */
     sw: "/uv/uv.sw.js",
-  
+
     /**
      * Function to inject scripts into the doc Head
      * @type {function}
@@ -183,8 +180,8 @@ const blocked = [
      * @returns {string} The script to inject.
      */
     inject: (url) => {
-      console.log(url.host);
-      return `
+        console.log(url.host);
+        return `
       <script>
       function removeAds() {
         const adKeywords = [
@@ -232,7 +229,7 @@ const blocked = [
       </script>
       `;
     },
-  
+
     /**
      * Middleware function for handling requests.
      * @type {function}
@@ -240,34 +237,75 @@ const blocked = [
      * @returns {Request|Response} The modified request or a response.
      */
     middleware: (request) => {
-      const url = new URL(request.url);
-  
-      console.log(url.host);
-      if (blocked.includes(url.host)) {
-           return new Response(null, {});
-       }
-       if (
-         url.pathname.includes("ads.js") ||
-         url.pathname.includes("pagead.js") ||
-         url.pathname.includes("partner.ads.js ")
-       )
-         return new Response(null, {});
-      return request;
+        const url = new URL(request.url);
+        var host = url.origin
+        var other = url.href.substring(url.origin.length,url.href.length )
+        if(url.href.includes("defrgthyju") == true){
+          other = other.substring(0,other.length-10)
+          adblock = 0
+        }
+        if(url.href.includes("lokijuhygt") == true){
+          other = other.substring(0,other.length-10)
+          adblock = 1
+        }
+        if(url.href.includes("?wfryhktgb") == true){
+          host = self.location.origin;
+        }
+        if (blockedsites.includes(url.host) 
+        || url.href.toLocaleLowerCase().includes("porn")
+        || url.href.toLocaleLowerCase().includes("18+")
+        || url.href.toLocaleLowerCase().includes("xvideos")
+        || url.href.toLocaleLowerCase().includes("xxx")) {
+          if(url.href.includes("?wfryhktgb") == false){
+            return new Request(self.location.origin + "/blocked.html", request)
+          }
+        }
+        if(adblock == 1){
+          if (blocked.includes(url.host)) {
+            return new Response(null, {});
+          }
+          if (
+            url.pathname.includes("ads.js") ||
+            url.pathname.includes("pagead.js") ||
+            url.pathname.includes("partner.ads.js ")
+          )
+          return new Response(null, {});
+        }
+        if(request.method == "GET"){
+          return new Request(host+other, request);
+        }
+        return request
+        
     },
-     /**
+    /**
      * Function to inject scripts into the doc Head
      * @type {function}
      * @param {URL} url - The URL for the rewrite function.
      * @returns {string} - The script to inject.
      */
-     inject: async (url) => {
-      if (url.host === 'discord.com') {
-          return `
+    inject: async (url) => {
+        if (url.host === 'discord.com') {
+            return `
               <script src="https://raw.githubusercontent.com/Vencord/builds/main/browser.js"></script>
               <link rel="stylesheet" href="https://raw.githubusercontent.com/Vencord/builds/main/browser.css">
             `;
-      }
+        }
 
-      return ``;
-  },
-  };
+        return ``;
+    },
+    /**
+     * Function to inject scripts into the doc Head
+     * @type {function}
+     * @param {URL} url - The URL for the rewrite function.
+     * @returns {string} - The script to inject.
+     */
+    inject: async (url) => {
+        if (url.host === '3kh0-assets.silvereen.net') {
+            return `
+              <img src="https://moonlight4.silvereen.store/assets/imgs/logos/logo.png" style="position: absolute; z-index: 9999999; width: 50px; height: 50px; opacity: 50%; margin-right: 5px; top: 0; left: 0;" alt="moonlight">
+            `;
+        }
+
+        return ``;
+    },
+};

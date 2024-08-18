@@ -57,6 +57,18 @@
         gui()
     });
     </script>
+    <script>
+        document.addEventListener('keydown', function (event) {
+          if (event.ctrlKey && event.shiftKey && event.code === 'KeyI' && localStorage.getItem('moonlight.eruda')==1) {
+            event.preventDefault();  // Prevent the default action (opening dev tools)
+            eruda.show();    // Call your custom function
+          }
+        });
+    
+        if (localStorage.getItem('moonlight.eruda')==1) {
+          eruda.init();
+        }
+      </script>
 </body>
 
 </html>

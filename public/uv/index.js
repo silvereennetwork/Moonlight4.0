@@ -3,46 +3,51 @@
 /**
  * @type {HTMLFormElement}
  */
-const uvform = document.getElementById("uv-form");
+const form = document.getElementById("proxy-form");
 /**
  * @type {HTMLInputElement}
  */
-const uvaddress = document.getElementById("uv-address");
-/**
- * @type {HTMLFormElement}
- */
-const dynamicform = document.getElementById("dynamic-form");
+const address = document.getElementById("proxy-address");
 /**
  * @type {HTMLInputElement}
  */
-const dynamicaddress = document.getElementById("dynamic-address");
-/**
- * @type {HTMLInputElement}
- */
-const searchEngine = document.getElementById("uv-search-engine");
+const searchEngine = document.getElementById("proxy-search-engine");
 /**
  * @type {HTMLParagraphElement}
  */
-const error = document.getElementById("uv-error");
+const error = document.getElementById("proxy-error");
 /**
  * @type {HTMLPreElement}
  */
-const errorCode = document.getElementById("uv-error-code");
+const errorCode = document.getElementById("proxy-error-code");
 
-uvform.addEventListener("submit", async (event) => {
+var url = search(address.value, searchEngine.value)
+
+form.addEventListener("submit", async (event) => {
   event.preventDefault();
+  if(localStorage.getItem("proxy-select") == null){
+    localStorage.setItem("proxy-select", "uv");
+  }
+  if(localStorage.getItem("adblock") == null){
+    localStorage.setItem("adblock", 1);
+  }
+  if(localStorage.getItem("adblock") == 0){
+    url = search(address.value, searchEngine.value) + "defrgthyju"
+  }
+  if(localStorage.getItem("adblock") == 1){
+    url = search(address.value, searchEngine.value) + "lokijuhygt"
+  }
+  if(localStorage.getItem("proxy-select") == "uv"){
+    localStorage.setItem("proxy-load", __uv$config.prefix + __uv$config.encodeUrl(url));
+  }
+  else if(localStorage.getItem("proxy-select") == "dynamic"){
+    localStorage.setItem("proxy-load", __dynamic$config.prefix + __uv$config.encodeUrl(url));
+  }
+  else{
+    console.log("error")
+  }
 
-  const url = search(uvaddress.value, searchEngine.value);
-  localStorage.setItem("proxy-load", __uv$config.prefix + __uv$config.encodeUrl(url));
-  console.log(__uv$config.prefix + __uv$config.encodeUrl(url))
+  // console.log(__uv$config.prefix + __uv$config.encodeUrl(url))
   location.href = "../load.html"
 });
 
-dynamicform.addEventListener("submit", async (event) => {
-  event.preventDefault();
-
-  const url = search(dynamicaddress.value, searchEngine.value);
-  localStorage.setItem("proxy-load", __dynamic$config.prefix + __uv$config.encodeUrl(url));
-  console.log(__dynamic$config.prefix + __uv$config.encodeUrl(url))
-  location.href = "../load.html"
-});

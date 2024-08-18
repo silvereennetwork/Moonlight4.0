@@ -25,6 +25,7 @@ function setGameInfo(gameName, appName) {
     localStorage.setItem('storedURL', mainURL);
     localStorage.setItem('app-name', appName);
     localStorage.setItem('app-image', appImage);
+    return mainURL;
 }
 
 function setProxyInfo(gameName) {
@@ -53,4 +54,8 @@ function getCdnInfo(gameName) {
 
     //localStorage.setItem('shownameandimg', showNameAndImg ? 'true' : 'false');
     return mainURL;
+}
+
+function developUrl(url) {
+    return search(url);
 }

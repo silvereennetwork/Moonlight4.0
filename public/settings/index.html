@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7001820938357122"
+    crossorigin="anonymous"></script>
+  <meta name="google-adsense-account" content="ca-pub-7001820938357122">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moonlight 4.0</title>
+  <link rel="icon" id="icon" href="">
+  <link rel="stylesheet" href="../index.css" />
+  <link rel="stylesheet" href="settings.css"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+
+<body>
+  <div class="nav">
+    <div class="nav-logo">
+      <img src="logo.png">
+    </div>
+    <div class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/games.html">Games</a></li>
+      <li><a href="/search">Search</a></li>
+      <li><a href="/settings">Settings</a></li>
+    </div>
+  </div>
+  <h1 class="center" style="color: white;">Settings</h1>
+  <div style="width: 1px; height: 7vh"></div>
+  <div class="center-container">
+    <div class="settings-container">
+
+      <h2 class="center">Tab cloak</h2>
+
+      <p class="center">Title</p>
+      <p class="center"><input type="text" onchange="setTitle(this.value)" id="titlecloak" placeholder="Moonlight"></p>
+      <p class="center">Icon</p>
+      <p class="center"><input type="text" onchange="setIcon(this.value)" id="iconcloak" placeholder="icon.png"></p>
+    </div>
+
+    <div class="settings-container">
+      <h2 class="center">Panic key</h2>
+      <p class="center">Panic Key</p>
+      <p class="center"><input type="text" placeholder="~"
+          onchange="changeKey(this.value); showNotifi('3','3','#00FF00','Saved!','You\'re changes have been saved!')">
+      </p>
+      <p class="center">Panic website</p>
+      <p class="center"><input type="text" placeholder="classroom.google.com"
+          onchange="changeSite(this.value); showNotifi('3','3','#00FF00','Saved!','You\'re changes have been saved!')">
+      </p>
+    </div>
+
+    <div class="settings-container">
+      <h2 class="center">Eruda (Inspect)</h2>
+      <br>
+      <p class="center">
+        <button onclick="localStorage.setItem('moonlight.eruda', 0); window.location.reload();" class="proxy-button"
+          id="eruda-off">Off</button>
+        <button onclick="localStorage.setItem('moonlight.eruda', 1); window.location.reload();" class="proxy-button"
+          id="eruda-on">On</button>
+      </p>
+    </div>
+
+    <div class="settings-container">
+      <h2 class="center">Proxy settings</h2>
+      <p class="center">Select a proxy</p>
+      <p class="center">
+        <button id="uv" onclick="change('proxy-select', 'uv')" class="proxy-button">Ultraviolet</button>
+        <button id="dynamic" onclick="change('proxy-select', 'dynamic')" class="proxy-button">Dynamic</button>
+      </p>
+      <p class="center">Adblocker</p>
+      <p class="center">
+        <button id="adblock-off" onclick="change('adblock', 0)" class="proxy-button">Off</button>
+        <button id="adblock-on" onclick="change('adblock', 1)" class="proxy-button">On</button>
+      </p>
+    </div>
+
+    <div class="settings-container">
+      <h2 class="center">Extension Disabler</h2>
+      <p class="center">Coming <sub>(very)</sub> soon...</p>
+    </div>
+
+    <div class="settings-container">
+      <h2 class="center">Customization</h2>
+      <p class="center">Themes</p>
+      <p class="center">
+        <button style="background-color: #2f2f2f" onclick='removeTheme();'>Default</button><br>
+        <button style="background-color: #008cff; color: black;" onclick='customThemeJSON(`{
+          "--primary-color": "#064180",
+          "--secondary-color": "#003366",
+          "--third-color": "#336699",
+          "--text-color": "#ffffff",
+          "--background": "url(/assets/imgs/backgrounds/1.png?wfryhktgb)",
+          "--container": "rgba(255, 255, 255, 0.28)",
+          "--containerborder": "rgba(0,0,0,0)",
+          "--selected": "lime",
+          "--buttonbg": "#1a1a1a"
+        }
+        `)'>Legacy</button>
+        <button style="background-color: #1a1a1a" onclick='customThemeJSON(`{
+          "--primary-color": "#303030",
+          "--secondary-color": "#575757",
+          "--third-color": "#1a1a1a",
+          "--text-color": "#fff",
+          "--background": "#1a1a1a",
+          "--container": "rgba(255, 255, 255, 0.28)",
+		      "--containerborder": "rgba(0,0,0,0)",
+  		    "--selected": "lime",
+  		    "--buttonbg": "#1a1a1a"
+          }`)'>Dark Mode</button>
+
+        <button style="background-color: #cdcdcd; color: black;" onclick='customThemeJSON(`{
+          "--primary-color": "#cdcdcd",
+          "--secondary-color": "#cccccc",
+          "--third-color": "#e3e3e3",
+          "--text-color": "#000000",
+          "--background": "#b3b3b3",
+          "--container": "rgba(255, 255, 255, 0.28)",
+		      "--containerborder": "rgba(0,0,0,0)",
+  		    "--selected": "lime",
+  		    "--buttonbg": "#1a1a1a"
+        }`)'>Light Mode</button><br>
+
+        <!--<button style="background-color: #434343; color: white;" onclick='customThemeJSON(`{
+          "--primary-color": "#ffffff",
+          "--secondary-color": "#a3a3a3",
+          "--third-color": "#696969",
+          "--text-color": "#ffffff",
+          "--background": "url(/assets/imgs/backgrounds/astroslate.png)",
+          "--container": "rgba(150, 150, 150, 0.28)",
+		      "--containerborder": "#4a4a4a",
+  		    "--selected": "#919191",
+  		    "--buttonbg": "#ffffff"
+        }`)'>Astroslate</button>-->
+
+        <button style="background-color: black; color: yellow;" onclick='customThemeJSON(`{
+          "--primary-color": "#deff00",
+          "--secondary-color": "#f33bee",
+          "--third-color": "#f33bee",
+          "--text-color": "#bbbbbb",
+          "--background": "#000000",
+          "--container": "#000000",
+          "--containerborder": "#f33bee"
+        }`)'>High Contrast</button>
+
+        <button style="background-color: rgb(2, 40, 101); color: white;" onclick='customThemeJSON(`{
+          "--primary-color": "#3300ff",
+          "--secondary-color": "#a22020",
+          "--third-color": "#c1540b",
+          "--text-color": "#4c00ff",
+          "--background": "url(/assets/imgs/backgrounds/Astrophile.png)",
+          "--container": "#000000",
+          "--containerborder": "#4c00ff",
+          "--selected": "#3300ff",
+          "--buttonbg": "#a22020"
+        }`)'>Astrophile</button><br><br>
+        <input placeholder="Custom theme code" onchange="customTheme(this.value)">
+      </p>
+    </div>
+
+    <div class="settings-container">
+      <h2 class="center">About:Blank</h2>
+      <p class="center">
+        <button style="background-color: #1a1a1a;" onclick='openAboutBlank()'>Open in about:blank</button>
+      </p>
+
+      <h2 class="center">Anti-Closing</h2>
+      <p class="center">
+        <button onclick="disableLeavePopup()" class="proxy-button" id="leave-popup-off">Disable</button>
+        <button onclick="enableLeavePopup()" class="proxy-button" id="leave-popup-on">Enable</button>
+      </p>
+    </div>
+
+    <div class="settings-container">
+      <h2 class="center">Other info</h2>
+      <p class="center">Version <b>4.0</b></p>
+      <p class="center">Servers: <span id="site-status"></span></p>
+      <details style="margin: auto; width: auto;">
+        <summary class="center">
+          Categorization Info
+        </summary>
+        <p class="center">Website Category: <span id="lscat"></span></p>
+        <p class="center">Categorization Time: <span id="lstime"></span></p>
+        <p class="center">Reviewed By: <span id="lsreason"></span></p>
+        <sub class="center">Info by Lightspeed</sub>
+      </details>
+      <p class="center">Silvereen Games LLC</p>
+      <p class="center">
+        <a href="https://github.com/silvereennetwork/Moonlight4.0" class="link">Github</a>
+        <a href="https://discord.gg/5PQxEygf5b" class="link">Discord</a>
+        <a href="../tos.html" class="link">TOS</a>
+        <br>
+        <a href="javascript: error()" class="link">Report an error</a>
+        <a href="javascript: suggest()" class="link">Suggest a game</a>
+      </p>
+    </div>
+
+    <div class="settings-container">
+      <h2 class="center">Credits</h2>
+      <div style="height: 175px; overflow-y: scroll;" class="center">
+        <div>
+          <h3 class="sticky">Project Lead</h3>
+          <p>Silvereen</p>
+        </div>
+        <div>
+          <h3 class="sticky">Frontend Developers</h3>
+          <p>Silvereen</p>
+          <p>dogecraft</p>
+          <p>3kh0</p>
+          <p>skysthelimit.dev</p>
+          <p>.xnc_</p>
+          <p>smartfoloo</p>
+          <p>ghostlyy</p>
+        </div>
+        <div>
+          <h3 class="sticky">Backend Developers</h3>
+          <p>Silvereen</p>
+          <p>not_amplify_</p>
+          <p>dogecraft</p>
+          <p>.xnc_</p>
+          <p>alive_hamster</p>
+          <p>ghostlyy</p>
+          <p>skysthelimit.dev</p>
+          <p>3kh0</p>
+        </div>
+        <div>
+          <h3 class="sticky">Graphic Design</h3>
+          <p>Silvereen</p>
+          <p>.xlucid_</p>
+          <p>willo (From School)</p>
+        </div>
+        <div>
+          <h3 class="sticky">Bot Developers</h3>
+          <p>.xnc_</p>
+        </div>
+        <div>
+          <h3 class="sticky">4.0 BETA Testers</h3>
+          <p>artem6354</p>
+          <p>storm4008</p>
+          <p>haidar9684</p>
+          <p>godxdh99</p>
+          <p>evan1984</p>
+          <p>sammyzman</p>
+          <p>wilde69420</p>
+          <p>xh1le</p>
+          <p>theplack</p>
+          <p>oksaturn</p>
+          <p>Everyone who worked on the Moonlight project</p>
+        </div>
+        <div>
+          <h3 class="sticky">Code Stuff</h3>
+          <p><a href="https://github.com/titaniumnetwork-dev/Ultraviolet">Ultraviolet</a></p>
+          <p>Dynamic</p>
+          <p><a href="https://pixabay.com/illustrations/mountains-lake-moonlight-background-6839521/">Background</a></p>
+          <p><a href="https://3kh0-assets.silvereen.net">3kh0 Assets</a></p>
+          <p><a href="https://github.com/HeyPuter/puter">Puter</a></p>
+          <p><a href="https://github.com/blueedgetechno/win11React">Windows 11 React</a></p>
+          <p><a href="https://fontawesome.com/">Font Awesome</a></p>
+          <p><a href="https://fonts.google.com/specimen/Quicksand">Google Font Quicksand</a></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="settings-background"></div>
+  <script src="/assets/js/cloak.js"></script>
+  <script src="iwishthiswasvue.js"></script>
+  <script src="../assets/js/themes.js"></script>
+  <script src="../assets/js/aboutblank.js"></script>
+  <script src="../assets/js/notification.js"></script>
+  <script src="../assets/js/getlscategory.js"></script>
+  <script src="../assets/js/openurl.js"></script>
+  <script src="/dynamic/dynamic.config.js" defer></script>
+  <script src="/uv/uv.bundle.js" defer></script>
+  <script src="/uv/uv.config.js" defer></script>
+  <script src="/uv/search.js" defer></script>
+  <script src="/uv/index.js" defer></script>
+  <script src="../main.js"></script>
+  <script>
+    function getMainDomain() {
+      try {
+        const url = new URL(location.href);
+        const hostname = url.hostname;
+        const parts = hostname.split('.');
+        if (parts.length >= 2) {
+          return parts.slice(-2).join('.');
+        } else {
+          return hostname;
+        }
+      } catch (error) {
+        console.error('Invalid URL:', error);
+        return null;
+      }
+    }
+
+
+    getLightspeedCategory(getMainDomain()).then(result =>
+      document.getElementById('lscat').innerHTML = result.categoryName
+    );
+
+    getLightspeedCategory(getMainDomain()).then(result =>
+      document.getElementById('lstime').innerHTML = result.transTime
+    );
+
+    getLightspeedCategory(getMainDomain()).then(result =>
+      document.getElementById('lsreason').innerHTML = result.reason
+    );
+
+    if (document.getElementById('titlecloak').value) {
+      document.getElementById('titlecloak').value = localStorage.getItem('title');
+    }
+    if (document.getElementById('iconcloak').value) {
+      document.getElementById('iconcloak').value = localStorage.getItem('icon');
+    }
+
+
+    function customTheme(code) {
+      customThemeJSON(code);
+    }
+
+    async function getStatus() {
+      try {
+        const response = await fetch("/api/api/status");
+        if (!response.ok) { // Check if response is ok (i.e., 200 OK)
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        document.getElementById("site-status").innerHTML = await response.text(); // Assuming the server responds with JSON
+      } catch (error) {
+        console.error('Failed to fetch: ' + error.message);
+      }
+    }
+    getStatus();
+
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/eruda/3.0.1/eruda.min.js"></script>
+  <script>
+    document.getElementById('titlecloak').value = localStorage.getItem('moonlight.title');
+    document.getElementById('iconcloak').value = localStorage.getItem('moonlight.icon');
+  </script>
+  <script>
+    if (localStorage.getItem('moonlight.eruda') == 1) {
+      eruda.init();
+    }
+
+    document.addEventListener('keydown', function (event) {
+      if (event.ctrlKey && event.shiftKey && event.code === 'KeyI' && localStorage.getItem('moonlight.eruda') == 1) {
+        event.preventDefault();
+        eruda.show();
+      }
+    });
+
+    if (localStorage.getItem('moonlight.eruda') == 1) {
+      document.getElementById('eruda-on').style.backgroundColor = 'lime';
+    } else if (localStorage.getItem('moonlight.eruda') == 0) {
+      document.getElementById('eruda-off').style.backgroundColor = 'lime';
+    };
+
+    function error() {
+      navigator.clipboard.writeText(getDeviceInfo());
+      setProxyInfo(`https://forms.gle/a3TxAiMr3MovKcCH7`);
+      window.open('../iframe.html')
+    }
+
+    function suggest() {
+      setProxyInfo(`https://docs.google.com/forms/d/e/1FAIpQLSficSd27EijVQtL_tDu02gZLBglNHUcIYHUPg9-doxzIE_T_Q/viewform`);
+      window.open('../iframe.html')
+    }
+  </script>
+</body>
+
+</html>

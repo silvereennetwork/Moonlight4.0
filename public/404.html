@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="/settings/settings.css">
+  </head>
+  <body>
+    <p style="font-size: 100px;" class="center">Uh Oh!</p>
+    <h2 class="center">Looks like you encountered a 404 error!</h2>
+    <p class="center">(This means the page could not be found or the service worker was not registered)<br>
+    If you were trying to play a game or use the proxy then please hold on one moment!</p>
+    <br>
+    <p class="center"><button onclick="window.location.replace('/')">Home</button></p>
+    <p class="center"><button onclick="registerSW(); window.location.reload();">Register Serviceworker</button></p>
+    <div class="settings-background"></div>
+    <script src="/dynamic/dynamic.config.js" defer></script>
+    <script src="/uv/uv.bundle.js"></script>
+    <script src="/uv/uv.config.js"></script>
+    <script src="/register-sw.js"></script>
+    <script src="/assets/js/cloak.js"></script>
+    <script>
+      setTimeout(registerSW, 3000);
+      setInterval(reload, 4000);
+
+      function reload() {
+        window.location.reload();
+      }
+    </script>
+  </body>
+</html>
