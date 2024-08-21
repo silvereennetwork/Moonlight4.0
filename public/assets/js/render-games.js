@@ -27,9 +27,9 @@ function createCard(game, container) {
     a.appendChild(card);
 
     var gameIcon = getCdnInfo(game.root + "/" + game.img);
-    console.log(gameIcon);
+    // console.log(gameIcon);
     card.style = `background-image: url(${gameIcon});`;
-    console.log("/assets/imgs/thumbnails/" + game.img);
+    // console.log("/assets/imgs/thumbnails/" + game.img);
     container.appendChild(a);
 }
 
@@ -52,13 +52,14 @@ function createProxyCard(game, container) {
     a.appendChild(card);
 
     var gameIcon = getCdnInfo('imgs/' + game.img);
-    console.log(gameIcon);
+    // console.log(gameIcon);
     card.style = `background-image: url(${gameIcon});`;
-    console.log("/assets/imgs/thumbnails/" + game.img);
+    // console.log("/assets/imgs/thumbnails/" + game.img);
     container.appendChild(a);
 }
 
 function handleGames(games) {
+    // console.log(games)
     const cardsContainer = document.getElementById('cards');
     const cardsContainerApps = document.getElementById('cards-apps');
     games.forEach(game => {

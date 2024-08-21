@@ -16,9 +16,9 @@ function setGameInfo(gameName, appName) {
 
     var unencodedURL = search(constructURL(gameName), 'https://www.google.com/search?q=%s');
 
-    var gameURL = __uv$config.prefix + __uv$config.encodeUrl(constructURL(gameName));
-    var mainURL = "https://" + location.host + gameURL;
-    console.log(mainURL);
+    var gameURL = "/cdn/" + gameName
+    var mainURL = location.protocol + "//" + location.host + gameURL;
+    // console.log(mainURL);
     var appImage = `/assets/imgs/thumbnails/${gameName}.png`; // Construct the image path
 
     //localStorage.setItem('shownameandimg', showNameAndImg ? 'true' : 'false');
@@ -32,8 +32,8 @@ function setProxyInfo(gameName) {
     var unencodedURL = search(gameName, 'https://www.google.com/search?q=%s');
 
     var gameURL = __uv$config.prefix + __uv$config.encodeUrl(gameName);
-    var mainURL = "https://" + location.host + gameURL;
-    console.log(mainURL);
+    var mainURL = location.protocol + "//" + location.host + gameURL;
+    // console.log(mainURL);
     localStorage.setItem('storedURL', mainURL);
 }
 
@@ -48,9 +48,9 @@ function getCdnInfo(gameName) {
 
     //use express-http-proxy package in index.js
     var gameURL = "/cdn/" + gameName
-    console.log(gameURL)
-    var mainURL = "https://" + location.host + gameURL;
-    console.log(mainURL);
+    // console.log(gameURL)
+    var mainURL = location.protocol + "//" + location.host + gameURL;
+    // console.log(mainURL);
 
     //localStorage.setItem('shownameandimg', showNameAndImg ? 'true' : 'false');
     return mainURL;
