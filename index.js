@@ -13,6 +13,7 @@ const app = express();
 
 app.use(express.static("./public"));
 app.use("/uv/", express.static(uvPath));
+app.use("/chat", express.static('./public/chat.html'));
 app.use("/dynamic/", express.static(dynamicPath));
 app.use(
 	'/cdn',
@@ -55,7 +56,7 @@ server.on("upgrade", (req, socket, head) => {
 
 let port = parseInt(process.env.PORT || "");
 
-if (isNaN(port)) port = 8080;
+if (isNaN(port)) port = 2002;
 
 server.on("listening", () => {
   const address = server.address();
