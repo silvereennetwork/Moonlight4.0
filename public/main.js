@@ -223,6 +223,24 @@ function getDeviceInfo() {
 
 }
 
+const bar = document.getElementById('announcement-bar')
+
+    fetch('/api/api/announcement-header')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (data.display == "true") {
+          bar.innerHTML = data.text;
+          bar.style.backgroundColor = data.bgcolor;
+          bar.style.color = data.textcolor;
+          bar.style.display = 'block';
+        }
+      });
+
 var asciiv5 = `
 Moonlight 4.0                              
 `;
