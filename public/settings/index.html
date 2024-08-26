@@ -39,6 +39,22 @@
       <p class="center"><input type="text" onchange="setTitle(this.value)" id="titlecloak" placeholder="Moonlight"></p>
       <p class="center">Icon</p>
       <p class="center"><input type="text" onchange="setIcon(this.value)" id="iconcloak" placeholder="icon.png"></p>
+      <p class="center">Presets</p>
+      <div style="display: block;">
+        <button onclick="setTitle('');setIcon('')">Default</button>
+        <button onclick="setTitle('Home');setIcon('/assets/imgs/favicons/google-classroom.ico')">Classroom</button>
+        <button onclick="setTitle('Google Docs');setIcon('/assets/imgs/favicons/google-docs.png')">Docs</button>
+        <details style="text-align: center;">
+          <summary>More</summary>
+          <button onclick="setTitle('Inbox (27)');setIcon('/assets/imgs/favicons/gmail.ico')">Gmail</button>
+          <button onclick="setTitle(`Calender ${month}/${day}/${year}`);setIcon('/assets/imgs/favicons/google-calender.ico')">Calender</button>
+          <button onclick="setTitle('Canvas');setIcon('/assets/imgs/favicons/canvas.ico')">Canvas</button>
+          <br>
+          <button onclick="setTitle('My Drive - Google Drive');setIcon('/assets/imgs/favicons/google-drive.ico')">Google Drive</button>
+          <button onclick="setTitle('Khan Academy');setIcon('/assets/imgs/favicons/khan-academy.ico')">Khan Academy</button>
+          <button onclick="setTitle('New Tab');setIcon('/assets/imgs/favicons/newtab.png')">New Tab</button>
+        </details>
+      </div>
     </div>
 
     <div class="settings-container">
@@ -370,6 +386,11 @@
       setProxyInfo(`https://docs.google.com/forms/d/e/1FAIpQLSficSd27EijVQtL_tDu02gZLBglNHUcIYHUPg9-doxzIE_T_Q/viewform`);
       window.open('../iframe.html')
     }
+
+    let obj = new Date();
+    let day = obj.getUTCDate();
+    let month = obj.getUTCMonth() + 1;
+    let year = obj.getUTCFullYear();
   </script>
 </body>
 

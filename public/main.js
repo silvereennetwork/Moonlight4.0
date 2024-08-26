@@ -241,6 +241,19 @@ const bar = document.getElementById('announcement-bar')
         }
       });
 
+      fetch('/api/api/statusjson')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (data.code == 0 || data.code == 1) {
+          showNotifi(3,3,'#ffaa00','Warning!','An outage has been reported on Silvereen Network\'s main servers. <br> This may effect some functionality.')
+        }
+      });
+
 var asciiv5 = `
 Moonlight 4.0                              
 `;
