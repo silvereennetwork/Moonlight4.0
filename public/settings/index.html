@@ -47,11 +47,14 @@
         <details style="text-align: center;">
           <summary>More</summary>
           <button onclick="setTitle('Inbox (27)');setIcon('/assets/imgs/favicons/gmail.ico')">Gmail</button>
-          <button onclick="setTitle(`Calender ${month}/${day}/${year}`);setIcon('/assets/imgs/favicons/google-calender.ico')">Calender</button>
+          <button
+            onclick="setTitle(`Calender ${month}/${day}/${year}`);setIcon('/assets/imgs/favicons/google-calender.ico')">Calender</button>
           <button onclick="setTitle('Canvas');setIcon('/assets/imgs/favicons/canvas.ico')">Canvas</button>
           <br>
-          <button onclick="setTitle('My Drive - Google Drive');setIcon('/assets/imgs/favicons/google-drive.ico')">Google Drive</button>
-          <button onclick="setTitle('Khan Academy');setIcon('/assets/imgs/favicons/khan-academy.ico')">Khan Academy</button>
+          <button onclick="setTitle('My Drive - Google Drive');setIcon('/assets/imgs/favicons/google-drive.ico')">Google
+            Drive</button>
+          <button onclick="setTitle('Khan Academy');setIcon('/assets/imgs/favicons/khan-academy.ico')">Khan
+            Academy</button>
           <button onclick="setTitle('New Tab');setIcon('/assets/imgs/favicons/newtab.png')">New Tab</button>
         </details>
       </div>
@@ -95,8 +98,9 @@
     </div>
 
     <div class="settings-container">
-      <h2 class="center">Extension Disabler</h2>
-      <p class="center">Coming <sub>(very)</sub> soon...</p>
+      <h2 class="center">Stats</h2>
+      <h4 class="center">Time Played: <span id="timeplayed"></span></h4>
+      <h4 class="center">Time using proxy: <span id="timesearched"></span></h4>
     </div>
 
     <div class="settings-container">
@@ -386,6 +390,25 @@
       setProxyInfo(`https://docs.google.com/forms/d/e/1FAIpQLSficSd27EijVQtL_tDu02gZLBglNHUcIYHUPg9-doxzIE_T_Q/viewform`);
       window.open('../iframe.html')
     }
+
+    const hours = document.getElementById('timeplayed');
+    if (localStorage.getItem('moonlight.timeplayed') > 3600000) {
+      hours.innerHTML = Math.round(localStorage.getItem('moonlight.timeplayed') / 60 / 60) + " Hours"
+    } else if (localStorage.getItem('timeplayed') < 60000) {
+      hours.innerHTML = Math.round(localStorage.getItem('moonlight.timeplayed') / 60) + " Minutes"
+    } else {
+      hours.innerHTML = Math.round(localStorage.getItem('moonlight.timeplayed')) + " Seconds"
+    }
+
+    const timesearched = document.getElementById('timesearched');
+    if (localStorage.getItem('moonlight.timesearched') > 3600000) {
+      timesearched.innerHTML = Math.round(localStorage.getItem('moonlight.timesearched') / 60 / 60) + " Hours"
+    } else if (localStorage.getItem('timesearched') < 60000) {
+      timesearched.innerHTML = Math.round(localStorage.getItem('moonlight.timesearched') / 60) + " Minutes"
+    } else {
+      timesearched.innerHTML = Math.round(localStorage.getItem('moonlight.timesearched')) + " Seconds"
+    }
+
 
     let obj = new Date();
     let day = obj.getUTCDate();

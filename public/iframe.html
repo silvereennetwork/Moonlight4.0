@@ -3,11 +3,11 @@
 
 <head>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7001820938357122"
-     crossorigin="anonymous"></script>
-     <meta name="google-adsense-account" content="ca-pub-7001820938357122">
-     <link rel="stylesheet" type="text/css" href="assets/css/iframe.css">
-     <link rel="stylesheet" type="text/css" href="index.css">
-     <link rel="icon" id="icon" href="">
+    crossorigin="anonymous"></script>
+  <meta name="google-adsense-account" content="ca-pub-7001820938357122">
+  <link rel="stylesheet" type="text/css" href="assets/css/iframe.css">
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <link rel="icon" id="icon" href="">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <title>My Drive - Google Drive</title>
@@ -56,8 +56,8 @@
   </div>
   <div class="iframe-container">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7001820938357122"
-     crossorigin="anonymous"></script>
-<!-- ML In Game -->
+      crossorigin="anonymous"></script>
+    <!-- ML In Game -->
 
     <iframe id="iframe" src="" frameborder="0" allowfullscreen></iframe>
     <div class="buttons-bar">
@@ -82,18 +82,29 @@
       iframe.style.display = "block";
       document.querySelector(".loading-screen").style.display = "none";
     };
+
+    function countTime() {
+      localStorage.setItem('moonlight.timeplayed', parseInt(localStorage.getItem('moonlight.timeplayed')) + 1)
+      console.log(localStorage.getItem('timeplayed'))
+    }
+
+    if (localStorage.getItem('moonlight.timeplayed')) {
+      setInterval(countTime, 1000)
+    } else {
+      localStorage.setItem('moonlight.timeplayed', 0);
+      setInterval(countTime, 1000)
+    }
   </script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7001820938357122"
-crossorigin="anonymous"></script>
-<!-- In games ad 1 -->
-<div style="width: 1px; height: 5vh"></div>
-<center><ins class="adsbygoogle"
-style="display:block;width:728px;height:90px;text-align: center;position: relative; z-index: -99;"
-data-ad-client="ca-pub-7001820938357122"
-data-ad-slot="3507599545"></ins></center>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7001820938357122"
+    crossorigin="anonymous"></script>
+  <!-- In games ad 1 -->
+  <div style="width: 1px; height: 5vh"></div>
+  <center><ins class="adsbygoogle"
+      style="display:block;width:728px;height:90px;text-align: center;position: relative; z-index: -99;"
+      data-ad-client="ca-pub-7001820938357122" data-ad-slot="3507599545"></ins></center>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 
 </body>
 

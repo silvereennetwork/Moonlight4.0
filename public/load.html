@@ -1,125 +1,142 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    
-    <title></title>
-    <script src="assets/js/themes.js"></script>
-    <link rel="icon" id="icon" href="">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7001820938357122"
-     crossorigin="anonymous"></script>
-     <meta name="google-adsense-account" content="ca-pub-7001820938357122">
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Roboto&display=swap");
 
-      body {
-        background: #000;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        margin: 0;
+<head>
+
+  <title></title>
+  <script src="assets/js/themes.js"></script>
+  <link rel="icon" id="icon" href="">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7001820938357122"
+    crossorigin="anonymous"></script>
+  <meta name="google-adsense-account" content="ca-pub-7001820938357122">
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Roboto&display=swap");
+
+    body {
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      position: fixed;
+      top: 0;
+      display: flex;
+    }
+
+    .loading-screen {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-top: -2%;
+      height: 100%;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    p {
+      font-family: Roboto;
+    }
+
+    .info {
+      color: rgb(95, 95, 255);
+      max-width: 600px;
+      text-align: center;
+      margin: 35px 0 0;
+    }
+
+    .ring {
+      display: inline-block;
+      width: 160px;
+      height: 160px;
+    }
+
+    .ring:after {
+      content: " ";
+      display: block;
+      width: 128px;
+      height: 128px;
+      margin: 16px;
+      border-radius: 50%;
+      border: 12px solid rgb(95, 95, 255);
+      border-color: rgb(95, 95, 255) transparent rgb(95, 95, 255) transparent;
+      animation: ring 1s linear infinite;
+    }
+
+    @keyframes ring {
+      0% {
+        transform: rotate(0deg);
       }
 
-      iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
-        position: fixed;
-        top: 0;
-        display: flex;
+      100% {
+        transform: rotate(360deg);
       }
+    }
+  </style>
+</head>
 
-      .loading-screen {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        margin-top: -2%;
-        height: 100%;
-        align-items: center;
-        flex-direction: column;
-      }
+<body>
+  <div class="loading-screen">
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
 
-      p {
-        font-family: Roboto;
-      }
+    <dotlottie-player src="https://lottie.host/15007873-64f3-4f04-aae7-d2f4e59f8575/SVb9rmfpsV.json"
+      background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
+    <p class="info">
+      Please wait while our servers handle your request. <br />
+      Our site may be experiencing heavy load affecting load times.
+    </p>
+  </div>
+  <iframe id="proxy-screen" src="" style="z-index: 9999;"></iframe>
+  <script>
+    if (localStorage.getItem("proxy-load") == null && localStorage.getItem("proxy-load") == "") {
+      window.location.replace("/");
+    }
 
-      .info {
-        color: rgb(95, 95, 255);
-        max-width: 600px;
-        text-align: center;
-        margin: 35px 0 0;
-      }
+    var iframe = document.getElementById("proxy-screen");
+    iframe.src = localStorage.getItem("proxy-load");
 
-      .ring {
-        display: inline-block;
-        width: 160px;
-        height: 160px;
-      }
-
-      .ring:after {
-        content: " ";
-        display: block;
-        width: 128px;
-        height: 128px;
-        margin: 16px;
-        border-radius: 50%;
-        border: 12px solid rgb(95, 95, 255);
-        border-color: rgb(95, 95, 255) transparent rgb(95, 95, 255) transparent;
-        animation: ring 1s linear infinite;
-      }
-
-      @keyframes ring {
-        0% {
-          transform: rotate(0deg);
+    iframe.onload = function () {
+      iframe.style.display = "block";
+      document.querySelector(".loading-screen").style.display = "none";
+      document.body.style.background = "white";
+    };
+  </script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script>
+    var panickey = localStorage.getItem("panicKey");
+    console.log(panickey);
+    var panicwebsite = localStorage.getItem("panicWebsite");
+    $(function () {
+      $(document).keydown(function (e) {
+        console.log(e.key);
+        if (e.key == panickey) {
+          window.open(panicwebsite, "_self");
         }
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="loading-screen">
-      <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
-
-    <dotlottie-player src="https://lottie.host/15007873-64f3-4f04-aae7-d2f4e59f8575/SVb9rmfpsV.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
-      <p class="info">
-        Please wait while our servers handle your request. <br />
-        Our site may be experiencing heavy load affecting load times.
-      </p>
-    </div>
-    <iframe id="proxy-screen" src="" style="z-index: 9999;"></iframe>
-    <script>
-      if (localStorage.getItem("proxy-load") == null && localStorage.getItem("proxy-load") == "") {
-        window.location.replace("/");
-      }
-
-      var iframe = document.getElementById("proxy-screen");
-      iframe.src = localStorage.getItem("proxy-load");
-
-      iframe.onload = function () {
-        iframe.style.display = "block";
-        document.querySelector(".loading-screen").style.display = "none";
-        document.body.style.background="white";
-      };
-    </script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script>
-      var panickey = localStorage.getItem("panicKey");
-      console.log(panickey);
-      var panicwebsite = localStorage.getItem("panicWebsite");
-      $(function () {
-        $(document).keydown(function (e) {
-          console.log(e.key);
-          if (e.key == panickey) {
-            window.open(panicwebsite, "_self");
-          }
-        });
       });
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/eruda/3.0.1/eruda.min.js"></script>
-    <script src="/assets/js/cloak.js"></script>
-    <script>eruda.init();</script>
-  </body>
+    });
+
+    function countTime() {
+      localStorage.setItem('moonlight.timesearched', parseInt(localStorage.getItem('moonlight.timesearched')) + 1)
+      console.log(localStorage.getItem('moonlight.timesearched'))
+    }
+
+    if (localStorage.getItem('moonlight.timesearched')) {
+      setInterval(countTime, 1000)
+    } else {
+      localStorage.setItem('moonlight.timesearched', 0);
+      setInterval(countTime, 1000)
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/eruda/3.0.1/eruda.min.js"></script>
+  <script src="/assets/js/cloak.js"></script>
+  <script>eruda.init();</script>
+</body>
+
 </html>
