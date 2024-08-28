@@ -123,14 +123,14 @@
     });
 
     function countTime() {
-      localStorage.setItem('moonlight.timesearched', parseInt(localStorage.getItem('moonlight.timesearched')) + 1)
-      console.log(localStorage.getItem('moonlight.timesearched'))
+      localStorage.setItem('timesearched', parseInt(localStorage.getItem('timesearched')) + 1)
+      console.log(localStorage.getItem('timesearched'))
     }
 
-    if (localStorage.getItem('moonlight.timesearched')) {
+    if (localStorage.getItem('timesearched')) {
       setInterval(countTime, 1000)
     } else {
-      localStorage.setItem('moonlight.timesearched', 0);
+      localStorage.setItem('timesearched', 0);
       setInterval(countTime, 1000)
     }
   </script>

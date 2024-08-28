@@ -84,14 +84,14 @@
     };
 
     function countTime() {
-      localStorage.setItem('moonlight.timeplayed', parseInt(localStorage.getItem('moonlight.timeplayed')) + 1)
+      localStorage.setItem('timeplayed', parseInt(localStorage.getItem('timeplayed')) + 1)
       console.log(localStorage.getItem('timeplayed'))
     }
 
-    if (localStorage.getItem('moonlight.timeplayed')) {
+    if (localStorage.getItem('timeplayed') !== null) {
       setInterval(countTime, 1000)
     } else {
-      localStorage.setItem('moonlight.timeplayed', 0);
+      localStorage.setItem('timeplayed', 0);
       setInterval(countTime, 1000)
     }
   </script>

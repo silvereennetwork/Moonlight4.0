@@ -101,6 +101,7 @@
       <h2 class="center">Stats</h2>
       <h4 class="center">Time Played: <span id="timeplayed"></span></h4>
       <h4 class="center">Time using proxy: <span id="timesearched"></span></h4>
+      <h4 class="center">Total time: <span id="totaltime"></span></h4>
     </div>
 
     <div class="settings-container">
@@ -392,21 +393,35 @@
     }
 
     const hours = document.getElementById('timeplayed');
-    if (localStorage.getItem('moonlight.timeplayed') > 3600000) {
-      hours.innerHTML = Math.round(localStorage.getItem('moonlight.timeplayed') / 60 / 60) + " Hours"
-    } else if (localStorage.getItem('timeplayed') < 60000) {
-      hours.innerHTML = Math.round(localStorage.getItem('moonlight.timeplayed') / 60) + " Minutes"
+    const timeplayedSeconds = parseInt(localStorage.getItem('timeplayed'));
+
+    if (timeplayedSeconds >= 3600) {
+      hours.innerHTML = Math.round(timeplayedSeconds / 60 / 60) + " Hours";
+    } else if (timeplayedSeconds >= 60) {
+      hours.innerHTML = Math.round(timeplayedSeconds / 60) + " Minutes";
     } else {
-      hours.innerHTML = Math.round(localStorage.getItem('moonlight.timeplayed')) + " Seconds"
+      hours.innerHTML = Math.round(timeplayedSeconds) + " Seconds";
     }
 
     const timesearched = document.getElementById('timesearched');
-    if (localStorage.getItem('moonlight.timesearched') > 3600000) {
-      timesearched.innerHTML = Math.round(localStorage.getItem('moonlight.timesearched') / 60 / 60) + " Hours"
-    } else if (localStorage.getItem('timesearched') < 60000) {
-      timesearched.innerHTML = Math.round(localStorage.getItem('moonlight.timesearched') / 60) + " Minutes"
+    const timesearchedSeconds = parseInt(localStorage.getItem('timesearched'));
+
+    if (timesearchedSeconds >= 3600) {
+      timesearched.innerHTML = Math.round(timesearchedSeconds / 60 / 60) + " Hours";
+    } else if (timesearchedSeconds >= 60) {
+      timesearched.innerHTML = Math.round(timesearchedSeconds / 60) + " Minutes";
     } else {
-      timesearched.innerHTML = Math.round(localStorage.getItem('moonlight.timesearched')) + " Seconds"
+      timesearched.innerHTML = Math.round(timesearchedSeconds) + " Seconds";
+    }
+
+    const totaltime = document.getElementById('totaltime');
+    const totalTimeSeconds = timeplayedSeconds + timesearchedSeconds;
+    if (totalTimeSeconds >= 3600) {
+      totaltime.innerHTML = Math.round(totalTimeSeconds / 60 / 60) + " Hours";
+    } else if (totalTimeSeconds >= 60) {
+      totaltime.innerHTML = Math.round(totalTimeSeconds / 60) + " Minutes";
+    } else {
+      totaltime.innerHTML = Math.round(totalTimeSeconds) + " Seconds";
     }
 
 
