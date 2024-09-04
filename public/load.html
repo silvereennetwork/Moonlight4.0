@@ -121,17 +121,17 @@
         }
       });
     });
-
+    
     function countTime() {
       localStorage.setItem('timesearched', parseInt(localStorage.getItem('timesearched')) + 1)
       console.log(localStorage.getItem('timesearched'))
     }
 
     if (localStorage.getItem('timesearched')) {
-      setInterval(countTime, 1000)
+      var timer = setInterval(countTime, 1000)
     } else {
       localStorage.setItem('timesearched', 0);
-      setInterval(countTime, 1000)
+      var timer = setInterval(countTime, 1000)
     }
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/eruda/3.0.1/eruda.min.js"></script>

@@ -84,15 +84,15 @@
     };
 
     function countTime() {
-      localStorage.setItem('timeplayed', parseInt(localStorage.getItem('timeplayed')) + 1)
-      console.log(localStorage.getItem('timeplayed'))
+      localStorage.setItem('timeplayed', parseInt(localStorage.getItem('timeplayed')) + 1);
+      console.log(localStorage.getItem('timeplayed'));
     }
 
     if (localStorage.getItem('timeplayed') !== null) {
-      setInterval(countTime, 1000)
+      var timer = setInterval(countTime, 1000);
     } else {
       localStorage.setItem('timeplayed', 0);
-      setInterval(countTime, 1000)
+      var timer = setInterval(countTime, 1000);
     }
   </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7001820938357122"

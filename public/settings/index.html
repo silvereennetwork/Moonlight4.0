@@ -102,6 +102,7 @@
       <h4 class="center">Time Played: <span id="timeplayed"></span></h4>
       <h4 class="center">Time using proxy: <span id="timesearched"></span></h4>
       <h4 class="center">Total time: <span id="totaltime"></span></h4>
+      <h4 class="center">Total coins: <span id="coins"></span></h4>
     </div>
 
     <div class="settings-container">
@@ -221,7 +222,7 @@
 
     <div class="settings-container">
       <h2 class="center">Credits</h2>
-      <div style="height: 175px; overflow-y: scroll;" class="center">
+      <div style="height: 300px; overflow-y: scroll;" class="center">
         <div>
           <h3 class="sticky">Project Lead</h3>
           <p>Silvereen</p>
@@ -392,13 +393,21 @@
       window.open('../iframe.html')
     }
 
+    if (localStorage.getItem('timeplayed') == null) {
+      localStorage.setItem('timeplayed', 0);
+    }
+
+    if (localStorage.getItem('timesearched') == null) {
+      localStorage.setItem('timesearched', 0);
+    }
+
     const hours = document.getElementById('timeplayed');
     const timeplayedSeconds = parseInt(localStorage.getItem('timeplayed'));
 
     if (timeplayedSeconds >= 3600) {
-      hours.innerHTML = Math.round(timeplayedSeconds / 60 / 60) + " Hours";
+      hours.innerHTML = Math.round(timeplayedSeconds / 60 / 60*10)/10 + " Hours";
     } else if (timeplayedSeconds >= 60) {
-      hours.innerHTML = Math.round(timeplayedSeconds / 60) + " Minutes";
+      hours.innerHTML = Math.round(timeplayedSeconds / 60*10)/10 + " Minutes";
     } else {
       hours.innerHTML = Math.round(timeplayedSeconds) + " Seconds";
     }
@@ -407,9 +416,9 @@
     const timesearchedSeconds = parseInt(localStorage.getItem('timesearched'));
 
     if (timesearchedSeconds >= 3600) {
-      timesearched.innerHTML = Math.round(timesearchedSeconds / 60 / 60) + " Hours";
+      timesearched.innerHTML = Math.round(timesearchedSeconds / 60 / 60*10)/10 + " Hours";
     } else if (timesearchedSeconds >= 60) {
-      timesearched.innerHTML = Math.round(timesearchedSeconds / 60) + " Minutes";
+      timesearched.innerHTML = Math.round(timesearchedSeconds / 60*10)/10 + " Minutes";
     } else {
       timesearched.innerHTML = Math.round(timesearchedSeconds) + " Seconds";
     }
@@ -417,13 +426,15 @@
     const totaltime = document.getElementById('totaltime');
     const totalTimeSeconds = timeplayedSeconds + timesearchedSeconds;
     if (totalTimeSeconds >= 3600) {
-      totaltime.innerHTML = Math.round(totalTimeSeconds / 60 / 60) + " Hours";
+      totaltime.innerHTML = Math.round(totalTimeSeconds / 60 / 60*10)/10 + " Hours";
     } else if (totalTimeSeconds >= 60) {
-      totaltime.innerHTML = Math.round(totalTimeSeconds / 60) + " Minutes";
+      totaltime.innerHTML = Math.round(totalTimeSeconds / 60*10)/10 + " Minutes";
     } else {
       totaltime.innerHTML = Math.round(totalTimeSeconds) + " Seconds";
     }
 
+    const coins = Math.round((timeplayedSeconds + timesearchedSeconds)/30)
+    document.getElementById('coins').innerHTML = coins+" Coins"
 
     let obj = new Date();
     let day = obj.getUTCDate();
