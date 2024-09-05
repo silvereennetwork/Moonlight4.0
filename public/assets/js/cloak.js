@@ -6,6 +6,15 @@ if (!localStorage.getItem('moonlight.icon')) {
     localStorage.setItem('moonlight.icon', '/assets/imgs/logos/logo.png');
 }
 
+if (localStorage.getItem('moonlight.icon') || localStorage.getItem('moonlight.title')) {
+    const updatecloak = setInterval(updateCloak, 1000)
+}
+
+function updateCloak() {
+    document.title = localStorage.getItem('moonlight.title');
+    document.getElementById('icon').href = localStorage.getItem('moonlight.icon');
+}
+
 document.title = localStorage.getItem('moonlight.title');
 document.getElementById('icon').href = localStorage.getItem('moonlight.icon');
 
