@@ -9,9 +9,14 @@ function appendNews(jsonData) {
 
         // Create title element
         const title = document.createElement('h2');
-        title.textContent = item.title;
+        title.innerHTML = item.title;
         title.title = `ID: ${item.id}`;
         newContainer.appendChild(title);
+
+        /*// Create the sup for time
+        const time = document.createElement('sup');
+        time.innerHTML = item.time;
+        title.appendChild(time)*/
 
         // Create tags
         const tagsDiv = document.createElement('div');
@@ -21,14 +26,14 @@ function appendNews(jsonData) {
             const tagElement = document.createElement('div');
             tagElement.classList.add('tag', tag);
             console.log(tag)
-            tagElement.textContent = item[tag];
+            tagElement.innerHTML = item[tag];
             tagsDiv.appendChild(tagElement);
         });
         newContainer.appendChild(tagsDiv);
 
         // Create content element
         const content = document.createElement('p');
-        content.textContent = item.content;
+        content.innerHTML = item.content;
         newContainer.appendChild(content);
 
         // Append the entire new container to the 'news' div
