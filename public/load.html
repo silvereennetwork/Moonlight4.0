@@ -88,7 +88,7 @@
 
     <dotlottie-player src="https://lottie.host/15007873-64f3-4f04-aae7-d2f4e59f8575/SVb9rmfpsV.json"
       background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
-    <p class="info">
+    <p class="info" id="info">
       Please wait while our servers handle your request. <br />
       Our site may be experiencing heavy load affecting load times.
     </p>
@@ -121,7 +121,7 @@
         }
       });
     });
-    
+
     function countTime() {
       localStorage.setItem('timesearched', parseInt(localStorage.getItem('timesearched')) + 1)
       console.log(localStorage.getItem('timesearched'))
@@ -133,6 +133,26 @@
       localStorage.setItem('timesearched', 0);
       var timer = setInterval(countTime, 1000)
     }
+
+    const quotes = [
+      "Walking all the fish",
+      "Turning on the stage lights",
+      "Opening the curtains",
+      "Turning on the mics",
+      "Getting the orchestra ready",
+      "Sweeping the stage",
+      "Activating the speakers",
+      "Handing out the scripts"
+    ]
+
+    const quotesinterval = setInterval(changeQuote, 1000);
+
+    function changeQuote() {
+      const random = Math.floor(Math.random() * 8);
+      document.getElementById('info').innerHTML = quotes[random];
+    }
+
+    changeQuote();
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/eruda/3.0.1/eruda.min.js"></script>
   <script src="/assets/js/cloak.js"></script>

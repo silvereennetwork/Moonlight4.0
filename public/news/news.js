@@ -23,11 +23,13 @@ function appendNews(jsonData) {
         tagsDiv.classList.add('tags');
         const tags = ['tag1', 'tag2', 'tag3']; // Assuming these are the only tags
         tags.forEach(tag => {
-            const tagElement = document.createElement('div');
-            tagElement.classList.add('tag', tag);
-            console.log(tag)
-            tagElement.innerHTML = item[tag];
-            tagsDiv.appendChild(tagElement);
+            if (tag) {
+                const tagElement = document.createElement('div');
+                tagElement.classList.add('tag', tag);
+                console.log(tag)
+                tagElement.innerHTML = item[tag];
+                tagsDiv.appendChild(tagElement);
+            }
         });
         newContainer.appendChild(tagsDiv);
 
