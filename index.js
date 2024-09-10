@@ -22,11 +22,6 @@ app.use(
 	})
 );
 
-app.use('/forum', createProxyMiddleware({
-  target: 'https://forum-core.silvereen.net',
-  changeOrigin: true,
-}));
-
 app.use(
 	'/api',
 	proxy(`https://api.silvereen.net`)

@@ -356,6 +356,8 @@
         console.error('Failed to fetch: ' + error.message);
       }
     }
+
+    const updatestatusinterval = setInterval(getStatus, 1000)
     getStatus();
 
   </script>
@@ -401,13 +403,14 @@
       localStorage.setItem('timesearched', 0);
     }
 
+    function updateStats() { 
     const hours = document.getElementById('timeplayed');
     const timeplayedSeconds = parseInt(localStorage.getItem('timeplayed'));
 
     if (timeplayedSeconds >= 3600) {
-      hours.innerHTML = Math.round(timeplayedSeconds / 60 / 60*10)/10 + " Hours";
+      hours.innerHTML = Math.round(timeplayedSeconds / 60 / 60 * 10) / 10 + " Hours";
     } else if (timeplayedSeconds >= 60) {
-      hours.innerHTML = Math.round(timeplayedSeconds / 60*10)/10 + " Minutes";
+      hours.innerHTML = Math.round(timeplayedSeconds / 60 * 10) / 10 + " Minutes";
     } else {
       hours.innerHTML = Math.round(timeplayedSeconds) + " Seconds";
     }
@@ -416,9 +419,9 @@
     const timesearchedSeconds = parseInt(localStorage.getItem('timesearched'));
 
     if (timesearchedSeconds >= 3600) {
-      timesearched.innerHTML = Math.round(timesearchedSeconds / 60 / 60*10)/10 + " Hours";
+      timesearched.innerHTML = Math.round(timesearchedSeconds / 60 / 60 * 10) / 10 + " Hours";
     } else if (timesearchedSeconds >= 60) {
-      timesearched.innerHTML = Math.round(timesearchedSeconds / 60*10)/10 + " Minutes";
+      timesearched.innerHTML = Math.round(timesearchedSeconds / 60 * 10) / 10 + " Minutes";
     } else {
       timesearched.innerHTML = Math.round(timesearchedSeconds) + " Seconds";
     }
@@ -426,16 +429,18 @@
     const totaltime = document.getElementById('totaltime');
     const totalTimeSeconds = timeplayedSeconds + timesearchedSeconds;
     if (totalTimeSeconds >= 3600) {
-      totaltime.innerHTML = Math.round(totalTimeSeconds / 60 / 60*10)/10 + " Hours";
+      totaltime.innerHTML = Math.round(totalTimeSeconds / 60 / 60 * 10) / 10 + " Hours";
     } else if (totalTimeSeconds >= 60) {
-      totaltime.innerHTML = Math.round(totalTimeSeconds / 60*10)/10 + " Minutes";
+      totaltime.innerHTML = Math.round(totalTimeSeconds / 60 * 10) / 10 + " Minutes";
     } else {
       totaltime.innerHTML = Math.round(totalTimeSeconds) + " Seconds";
     }
 
-    const coins = Math.round((timeplayedSeconds + timesearchedSeconds)/30)
-    document.getElementById('coins').innerHTML = coins+" Coins"
-
+    const coins = Math.round((timeplayedSeconds + timesearchedSeconds) / 30)
+    document.getElementById('coins').innerHTML = coins + " Coins"
+  }
+  updateStats();
+  const updatestats = setInterval(updateStats, 1000);
     let obj = new Date();
     let day = obj.getUTCDate();
     let month = obj.getUTCMonth() + 1;

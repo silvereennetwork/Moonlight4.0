@@ -225,34 +225,46 @@ function getDeviceInfo() {
 
 const bar = document.getElementById('announcement-bar')
 
-    fetch('/api/api/announcement-header')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => {
-        if (data.display == "true") {
-          bar.innerHTML = data.text;
-          bar.style.backgroundColor = data.bgcolor;
-          bar.style.color = data.textcolor;
-          bar.style.display = 'block';
-        }
-      });
+function updateAnnouncementHeader() {
+  fetch('/api/api/announcement-header')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      if (data.display == "true") {
+        bar.innerHTML = data.text;
+        bar.style.backgroundColor = data.bgcolor;
+        bar.style.color = data.textcolor;
+        bar.style.display = 'block';
+      } else {
+        bar.style.display = 'none';
+      }
+    });
+}
 
-      fetch('/api/api/statusjson')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => {
-        if (data.code == 0 || data.code == 1) {
-          showNotifi(3,3,'#ffaa00','Warning!','An outage has been reported on Silvereen Network\'s main servers. <br> This may effect some functionality.')
-        }
-      });
+const updateAnnouncementHeaderInterval = setInterval(updateAnnouncementHeader, 1000);
+updateAnnouncementHeader()
+
+
+fetch('/api/api/statusjson')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    if (data.code == 0 || data.code == 1) {
+      showNotifi(3, 3, '#ffaa00', 'Warning!', 'An outage has been reported on Silvereen Network\'s main servers. <br> This may effect some functionality.')
+    }
+  });
+
+  fetch('/api/view', {
+    method: "POST"
+  });
 
 var asciiv5 = `
 Moonlight 4.0                              
