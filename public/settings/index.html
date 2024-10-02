@@ -2,7 +2,8 @@
 <html lang="en">
 
 <head>
-  <script defer src="https://tracking.ennlive.org/script.js" data-website-id="06ff4eaf-9dc9-42a9-ac9d-8dd833f18e25"></script>
+  <script defer src="https://tracking.ennlive.org/script.js"
+    data-website-id="06ff4eaf-9dc9-42a9-ac9d-8dd833f18e25"></script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7001820938357122"
     crossorigin="anonymous"></script>
   <meta name="google-adsense-account" content="ca-pub-7001820938357122">
@@ -306,6 +307,23 @@
   <script src="/uv/index.js" defer></script>
   <script src="../main.js"></script>
   <script>
+    let CLF_config = {
+      app_id: "73c4d041-1ea6-4245-a4a6-a31856027c3b",
+      data: {
+        user_id: '123456', // required
+        user_email: 'user@email.com', // required
+        user_name: 'User Name', // optional
+        custom_data: {
+          'JobRole': 'CEO', // optional
+          'Plan': 'Pro', // optional
+          'teamMates': '4', // optional
+          'MonthlySpend': '50 USD' // optional
+        }
+      }
+    };
+  </script>
+  <script async src="https://widget.changelogfy.com/index.js"></script>
+  <script>
     function getMainDomain() {
       try {
         const url = new URL(location.href);
@@ -405,44 +423,44 @@
       localStorage.setItem('timesearched', 0);
     }
 
-    function updateStats() { 
-    const hours = document.getElementById('timeplayed');
-    const timeplayedSeconds = parseInt(localStorage.getItem('timeplayed'));
+    function updateStats() {
+      const hours = document.getElementById('timeplayed');
+      const timeplayedSeconds = parseInt(localStorage.getItem('timeplayed'));
 
-    if (timeplayedSeconds >= 3600) {
-      hours.innerHTML = Math.round(timeplayedSeconds / 60 / 60 * 10) / 10 + " Hours";
-    } else if (timeplayedSeconds >= 60) {
-      hours.innerHTML = Math.round(timeplayedSeconds / 60 * 10) / 10 + " Minutes";
-    } else {
-      hours.innerHTML = Math.round(timeplayedSeconds) + " Seconds";
+      if (timeplayedSeconds >= 3600) {
+        hours.innerHTML = Math.round(timeplayedSeconds / 60 / 60 * 10) / 10 + " Hours";
+      } else if (timeplayedSeconds >= 60) {
+        hours.innerHTML = Math.round(timeplayedSeconds / 60 * 10) / 10 + " Minutes";
+      } else {
+        hours.innerHTML = Math.round(timeplayedSeconds) + " Seconds";
+      }
+
+      const timesearched = document.getElementById('timesearched');
+      const timesearchedSeconds = parseInt(localStorage.getItem('timesearched'));
+
+      if (timesearchedSeconds >= 3600) {
+        timesearched.innerHTML = Math.round(timesearchedSeconds / 60 / 60 * 10) / 10 + " Hours";
+      } else if (timesearchedSeconds >= 60) {
+        timesearched.innerHTML = Math.round(timesearchedSeconds / 60 * 10) / 10 + " Minutes";
+      } else {
+        timesearched.innerHTML = Math.round(timesearchedSeconds) + " Seconds";
+      }
+
+      const totaltime = document.getElementById('totaltime');
+      const totalTimeSeconds = timeplayedSeconds + timesearchedSeconds;
+      if (totalTimeSeconds >= 3600) {
+        totaltime.innerHTML = Math.round(totalTimeSeconds / 60 / 60 * 10) / 10 + " Hours";
+      } else if (totalTimeSeconds >= 60) {
+        totaltime.innerHTML = Math.round(totalTimeSeconds / 60 * 10) / 10 + " Minutes";
+      } else {
+        totaltime.innerHTML = Math.round(totalTimeSeconds) + " Seconds";
+      }
+
+      const coins = Math.round((timeplayedSeconds + timesearchedSeconds) / 30)
+      document.getElementById('coins').innerHTML = coins + " Coins"
     }
-
-    const timesearched = document.getElementById('timesearched');
-    const timesearchedSeconds = parseInt(localStorage.getItem('timesearched'));
-
-    if (timesearchedSeconds >= 3600) {
-      timesearched.innerHTML = Math.round(timesearchedSeconds / 60 / 60 * 10) / 10 + " Hours";
-    } else if (timesearchedSeconds >= 60) {
-      timesearched.innerHTML = Math.round(timesearchedSeconds / 60 * 10) / 10 + " Minutes";
-    } else {
-      timesearched.innerHTML = Math.round(timesearchedSeconds) + " Seconds";
-    }
-
-    const totaltime = document.getElementById('totaltime');
-    const totalTimeSeconds = timeplayedSeconds + timesearchedSeconds;
-    if (totalTimeSeconds >= 3600) {
-      totaltime.innerHTML = Math.round(totalTimeSeconds / 60 / 60 * 10) / 10 + " Hours";
-    } else if (totalTimeSeconds >= 60) {
-      totaltime.innerHTML = Math.round(totalTimeSeconds / 60 * 10) / 10 + " Minutes";
-    } else {
-      totaltime.innerHTML = Math.round(totalTimeSeconds) + " Seconds";
-    }
-
-    const coins = Math.round((timeplayedSeconds + timesearchedSeconds) / 30)
-    document.getElementById('coins').innerHTML = coins + " Coins"
-  }
-  updateStats();
-  const updatestats = setInterval(updateStats, 1000);
+    updateStats();
+    const updatestats = setInterval(updateStats, 1000);
     let obj = new Date();
     let day = obj.getUTCDate();
     let month = obj.getUTCMonth() + 1;

@@ -101,7 +101,7 @@ const blocked = [
   "cs.luckyorange.net",
   "an.facebook.com",
   "static.ads-twitter.com",
-  "ads-api.twitter.com",
+  "ads-api.twitter.com"
 ];
 
 const blockedsites = [

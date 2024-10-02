@@ -11,7 +11,7 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 const bare = createBareServer("/bare/");
 const app = express();
 
-app.use(express.static("./public"));
+app.use("/", express.static("./public"));
 app.use("/uv/", express.static(uvPath));
 app.use("/chat", express.static('./public/chat.html'));
 app.use("/dynamic/", express.static(dynamicPath));

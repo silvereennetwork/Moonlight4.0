@@ -14,6 +14,7 @@ function createCard(game, container) {
     card.title = `${game.name} - ${game.id}`;
     card.onclick = function() {
         setGameInfo(`${game.root}/${game.file}`, game.name);
+        umami.track(`Game - ${game.name}`);
     };
 
     const h2 = document.createElement('h2');
@@ -39,6 +40,7 @@ function createProxyCard(game, container) {
     card.title = `${game.name} - ${game.id}`;
     card.onclick = function() {
         setProxyInfo(`${game.proxy}`, game.proxy);
+        umami.track(`App - ${game.name}`);
     };
 
     const h2 = document.createElement('h2');
