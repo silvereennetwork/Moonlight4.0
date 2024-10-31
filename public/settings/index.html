@@ -456,12 +456,20 @@
     let year = obj.getUTCFullYear();
 
     function downloadSave() {
-      if (confirm('Do not share this save file with anyone! This save file may contain sensitive information such as your Discord token.')) {
-        const savedata = getStorageData();
-        downloadFile(savedata, 'moonlightsave.ml')
-        showNotifi(5, 5, '#ff0000', '<strong>Warning</strong>', '<strong><u>Do not share this save file with anyone!<br>This save file may contain sensitive information such as your Discord token.</u></strong>');
-      }
-
+      Swal.fire({
+        title: "Caution",
+        text: "Do not share this save file with anyone! This save file may contain sensitive information such as your Discord token.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Save",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const savedata = getStorageData();
+          downloadFile(savedata, 'moonlightsave.ml')
+          showNotifi(5, 5, '#ff0000', '<strong>Warning</strong>', '<strong><u>Do not share this save file with anyone!<br>This save file may contain sensitive information such as your Discord token.</u></strong>');
+          Swal.fire({title: 'Downloading', html: 'Your save file is downloading. <strong>Do not share this save file with anyone</strong>', icon: 'success'});
+        }
+      });
     }
 
     function uploadSave() {
@@ -470,6 +478,7 @@
       });
     }
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>
