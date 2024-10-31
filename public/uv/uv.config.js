@@ -179,6 +179,7 @@ self.__uv$config = {
     if (blockedsites.includes(url.host) ||
       url.href.toLocaleLowerCase().includes("porn") ||
       url.href.toLocaleLowerCase().includes("18+") ||
+      url.href.toLocaleLowerCase().includes("Adult Content") ||
       url.href.toLocaleLowerCase().includes("xvideos") ||
       url.href.toLocaleLowerCase().includes("xxx")) {
       // Redirect to a blocked page if the site is in blockedsites
