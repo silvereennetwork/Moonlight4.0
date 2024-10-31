@@ -1,72 +1,92 @@
 <DOCTYPE html>
-<html lang="en">
+  <html lang="en">
 
-<head>
-  <script defer src="https://tracking.ennlive.org/script.js" data-website-id="06ff4eaf-9dc9-42a9-ac9d-8dd833f18e25"></script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Moonlight 4.0 | Theme builder</title>
-  <link rel="icon" id="icon" href="">
-  <link rel="stylesheet" href="./index.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  <style>
-    .color {
+  <head>
+    <script defer src="https://tracking.ennlive.org/script.js"
+      data-website-id="06ff4eaf-9dc9-42a9-ac9d-8dd833f18e25"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moonlight 4.0 | Theme builder</title>
+    <link rel="icon" id="icon" href="">
+    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+      .color {
         width: 100px;
         height: 30px;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="nav">
-    <div class="nav-logo">
-      <img src="logo.png">
-    </div>
-    <div class="nav-links">
-      <li><a href="/">Home</a></li>
-      <li><a href="games.html">Games</a></li>
-      <li><a href="./search">Search</a></li>
-      <li><a href="./settings">Settings</a></li>
-      <li><a href="/news">News</a></li>
-    </div>
-  </div>
-  <h1 class="center" style="color: white;">Theme Builder</h1>
-  <div style="width: 1px; height: 5vh"></div>
-
-  <form id="change-color" method="get">
-    <p class="center"><input type="text" id="primary" placeholder="Primary Color"><input type="color" class="color" onchange="updateValue('primary', this.value)"></p>
-    <p class="center"><input type="text" id="second" placeholder="Secondary Color"><input type="color" class="color" onchange="updateValue('second', this.value)"></p>
-    <p class="center"><input type="text" id="third" placeholder="Third Color"><input type="color" class="color" onchange="updateValue('third', this.value)"></p>
-    <p class="center"><input type="text" id="text" placeholder="Text Color"><input type="color" class="color" onchange="updateValue('text', this.value)"></p>
-    <p class="center"><input type="text" id="background" placeholder="Background Color"><input type="color" class="color" onchange="updateValue('background', this.value)"></p>
-    <p class="center"><input type="text" id="container" placeholder="Container Color"><input type="color" class="color" onchange="updateValue('container', this.value)"></p>
-    <p class="center"><input type="text" id="containerborder" placeholder="Container Border"><input type="color" class="color" onchange="updateValue('containerborder', this.value)"></p>
-    <p class="center"><input type="text" id="selected" placeholder="Selected Color"><input type="color" class="color" onchange="updateValue('selected', this.value)"></p>
-    <p class="center"><input type="text" id="buttonbg" placeholder="Button Background Color"><input type="color" class="color" onchange="updateValue('buttonbg', this.value)"></p>
-    <p class="center"><input type="submit"></p>
-  </form>
-  <br>
-  <p class="center"><textarea style="width: 450px; height: 200px" id="textarea" disabled></textarea></p>
-  <p class="center"><input type="button" onclick="navigator.clipboard.writeText(document.getElementById('textarea').value); alert('Copied')" value="Copy"></p>
-  <div style="width: 1px; height: 5vh"></div>
-  <div class="settings-background"></div>
-  <script src="../cloak.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/eruda/3.0.1/eruda.min.js"></script>
-  <script src="/assets/js/cloak.js"></script>
-  <script>eruda.init();</script>
-  <script>
-    let colorform = document.getElementById('change-color');
-
-
-
-    document.addEventListener('keydown', function (event) {
-      if (event.ctrlKey && event.shiftKey && event.code === 'KeyI') {
-        event.preventDefault();  // Prevent the default action (opening dev tools)
-        eruda.show();    // Call your custom function
       }
-    });
-    
-    colorform.addEventListener('submit', (event) => {
+    </style>
+    <script type="text/javascript">
+      (function (c, l, a, r, i, t, y) {
+        c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+        t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "or23norbdz");
+    </script>
+  </head>
+
+  <body>
+    <div class="nav">
+      <div class="nav-logo">
+        <img src="logo.png">
+      </div>
+      <div class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="games.html">Games</a></li>
+        <li><a href="./search">Search</a></li>
+        <li><a href="./settings">Settings</a></li>
+        <li><a href="/news">News</a></li>
+      </div>
+    </div>
+    <h1 class="center" style="color: white;">Theme Builder</h1>
+    <div style="width: 1px; height: 5vh"></div>
+
+    <form id="change-color" method="get">
+      <p class="center"><input type="text" id="primary" placeholder="Primary Color"><input type="color" class="color"
+          onchange="updateValue('primary', this.value)"></p>
+      <p class="center"><input type="text" id="second" placeholder="Secondary Color"><input type="color" class="color"
+          onchange="updateValue('second', this.value)"></p>
+      <p class="center"><input type="text" id="third" placeholder="Third Color"><input type="color" class="color"
+          onchange="updateValue('third', this.value)"></p>
+      <p class="center"><input type="text" id="text" placeholder="Text Color"><input type="color" class="color"
+          onchange="updateValue('text', this.value)"></p>
+      <p class="center"><input type="text" id="background" placeholder="Background Color"><input type="color"
+          class="color" onchange="updateValue('background', this.value)"></p>
+      <p class="center"><input type="text" id="container" placeholder="Container Color"><input type="color"
+          class="color" onchange="updateValue('container', this.value)"></p>
+      <p class="center"><input type="text" id="containerborder" placeholder="Container Border"><input type="color"
+          class="color" onchange="updateValue('containerborder', this.value)"></p>
+      <p class="center"><input type="text" id="selected" placeholder="Selected Color"><input type="color" class="color"
+          onchange="updateValue('selected', this.value)"></p>
+      <p class="center"><input type="text" id="buttonbg" placeholder="Button Background Color"><input type="color"
+          class="color" onchange="updateValue('buttonbg', this.value)"></p>
+      <p class="center"><input type="submit"></p>
+    </form>
+    <br>
+    <p class="center"><textarea style="width: 450px; height: 200px" id="textarea" disabled></textarea></p>
+    <p class="center"><input type="button"
+        onclick="navigator.clipboard.writeText(document.getElementById('textarea').value); alert('Copied')"
+        value="Copy"></p>
+    <div style="width: 1px; height: 5vh"></div>
+    <div class="settings-background"></div>
+    <script src="../cloak.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/eruda/3.0.1/eruda.min.js"></script>
+    <script src="/assets/js/cloak.js"></script>
+    <script>eruda.init();</script>
+    <script>
+      let colorform = document.getElementById('change-color');
+
+
+
+      document.addEventListener('keydown', function (event) {
+        if (event.ctrlKey && event.shiftKey && event.code === 'KeyI') {
+          event.preventDefault();  // Prevent the default action (opening dev tools)
+          eruda.show();    // Call your custom function
+        }
+      });
+
+      colorform.addEventListener('submit', (event) => {
         event.preventDefault();
 
         let primary = "#064180";
@@ -80,31 +100,31 @@
         let buttonbg = "#1a1a1a";
 
         if (document.getElementById('primary').value) {
-            primary = document.getElementById('primary').value;
+          primary = document.getElementById('primary').value;
         };
         if (document.getElementById('second').value) {
-            second = document.getElementById('second').value;
+          second = document.getElementById('second').value;
         };
         if (document.getElementById('third').value) {
-            third = document.getElementById('third').value;
+          third = document.getElementById('third').value;
         };
         if (document.getElementById('text').value) {
-            text = document.getElementById('text').value;
+          text = document.getElementById('text').value;
         };
         if (document.getElementById('background').value) {
-            background = document.getElementById('background').value;
+          background = document.getElementById('background').value;
         };
         if (document.getElementById('container').value) {
-            container = document.getElementById('container').value;
+          container = document.getElementById('container').value;
         };
         if (document.getElementById('containerborder').value) {
-            containerborder = document.getElementById('containerborder').value;
+          containerborder = document.getElementById('containerborder').value;
         };
         if (document.getElementById('selected').value) {
-            selected = document.getElementById('selected').value;
+          selected = document.getElementById('selected').value;
         };
         if (document.getElementById('buttonbg').value) {
-            buttonbg = document.getElementById('buttonbg').value;
+          buttonbg = document.getElementById('buttonbg').value;
         };
 
         document.getElementById('textarea').value = `{
@@ -118,11 +138,11 @@
   		    "--selected": "${selected}",
   		    "--buttonbg": "${buttonbg}"
           }`;
-    });
+      });
 
-    function updateValue(id, itemvalue) {
-            document.getElementById(id).value = itemvalue;
-    }
-  </script>
-</body>
-</body>
+      function updateValue(id, itemvalue) {
+        document.getElementById(id).value = itemvalue;
+      }
+    </script>
+  </body>
+  </body>

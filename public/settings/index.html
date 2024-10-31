@@ -3,7 +3,7 @@
 
 <head>
   <script defer src="https://tracking.ennlive.org/script.js"
-    data-website-id="06ff4eaf-9dc9-42a9-ac9d-8dd833f18e25"></script>
+    data-website-id="d5d861f4-66a2-462d-80bf-f00226a2c8ff"></script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7001820938357122"
     crossorigin="anonymous"></script>
   <meta name="google-adsense-account" content="ca-pub-7001820938357122">
@@ -76,13 +76,18 @@
     </div>
 
     <div class="settings-container">
-      <h2 class="center">Eruda (Inspect)</h2>
-      <br>
+      <h2 class="center">Features</h2>
+      <p class="center">Eruda</p>
       <p class="center">
         <button onclick="localStorage.setItem('moonlight.eruda', 0); window.location.reload();" class="proxy-button"
           id="eruda-off">Off</button>
         <button onclick="localStorage.setItem('moonlight.eruda', 1); window.location.reload();" class="proxy-button"
           id="eruda-on">On</button>
+      </p>
+      <p class="center">Save Files</p>
+      <p class="center">
+        <button class="proxy-button" onclick="downloadSave()">Download Save</button>
+        <button class="proxy-button" onclick="uploadSave()">Upload Save</button>
       </p>
     </div>
 
@@ -201,7 +206,7 @@
 
     <div class="settings-container">
       <h2 class="center">Other info</h2>
-      <p class="center">Version <b>4.0</b></p>
+      <p class="center">Version <b>4.0.1</b></p>
       <p class="center">Servers: <span id="site-status"></span></p>
       <details style="margin: auto; width: auto;">
         <summary class="center">
@@ -306,23 +311,7 @@
   <script src="/uv/search.js" defer></script>
   <script src="/uv/index.js" defer></script>
   <script src="../main.js"></script>
-  <script>
-    let CLF_config = {
-      app_id: "73c4d041-1ea6-4245-a4a6-a31856027c3b",
-      data: {
-        user_id: '123456', // required
-        user_email: 'user@email.com', // required
-        user_name: 'User Name', // optional
-        custom_data: {
-          'JobRole': 'CEO', // optional
-          'Plan': 'Pro', // optional
-          'teamMates': '4', // optional
-          'MonthlySpend': '50 USD' // optional
-        }
-      }
-    };
-  </script>
-  <script async src="https://widget.changelogfy.com/index.js"></script>
+
   <script>
     function getMainDomain() {
       try {
@@ -465,6 +454,21 @@
     let day = obj.getUTCDate();
     let month = obj.getUTCMonth() + 1;
     let year = obj.getUTCFullYear();
+
+    function downloadSave() {
+      if (confirm('Do not share this save file with anyone! This save file may contain sensitive information such as your Discord token.')) {
+        const savedata = getStorageData();
+        downloadFile(savedata, 'moonlightsave.ml')
+        showNotifi(5, 5, '#ff0000', '<strong>Warning</strong>', '<strong><u>Do not share this save file with anyone!<br>This save file may contain sensitive information such as your Discord token.</u></strong>');
+      }
+
+    }
+
+    function uploadSave() {
+      uploadFile((content) => {
+        restoreStorageData(content)
+      });
+    }
   </script>
 </body>
 

@@ -262,9 +262,89 @@ fetch('/api/api/statusjson')
     }
   });
 
-  fetch('/api/view', {
-    method: "POST"
-  });
+fetch('/api/view', {
+  method: "POST"
+});
+
+// Function to get all data from localStorage and sessionStorage
+
+function downloadFile(content, name) {
+  const blob = new Blob([content], { type: 'text/plain' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = name;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+function getStorageData() {
+  let storageData = {
+    localStorage: {},
+    sessionStorage: {}
+  };
+
+  // Get data from localStorage
+  for (let i = 0; i < localStorage.length; i++) {
+    let key = localStorage.key(i);
+    storageData.localStorage[key] = localStorage.getItem(key);
+  }
+
+  // Get data from sessionStorage
+  for (let i = 0; i < sessionStorage.length; i++) {
+    let key = sessionStorage.key(i);
+    storageData.sessionStorage[key] = sessionStorage.getItem(key);
+  }
+
+  // Convert the object to JSON format
+  return JSON.stringify(storageData);
+}
+
+// To upload and restore this JSON data later, you can do this:
+function restoreStorageData(jsonData) {
+  let data = JSON.parse(jsonData);
+
+  // Restore localStorage data
+  for (let key in data.localStorage) {
+    if (data.localStorage.hasOwnProperty(key)) {
+      localStorage.setItem(key, data.localStorage[key]);
+    }
+  }
+
+  // Restore sessionStorage data
+  for (let key in data.sessionStorage) {
+    if (data.sessionStorage.hasOwnProperty(key)) {
+      sessionStorage.setItem(key, data.sessionStorage[key]);
+    }
+  }
+}
+
+function uploadFile(callback) {
+  // Create an input element of type file
+  const input = document.createElement('input');
+  input.type = 'file';
+
+  // Listen for file selection
+  input.onchange = (event) => {
+    const file = event.target.files[0]; // Get the selected file
+
+    if (file) {
+      const reader = new FileReader();
+
+      // Set up a callback to handle when the file is fully read
+      reader.onload = (e) => {
+        const fileContent = e.target.result; // File content
+        callback(fileContent); // Pass the content to the callback function
+      };
+
+      // Read the file as text
+      reader.readAsText(file);
+    }
+  };
+
+  // Programmatically trigger the file input click
+  input.click();
+}
 
 var asciiv5 = `
 Moonlight 4.0                              
