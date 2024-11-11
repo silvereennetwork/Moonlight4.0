@@ -10,6 +10,7 @@
   --containerborder: #4a4a4a;
   --selected: #919191;
   --buttonbg: #ffffff;
+  --backgroundpos: center;
 }
 
 
@@ -31,6 +32,7 @@ body {
   background-image: var(--background);
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: (--backgroundpos);
 }
 
 body::after {

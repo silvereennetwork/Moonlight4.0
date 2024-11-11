@@ -61,6 +61,8 @@
           onchange="updateValue('selected', this.value)"></p>
       <p class="center"><input type="text" id="buttonbg" placeholder="Button Background Color"><input type="color"
           class="color" onchange="updateValue('buttonbg', this.value)"></p>
+      <p class="center"><input type="text" id="backgroundpos" placeholder="Background Position"><input type="text"
+          class="color" onchange="updateValue('backgroundpos', this.value)"></p>
       <p class="center"><input type="submit"></p>
     </form>
     <br>
@@ -98,6 +100,7 @@
         let containerborder = "rgba(0,0,0,0)";
         let selected = "lime";
         let buttonbg = "#1a1a1a";
+        let backgroundpos = "center";
 
         if (document.getElementById('primary').value) {
           primary = document.getElementById('primary').value;
@@ -126,6 +129,9 @@
         if (document.getElementById('buttonbg').value) {
           buttonbg = document.getElementById('buttonbg').value;
         };
+        if (document.getElementById('backgroundpos').value) {
+          buttonbg = document.getElementById('backgroundpos').value;
+        };
 
         document.getElementById('textarea').value = `{
           "--primary-color": "${primary}",
@@ -136,7 +142,8 @@
           "--container": "${container}",
 		      "--containerborder": "${containerborder}",
   		    "--selected": "${selected}",
-  		    "--buttonbg": "${buttonbg}"
+  		    "--buttonbg": "${buttonbg}",
+          "--backgroundpos": "${backgroundpos}"
           }`;
       });
 

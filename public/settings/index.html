@@ -188,6 +188,9 @@
           "--buttonbg": "#a22020"
         }`)'>Astrophile</button><br><br>
         <input placeholder="Custom theme code" onchange="customTheme(this.value)">
+        <br><br>
+        <a href="/forum/t/custom-themes" style="display: none;" id="customtheme">Browse and publish custom themes
+          here!</a>
       </p>
     </div>
 
@@ -467,7 +470,7 @@
           const savedata = getStorageData();
           downloadFile(savedata, 'moonlightsave.ml')
           showNotifi(5, 5, '#ff0000', '<strong>Warning</strong>', '<strong><u>Do not share this save file with anyone!<br>This save file may contain sensitive information such as your Discord token.</u></strong>');
-          Swal.fire({title: 'Downloading', html: 'Your save file is downloading. <strong>Do not share this save file with anyone</strong>', icon: 'success'});
+          Swal.fire({ title: 'Downloading', html: 'Your save file is downloading. <strong>Do not share this save file with anyone</strong>', icon: 'success' });
         }
       });
     }
@@ -477,6 +480,26 @@
         restoreStorageData(content)
       });
     }
+
+    async function checkPageFor404(url) {
+      try {
+        const response = await fetch(url);
+        const text = await response.text();
+        if (text.includes("Looks like you encountered a 404 error!")) {
+          return false;
+        } else {
+          return true;
+        }
+      } catch (error) {
+        return false;
+      }
+    }
+
+  
+    if (checkPageFor404('/forum') == false) {
+      document.getElementById('customtheme').style.display = 'block';
+    }
+
   </script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
