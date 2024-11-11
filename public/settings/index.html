@@ -481,24 +481,21 @@
       });
     }
 
-    async function checkPageFor404(url) {
+    async function checkPageFor404() {
       try {
-        const response = await fetch(url);
+        const response = await fetch('/forum');
         const text = await response.text();
         if (text.includes("Looks like you encountered a 404 error!")) {
-          return false;
+          document.getElementById('customtheme').style.display = 'none';
         } else {
-          return true;
+          document.getElementById('customtheme').style.display = 'block';
         }
       } catch (error) {
-        return false;
+        document.getElementById('customtheme').style.display = 'none';
       }
     }
 
-  
-    if (checkPageFor404('/forum') == true) {
-      document.getElementById('customtheme').style.display = 'block';
-    }
+    checkPageFor404()
 
   </script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
