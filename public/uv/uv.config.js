@@ -131,7 +131,7 @@ self.__uv$config = {
       document.addEventListener('DOMContentLoaded', function() {
         // Inject the image
         var img = document.createElement('img');
-        img.src = 'https://moonlight.ennlive.org/assets/imgs/logos/logo.png';
+        img.src = 'https://moonlight.silvereen.net/assets/imgs/logos/logo.png';
         img.style = 'position: fixed; z-index: 9999999; width: 50px; height: 50px; opacity: 50%; margin-right: 5px; top: 0; left: 0; pointer-events: none;';
         img.alt = 'moonlight';
         document.body.appendChild(img);
